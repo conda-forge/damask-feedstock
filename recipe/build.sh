@@ -11,11 +11,11 @@ cp VERSION ${PREFIX}/lib/VERSION
 for f in $(ls processing/misc/*); do
     cp -r processing/misc/$f ${PREFIX}/bin/${f%.*};
 done
-for f in $(ls processing/misc/*); do
-    cp -r processing/misc/$f ${PREFIX}/bin/${f%.*};
+for f in $(ls processing/pre/*); do
+    cp -r processing/pre/$f ${PREFIX}/bin/${f%.*};
 done
-for f in $(ls processing/misc/*); do
-    cp -r processing/misc/$f ${PREFIX}/bin/${f%.*};
+for f in $(ls processing/post/*); do
+    cp -r processing/post/$f ${PREFIX}/bin/${f%.*};
 done
 
 # Build Damask
