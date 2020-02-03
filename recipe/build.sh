@@ -9,15 +9,15 @@ cat system_report.txt
 cp -r python/damask ${STDLIB_DIR}
 cp VERSION ${PREFIX}/lib/VERSION
 for f in $(ls processing/misc/*); do
-    n = basename $f
+    n=$(basename $f)
     cp -r $f ${PREFIX}/bin/${n%.*};
 done
 for f in $(ls processing/pre/*); do
-    n = basename $f
+    n=$(basename $f)
     cp -r $f ${PREFIX}/bin/${n%.*};
 done
 for f in $(ls processing/post/*); do
-    n = basename $f
+    n=$(basename $f)
     cp -r $f ${PREFIX}/bin/${n%.*};
 done
 
