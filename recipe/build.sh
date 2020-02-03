@@ -8,11 +8,9 @@ cat system_report.txt
 # Python Installation 
 cp -r python/damask ${STDLIB_DIR}
 cp VERSION ${PREFIX}/lib/VERSION
-cp -r processing ${STDLIB_DIR}/damask
-rm ${STDLIB_DIR}/damask/processing/pre/geom_check.sh
-cp processing/pre/geom_check.sh ${PREFIX}/bin
-rm ${STDLIB_DIR}/damask/processing/pre/seeds_check.sh
-cp processing/pre/seeds_check.sh ${PREFIX}/bin
+cp -r processing/misc/* ${PREFIX}/bin
+cp -r processing/pre/* ${PREFIX}/bin
+cp -r processing/post/* ${PREFIX}/bin
 
 # Build Damask
 mkdir build
