@@ -8,6 +8,7 @@ cat system_report.txt
 # Python Installation 
 cp -r python/damask ${STDLIB_DIR}
 cp VERSION ${PREFIX}/lib/VERSION
+cp -r processing ${STDLIB_DIR}/damask
 
 # Build Damask
 mkdir build
