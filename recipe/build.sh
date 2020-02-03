@@ -8,9 +8,18 @@ cat system_report.txt
 # Python Installation 
 cp -r python/damask ${STDLIB_DIR}
 cp VERSION ${PREFIX}/lib/VERSION
-cp -r processing/misc/* ${PREFIX}/bin
-cp -r processing/pre/* ${PREFIX}/bin
-cp -r processing/post/* ${PREFIX}/bin
+for f in $(ls processing/misc/*); do
+    n=$(basename $f)
+    cp -r $f ${PREFIX}/bin/${n%.*};
+done
+for f in $(ls processing/pre/*); do
+    n=$(basename $f)
+    cp -r $f ${PREFIX}/bin/${n%.*};
+done
+for f in $(ls processing/post/*); do
+    n=$(basename $f)
+    cp -r $f ${PREFIX}/bin/${n%.*};
+done
 
 # Build Damask
 mkdir build
