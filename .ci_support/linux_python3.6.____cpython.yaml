@@ -31,6 +31,6 @@ pin_run_as_build:
   vtk:
     max_pin: x.x.x
 python:
-- '3.6'
+- 3.6.* *_cpython
 vtk:
 - 8.2.0
