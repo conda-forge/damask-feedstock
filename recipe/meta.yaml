@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://damask.mpie.de/pub/Download/Current/{{ name }}-{{ version }}.tar.xz
+  url: https://github.com/eisenforschung/DAMASK/archive/v{{ version }}.tar.gz
   sha256: c3f487ad1487586fbde696b1402d4dda8c3463ad0710b001ee8e4203eee413c8
 
 build:
@@ -33,16 +33,16 @@ requirements:
     - xorg-libxfixes  # [linux]
     - petsc =3.10
     - vtk
-    - hdf5 =*=mpi_mpich_*
-    - fftw =*=mpi_mpich_*
+    - hdf5
+    - fftw
     - scipy
   run:
     - python
     - petsc =3.10
     - numpy
     - vtk
-    - hdf5 =*=mpi_mpich_*
-    - fftw =*=mpi_mpich_*
+    - hdf5
+    - fftw
     - scipy
     - mumps-mpi
     - scotch
