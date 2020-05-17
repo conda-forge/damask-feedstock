@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/eisenforschung/DAMASK/archive/v{{ version }}.tar.gz
-  sha256: c3f487ad1487586fbde696b1402d4dda8c3463ad0710b001ee8e4203eee413c8
+  sha256: cfbb946496524ad453bb01b2e25d9d9ed25135f8fa562cc4afd3eb05f0a302e2
 
 build:
   number: 5
