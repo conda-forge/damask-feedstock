@@ -33,6 +33,10 @@ requirements:
     - xorg-libxfixes  # [linux]
     - petsc =3.10
     - vtk
+    # need to list hdf5 and fftw twice to get version pinning from conda_build_config
+    # and build pinning from mpi_mpich
+    - hdf5
+    - fftw
     - hdf5 =*=mpi_mpich_*
     - fftw =*=mpi_mpich_*
     - scipy
@@ -42,6 +46,10 @@ requirements:
     - petsc =3.10
     - numpy
     - vtk
+    # need to list hdf5 and fftw twice to get version pinning from conda_build_config
+    # and build pinning from mpi_mpich
+    - hdf5
+    - fftw
     - hdf5 =*=mpi_mpich_*
     - fftw =*=mpi_mpich_*
     - scipy
