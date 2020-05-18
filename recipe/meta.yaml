@@ -36,6 +36,7 @@ requirements:
     - hdf5
     - fftw
     - scipy
+    - mpich
   run:
     - python
     - petsc =3.10
