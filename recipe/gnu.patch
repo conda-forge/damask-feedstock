@@ -1,14 +1,14 @@
-From d38e8f96cbc0d161ce46bc335efbc8a05ecbc7ad Mon Sep 17 00:00:00 2001
+From 77bade2d5de393998c43851ec848a15e0d8e497c Mon Sep 17 00:00:00 2001
 From: Jan Janssen <jan-janssen@users.noreply.github.com>
-Date: Mon, 24 Aug 2020 11:44:20 +0200
-Subject: [PATCH] GNU 7.0
+Date: Mon, 24 Aug 2020 13:22:02 +0200
+Subject: [PATCH] f2018 patch
 
 ---
- cmake/Compiler-GNU.cmake | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ cmake/Compiler-GNU.cmake | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/cmake/Compiler-GNU.cmake b/cmake/Compiler-GNU.cmake
-index ebba8c0b..4346fccb 100644
+index ebba8c0b..ea4354c7 100644
 --- a/cmake/Compiler-GNU.cmake
 +++ b/cmake/Compiler-GNU.cmake
 @@ -1,7 +1,7 @@
@@ -20,3 +20,12 @@ index ebba8c0b..4346fccb 100644
    message (FATAL_ERROR "GCC Compiler version: ${CMAKE_Fortran_COMPILER_VERSION} not supported")
  endif ()
  
+@@ -17,7 +17,7 @@ elseif (OPTIMIZATION STREQUAL "AGGRESSIVE")
+   set (OPTIMIZATION_FLAGS "-O3 -ffast-math -funroll-loops -ftree-vectorize")
+ endif ()
+ 
+-set (STANDARD_CHECK "-std=f2018 -pedantic-errors" )
++set (STANDARD_CHECK "-std=gnu -pedantic-errors" )
+ set (LINKER_FLAGS  "${LINKER_FLAGS} -Wl")
+ # options parsed directly to the linker
+ set (LINKER_FLAGS  "${LINKER_FLAGS},-undefined,dynamic_lookup" )
