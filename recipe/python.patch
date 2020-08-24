@@ -1,0 +1,22 @@
+From ec7bac25e7650cd87cb6761a92c3af936463ff9a Mon Sep 17 00:00:00 2001
+From: Jan Janssen <jan-janssen@users.noreply.github.com>
+Date: Mon, 24 Aug 2020 13:31:41 +0200
+Subject: [PATCH] Change PIL to pillow
+
+---
+ python/setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/python/setup.py b/python/setup.py
+index 360918b3..c13ddbae 100644
+--- a/python/setup.py
++++ b/python/setup.py
+@@ -21,7 +21,7 @@
+         "h5py",
+         "vtk",
+         "matplotlib",
+-        "PIL",
++        "pillow",
+     ],
+     classifiers = [
+         "Intended Audience :: Science/Research",
