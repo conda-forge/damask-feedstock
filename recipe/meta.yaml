@@ -1,16 +1,19 @@
 {% set name = "damask" %}
-{% set version = "2.0.3" %}
+{% set version = "3.0.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/eisenforschung/DAMASK/archive/v{{ version }}.tar.gz
-  sha256: cfbb946496524ad453bb01b2e25d9d9ed25135f8fa562cc4afd3eb05f0a302e2
+  url: https://github.com/eisenforschung/DAMASK/archive/v{{ version }}-alpha.tar.gz
+  sha256: 2336a51ea88921f8ddad49b4f569b1d8281fc9575dbe6e682a9b18e21b1db4f1
+  patches:
+    - gnu.patch
+    - python.patch
 
 build:
-  number: 5
+  number: 0
   skip: true  # [not linux]
 
 requirements:
@@ -31,7 +34,7 @@ requirements:
     - python
     - pip
     - xorg-libxfixes  # [linux]
-    - petsc =3.10
+    - petsc
     - vtk
     # need to list hdf5 and fftw twice to get version pinning from conda_build_config
     # and build pinning from mpi_mpich
@@ -43,7 +46,7 @@ requirements:
     - mpich
   run:
     - python
-    - petsc =3.10
+    - petsc
     - numpy
     - vtk
     # need to list hdf5 and fftw twice to get version pinning from conda_build_config
