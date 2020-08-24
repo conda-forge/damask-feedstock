@@ -31,7 +31,7 @@ requirements:
     - python
     - pip
     - xorg-libxfixes  # [linux]
-    - petsc =3.10
+    - petsc
     - vtk
     # need to list hdf5 and fftw twice to get version pinning from conda_build_config
     # and build pinning from mpi_mpich
@@ -43,7 +43,7 @@ requirements:
     - mpich
   run:
     - python
-    - petsc =3.10
+    - petsc
     - numpy
     - vtk
     # need to list hdf5 and fftw twice to get version pinning from conda_build_config
