@@ -10,6 +10,7 @@ source:
   sha256: 2336a51ea88921f8ddad49b4f569b1d8281fc9575dbe6e682a9b18e21b1db4f1
   patches:
     - gnu.patch
+    - python.patch
 
 build:
   number: 0
