@@ -22,8 +22,19 @@ for f in $(ls processing/post/*); do
 done
 
 # Build Damask
-mkdir build
-cd build 
-cmake -DDAMASK_SOLVER="SPECTRAL" -DCMAKE_INSTALL_PREFIX="${PREFIX}/bin" ..
+mkdir build_grid
+cd build_grid 
+cmake -DDAMASK_SOLVER="grid" -DCMAKE_INSTALL_PREFIX="${PREFIX}/bin" ..
 make -j$CPU_COUNT install
-cp src/DAMASK_spectral ${PREFIX}/bin
+cp src/DAMASK_grid ${PREFIX}/bin
+cd ..
+
+mkdir build_mesh
+cd build_mesh
+cmake -DDAMASK_SOLVER="mesh" -DCMAKE_INSTALL_PREFIX="${PREFIX}/bin" ..
+make -j$CPU_COUNT install
+cp src/DAMASK_mesh ${PREFIX}/bin
+cd ..
+
+cd python
+pip install .
