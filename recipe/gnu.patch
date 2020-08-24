@@ -1,0 +1,22 @@
+From d38e8f96cbc0d161ce46bc335efbc8a05ecbc7ad Mon Sep 17 00:00:00 2001
+From: Jan Janssen <jan-janssen@users.noreply.github.com>
+Date: Mon, 24 Aug 2020 11:44:20 +0200
+Subject: [PATCH] GNU 7.0
+
+---
+ cmake/Compiler-GNU.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/Compiler-GNU.cmake b/cmake/Compiler-GNU.cmake
+index ebba8c0b..4346fccb 100644
+--- a/cmake/Compiler-GNU.cmake
++++ b/cmake/Compiler-GNU.cmake
+@@ -1,7 +1,7 @@
+ ###################################################################################################
+ # GNU Compiler
+ ###################################################################################################
+-if (CMAKE_Fortran_COMPILER_VERSION VERSION_LESS 8.0)
++if (CMAKE_Fortran_COMPILER_VERSION VERSION_LESS 7.0)
+   message (FATAL_ERROR "GCC Compiler version: ${CMAKE_Fortran_COMPILER_VERSION} not supported")
+ endif ()
+ 
