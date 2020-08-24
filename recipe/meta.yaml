@@ -16,7 +16,7 @@ build:
 requirements:
   build:
     - gcc_impl_linux-64
-    - libgfortran-ng
+    - gfortran_impl_linux-64
     - {{ cdt('mesa-libgl-devel') }}  # [linux]
     - {{ cdt('mesa-dri-drivers') }}  # [linux]
     - {{ cdt('libselinux') }}  # [linux]
@@ -29,7 +29,6 @@ requirements:
   host:
     - python
     - pip
-    - libgfortran-ng
     - xorg-libxfixes  # [linux]
     - petsc
     - vtk
