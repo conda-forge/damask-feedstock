@@ -19,21 +19,31 @@ conda-build:
 
 CONDARC
 
-conda install --yes --quiet conda-forge-ci-setup=2 conda-build -c conda-forge
+conda install --yes --quiet conda-forge-ci-setup=3 conda-build pip -c conda-forge
 
 # set up the condarc
 setup_conda_rc "${FEEDSTOCK_ROOT}" "${RECIPE_ROOT}" "${CONFIG_FILE}"
 
 source run_conda_forge_build_setup
 
+
+# Install the yum requirements defined canonically in the
+# "recipe/yum_requirements.txt" file. After updating that file,
+# run "conda smithy rerender" and this line will be updated
+# automatically.
+/usr/bin/sudo -n yum install -y mesa-libGL mesa-libGL-devel mesa-dri-drivers libselinux libXdamage libXxf86vm
+
+
 # make the build number clobber
 make_build_number "${FEEDSTOCK_ROOT}" "${RECIPE_ROOT}" "${CONFIG_FILE}"
 
 conda build "${RECIPE_ROOT}" -m "${CI_SUPPORT}/${CONFIG}.yaml" \
+    --suppress-variables ${EXTRA_CB_OPTIONS:-} \
     --clobber-file "${CI_SUPPORT}/clobber_${CONFIG}.yaml"
+validate_recipe_outputs "${FEEDSTOCK_NAME}"
 
 if [[ "${UPLOAD_PACKAGES}" != "False" ]]; then
-    upload_package "${FEEDSTOCK_ROOT}" "${RECIPE_ROOT}" "${CONFIG_FILE}"
+    upload_package --validate --feedstock-name="${FEEDSTOCK_NAME}"  "${FEEDSTOCK_ROOT}" "${RECIPE_ROOT}" "${CONFIG_FILE}"
 fi
 
 touch "${FEEDSTOCK_ROOT}/build_artifacts/conda-forge-build-done-${CONFIG}"
