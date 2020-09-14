@@ -48,19 +48,20 @@ requirements:
     - mpich
   run:
     - python
-    - petsc
     - numpy
     - vtk
     - pandas
+    - matplotlib-base
+    - scipy
     # need to list hdf5 and fftw twice to get version pinning from conda_build_config
     # and build pinning from mpi_mpich
     - hdf5
     - fftw
     - hdf5 =*=mpi_mpich_*
     - fftw =*=mpi_mpich_*
-    - scipy
     - mumps-mpi
     - scotch
+    - petsc
     - metis
     - scalapack
     - suitesparse
