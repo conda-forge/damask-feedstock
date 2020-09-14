@@ -17,8 +17,9 @@ build:
 
 requirements:
   build:
-    - gcc_impl_linux-64
-    - gfortran_impl_linux-64
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - {{ compiler('fortran') }}
     - {{ cdt('mesa-libgl-devel') }}  # [linux]
     - {{ cdt('mesa-dri-drivers') }}  # [linux]
     - {{ cdt('libselinux') }}  # [linux]
