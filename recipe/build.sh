@@ -37,4 +37,5 @@ cp src/DAMASK_mesh ${PREFIX}/bin
 cd ..
 
 cd python
+cp ../VERSION .
 pip install .
