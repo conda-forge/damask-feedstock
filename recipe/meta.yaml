@@ -30,9 +30,10 @@ requirements:
     - cmake
     - numpy
     - perl
-  host:
     - python
     - pip
+  host:
+    - python
     - xorg-libxfixes  # [linux]
     - petsc
     - vtk
@@ -72,8 +73,11 @@ requirements:
 test:
   commands:
     - DAMASK_spectral --help
+    - pip check
   imports:
     - damask
+  requires: 
+    - pip
 
 about:
   home: https://damask.mpie.de/
