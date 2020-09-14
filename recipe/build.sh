@@ -29,12 +29,12 @@ make -j$CPU_COUNT install
 cp src/DAMASK_grid ${PREFIX}/bin
 cd ..
 
-mkdir build_mesh
-cd build_mesh
-cmake -DDAMASK_SOLVER="mesh" -DCMAKE_INSTALL_PREFIX="${PREFIX}/bin" ..
-make -j$CPU_COUNT install
-cp src/DAMASK_mesh ${PREFIX}/bin
-cd ..
+# mkdir build_mesh
+# cd build_mesh
+# cmake -DDAMASK_SOLVER="mesh" -DCMAKE_INSTALL_PREFIX="${PREFIX}/bin" ..
+# make -j$CPU_COUNT install
+# cp src/DAMASK_mesh ${PREFIX}/bin
+# cd ..
 
 cd python
 cp ../VERSION .
