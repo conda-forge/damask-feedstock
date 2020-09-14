@@ -76,7 +76,7 @@ requirements:
 
 test:
   commands:
-    - DAMASK_spectral --help
+    - DAMASK_grid --help
     - pip check
   imports:
     - damask
