@@ -22,5 +22,5 @@ cd ..
 # Python Installation 
 cd python
 cp ../VERSION .
-cp ../LICENSE .
 python -m pip install . --no-deps -vv
+cp VERSION ${STDLIB_DIR}/VERSION
