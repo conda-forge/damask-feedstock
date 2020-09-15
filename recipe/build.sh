@@ -8,7 +8,7 @@ cat system_report.txt
 # Build grid solver
 mkdir build_grid
 cd build_grid 
-cmake -DDAMASK_SOLVER="grid" -DCMAKE_INSTALL_PREFIX="${PREFIX}/bin" ..
+cmake -DDAMASK_SOLVER="grid" -DCMAKE_INSTALL_PREFIX="${PREFIX}" ..
 make -j$CPU_COUNT install
 cd ..
 
