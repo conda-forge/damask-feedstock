@@ -32,9 +32,9 @@ requirements:
     - numpy
     - perl
     - python
-    - pip
   host:
     - python
+    - pip
     - xorg-libxfixes  # [linux]
     - petsc
     - vtk
