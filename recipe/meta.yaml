@@ -29,11 +29,10 @@ requirements:
     - {{ cdt('libxext') }}     # [linux]
     - make
     - cmake
-    - numpy
     - perl
-    - python
   host:
     - python
+    - numpy
     - pip
     - xorg-libxfixes  # [linux]
     - petsc
