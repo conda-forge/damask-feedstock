@@ -23,4 +23,4 @@ cd ..
 # Python Installation 
 cd python
 cp ../VERSION .
-pip install .
+{{ PYTHON }} -m pip install . --no-deps -vv
