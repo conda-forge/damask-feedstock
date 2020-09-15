@@ -1,0 +1,18 @@
+From be412bc2238eb440976d2f390129ae70b45b29e3 Mon Sep 17 00:00:00 2001
+From: Jan Janssen <jan-janssen@users.noreply.github.com>
+Date: Tue, 15 Sep 2020 14:26:16 +0200
+Subject: [PATCH] Update MANIFEST.in
+
+---
+ python/MANIFEST.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/python/MANIFEST.in b/python/MANIFEST.in
+index 4050d1c2..089d0ab1 100644
+--- a/python/MANIFEST.in
++++ b/python/MANIFEST.in
+@@ -1,2 +1,2 @@
+-include damask/VERSION
+-include damask/LICENSE
++include VERSION
++include LICENSE
