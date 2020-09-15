@@ -2,6 +2,7 @@ export PETSC_DIR=${PREFIX}
 export FFLAGS="${FFLAGS} -lhdf5_fortran -lhdf5 -lfftw3_mpi -lfftw3"
 
 # System report 
+echo ${STDLIB_DIR}
 bash DAMASK_prerequisites.sh
 cat system_report.txt
 
