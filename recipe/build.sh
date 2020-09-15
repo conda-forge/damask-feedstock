@@ -22,5 +22,5 @@ cd ..
 # Python Installation 
 cd python
 cp ../VERSION .
+cp ../MANIFEST.in .
 python -m pip install . --no-deps -vv
-cp VERSION ${STDLIB_DIR}/damask/VERSION
