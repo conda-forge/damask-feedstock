@@ -21,7 +21,8 @@ cd ..
 # cd ..
 
 # Python Installation 
-cd python
-cp ../VERSION .
-cp -r damask ${STDLIB_DIR}
+cp VERSION ${PREFIX}/lib/VERSION
+cp -r python/damask ${STDLIB_DIR}
+# cd python
+# cp ../VERSION .
 # python -m pip install . --no-deps -vv
