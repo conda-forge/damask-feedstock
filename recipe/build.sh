@@ -14,7 +14,6 @@ mkdir build_grid
 cd build_grid 
 cmake -DDAMASK_SOLVER="grid" -DCMAKE_INSTALL_PREFIX="${PREFIX}/bin" ..
 make -j$CPU_COUNT install
-cp src/DAMASK_grid ${PREFIX}/bin
 cd ..
 
 # Build mesh solver
