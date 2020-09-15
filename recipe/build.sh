@@ -8,20 +8,8 @@ cat system_report.txt
 # Python Installation 
 cp -r python/damask ${STDLIB_DIR}
 cp VERSION ${PREFIX}/lib/VERSION
-for f in $(ls processing/misc/*); do
-    n=$(basename $f)
-    cp -r $f ${PREFIX}/bin/${n%.*};
-done
-for f in $(ls processing/pre/*); do
-    n=$(basename $f)
-    cp -r $f ${PREFIX}/bin/${n%.*};
-done
-for f in $(ls processing/post/*); do
-    n=$(basename $f)
-    cp -r $f ${PREFIX}/bin/${n%.*};
-done
 
-# Build Damask
+# Build grid solver
 mkdir build_grid
 cd build_grid 
 cmake -DDAMASK_SOLVER="grid" -DCMAKE_INSTALL_PREFIX="${PREFIX}/bin" ..
@@ -29,6 +17,7 @@ make -j$CPU_COUNT install
 cp src/DAMASK_grid ${PREFIX}/bin
 cd ..
 
+# Build mesh solver
 # mkdir build_mesh
 # cd build_mesh
 # cmake -DDAMASK_SOLVER="mesh" -DCMAKE_INSTALL_PREFIX="${PREFIX}/bin" ..
