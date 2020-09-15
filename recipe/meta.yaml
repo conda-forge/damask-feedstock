@@ -13,7 +13,7 @@ source:
     - python.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [not linux]
 
 requirements:
@@ -29,12 +29,11 @@ requirements:
     - {{ cdt('libxext') }}     # [linux]
     - make
     - cmake
-    - numpy
     - perl
-    - python
-    - pip
   host:
     - python
+    - numpy
+    - pip
     - xorg-libxfixes  # [linux]
     - petsc
     - vtk
@@ -85,7 +84,7 @@ test:
 
 about:
   home: https://damask.mpie.de/
-  license: GPL-3.0
+  license: GPL-3.0-or-later
   license_family: GPL
   license_file: LICENSE
   summary: 'Duesseldorf Advanced Material Simulation Kit'
