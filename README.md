@@ -19,6 +19,10 @@ boundary value problems along with damage and thermal physics. Its
 main purpose is the simulation of crystal plasticity within a
 finite-strain continuum mechanical framework.
 
+```diff
+- This is an alpha version. File format and API definitions are subjected to changes!
+```
+
 
 Current build status
 ====================
