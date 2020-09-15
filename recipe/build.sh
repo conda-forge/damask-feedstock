@@ -13,16 +13,14 @@ make -j$CPU_COUNT install
 cd ..
 
 # Build mesh solver
-# mkdir build_mesh
-# cd build_mesh
-# cmake -DDAMASK_SOLVER="mesh" -DCMAKE_INSTALL_PREFIX="${PREFIX}/bin" ..
-# make -j$CPU_COUNT install
-# cp src/DAMASK_mesh ${PREFIX}/bin
-# cd ..
+mkdir build_mesh
+cd build_mesh
+cmake -DDAMASK_SOLVER="mesh" -DCMAKE_INSTALL_PREFIX="${PREFIX}" ..
+make -j$CPU_COUNT install
+cd ..
 
 # Python Installation 
-# cp VERSION ${PREFIX}/lib/VERSION
-# cp -r python/damask ${STDLIB_DIR}
 cd python
 cp ../VERSION .
 python -m pip install . --no-deps -vv
+cp VERSION ${PREFIX}/lib/VERSION
