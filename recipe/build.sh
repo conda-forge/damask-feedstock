@@ -23,4 +23,4 @@ cd ..
 cd python
 cp ../VERSION .
 python -m pip install . --no-deps -vv
-cp VERSION ${PREFIX}/lib/VERSION
+cp VERSION ${STDLIB_DIR}/damask/VERSION
