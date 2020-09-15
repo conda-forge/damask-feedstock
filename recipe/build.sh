@@ -5,10 +5,6 @@ export FFLAGS="${FFLAGS} -lhdf5_fortran -lhdf5 -lfftw3_mpi -lfftw3"
 bash DAMASK_prerequisites.sh
 cat system_report.txt
 
-# Python Installation 
-cp -r python/damask ${STDLIB_DIR}
-cp VERSION ${PREFIX}/lib/VERSION
-
 # Build grid solver
 mkdir build_grid
 cd build_grid 
@@ -24,6 +20,7 @@ cd ..
 # cp src/DAMASK_mesh ${PREFIX}/bin
 # cd ..
 
+# Python Installation 
 cd python
 cp ../VERSION .
 pip install .
