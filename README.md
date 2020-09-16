@@ -3,7 +3,7 @@ About damask
 
 Home: https://damask.mpie.de/
 
-Package license: GPL-3.0
+Package license: GPL-3.0-or-later
 
 Feedstock license: BSD-3-Clause
 
@@ -155,4 +155,5 @@ Feedstock Maintainers
 =====================
 
 * [@jan-janssen](https://github.com/jan-janssen/)
+* [@navyanthkusam](https://github.com/navyanthkusam/)
 
