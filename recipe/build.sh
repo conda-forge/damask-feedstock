@@ -28,6 +28,3 @@ cd ..
 
 # Pre-processing tools 
 make processing
-ls -al .
-ls -al bin
-cp -r bin/* ${PREFIX}/bin
