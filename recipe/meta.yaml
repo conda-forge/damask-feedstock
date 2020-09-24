@@ -15,6 +15,36 @@ source:
 build:
   number: 2
   skip: true  # [not linux]
+  entry_points:
+    - geom_fromDREAM3D = geom_fromDREAM3D
+    - geom_fromMinimalSurface = geom_fromMinimalSurface
+    - geom_fromOsteonGeometry = geom_fromOsteonGeometry
+    - geom_fromTable = geom_fromTable
+    - geom_fromVoronoiTessellation = geom_fromVoronoiTessellation
+    - geom_grainGrowth = geom_grainGrowth
+    - gmsh_identifySurfaces = gmsh_identifySurfaces
+    - hybridIA_linODFsampling = hybridIA_linODFsampling
+    - mentat_pbcOnBoxMesh = mentat_pbcOnBoxMesh
+    - mentat_spectralBox = mentat_spectralBox
+    - seeds_fromDistribution = seeds_fromDistribution
+    - seeds_fromGeom = seeds_fromGeom
+    - seeds_fromPokes = seeds_fromPokes
+    - seeds_fromRandom = seeds_fromRandom
+    - DADF5_postResults = DADF5_postResults
+    - DADF5toDREAM3D = DADF5toDREAM3D
+    - addCompatibilityMismatch = addCompatibilityMismatch
+    - addCurl = addCurl
+    - addDerivative = addDerivative
+    - addDisplacement = addDisplacement
+    - addDivergence = addDivergence
+    - addEuclideanDistance = addEuclideanDistance
+    - addGaussian = addGaussian
+    - addGradient = addGradient
+    - addOrientations = addOrientations
+    - addSchmidfactors = addSchmidfactors
+    - filterTable = filterTable
+    - permuteData = permuteData
+    - vtk2ang = vtk2ang
 
 requirements:
   build:
