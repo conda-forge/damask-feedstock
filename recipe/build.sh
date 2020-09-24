@@ -24,3 +24,10 @@ cd python
 cp ../VERSION .
 python -m pip install . --no-deps -vv
 cp VERSION ${STDLIB_DIR}/site-packages/damask/VERSION
+cd ..
+
+# Pre-processing tools 
+make processing
+ls -al .
+ls -al bin
+cp -r bin/* ${PREFIX}/bin
