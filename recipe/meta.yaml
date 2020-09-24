@@ -40,6 +40,7 @@ requirements:
     - pillow
     - pandas
     - matplotlib-base
+    - h5py
     # need to list hdf5 and fftw twice to get version pinning from conda_build_config
     # and build pinning from mpi_mpich
     - hdf5
