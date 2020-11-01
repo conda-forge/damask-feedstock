@@ -2,6 +2,8 @@ c_compiler:
 - gcc
 c_compiler_version:
 - '7'
+cdt_name:
+- cos6
 channel_sources:
 - conda-forge,defaults
 channel_targets:
@@ -19,7 +21,7 @@ fortran_compiler:
 fortran_compiler_version:
 - '7'
 hdf5:
-- 1.10.5
+- 1.10.6
 mpich:
 - '3.3'
 mumps_mpi:
@@ -45,4 +47,10 @@ python:
 target_platform:
 - linux-64
 vtk:
-- 8.2.0
+- 9.0.1
+zip_keys:
+- - c_compiler_version
+  - cxx_compiler_version
+  - fortran_compiler_version
+- - python
+  - numpy
