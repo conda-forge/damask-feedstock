@@ -9,11 +9,11 @@ source:
   url: https://github.com/eisenforschung/DAMASK/archive/v{{ version }}-alpha.tar.gz
   sha256: 2336a51ea88921f8ddad49b4f569b1d8281fc9575dbe6e682a9b18e21b1db4f1
   patches:
-    - gcc.patch
+    - gcc.patch  # [c_compiler_version<9]
     - python.patch
 
 build:
-  number: 4
+  number: 5
   skip: true  # [not linux]
 
 requirements:
