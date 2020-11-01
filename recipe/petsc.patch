@@ -1,0 +1,39 @@
+From 1681889e0befd14dec263bd88d45fad11752b970 Mon Sep 17 00:00:00 2001
+From: Martin Diehl <mail@martin-diehl.net>
+Date: Tue, 6 Oct 2020 07:12:04 +0200
+Subject: [PATCH] PETSc 3.14 is out
+
+---
+ src/DAMASK_interface.f90   | 2 +-
+ src/mesh/mesh_mech_FEM.f90 | 4 ++++
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/src/DAMASK_interface.f90 b/src/DAMASK_interface.f90
+index 39f77012..52971ae0 100644
+--- a/src/DAMASK_interface.f90
++++ b/src/DAMASK_interface.f90
+@@ -11,7 +11,7 @@
+ !--------------------------------------------------------------------------------------------------
+ #define PETSC_MAJOR 3
+ #define PETSC_MINOR_MIN 10
+-#define PETSC_MINOR_MAX 13
++#define PETSC_MINOR_MAX 14
+ 
+ module DAMASK_interface
+   use, intrinsic :: ISO_fortran_env
+diff --git a/src/mesh/mesh_mech_FEM.f90 b/src/mesh/mesh_mech_FEM.f90
+index de1f0c68..f7d33adc 100644
+--- a/src/mesh/mesh_mech_FEM.f90
++++ b/src/mesh/mesh_mech_FEM.f90
+@@ -594,7 +594,11 @@ subroutine FEM_mech_formJacobian(dm_local,xx_local,Jac_pre,Jac,dummy,ierr)
+ 
+ !--------------------------------------------------------------------------------------------------
+ ! apply boundary conditions
++#if (PETSC_VERSION_MINOR < 14)
+   call DMPlexCreateRigidBody(dm_local,matnull,ierr); CHKERRQ(ierr)
++#else
++  call DMPlexCreateRigidBody(dm_local,0,matnull,ierr); CHKERRQ(ierr)
++#endif
+   call MatSetNullSpace(Jac,matnull,ierr); CHKERRQ(ierr)
+   call MatSetNearNullSpace(Jac,matnull,ierr); CHKERRQ(ierr)
+   call MatNullSpaceDestroy(matnull,ierr); CHKERRQ(ierr)
