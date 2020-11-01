@@ -14,7 +14,7 @@ source:
     - gcc.patch  # [c_compiler_version<9]
 
 build:
-  number: 3
+  number: 4
   skip: true  # [not linux]
 
 requirements:
