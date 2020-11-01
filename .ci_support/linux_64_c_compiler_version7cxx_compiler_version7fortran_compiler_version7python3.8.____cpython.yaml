@@ -27,7 +27,7 @@ mpich:
 mumps_mpi:
 - '5.2'
 numpy:
-- '1.16'
+- '1.19'
 perl:
 - 5.26.2
 petsc:
