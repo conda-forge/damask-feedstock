@@ -71,6 +71,7 @@ requirements:
     - hypre
     - ptscotch
     - _openmp_mutex
+    - pyyaml
 
 test:
   commands:
