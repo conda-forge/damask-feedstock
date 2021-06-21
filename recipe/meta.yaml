@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/eisenforschung/DAMASK/archive/v{{ version }}-alpha3.tar.gz
-  sha256: 32fb82482e60d1b5e207218b3b6427865f515b61e13759d056d737a9a8ed5ee0
+  sha256: 86cbb66b3bd3ead9b5efb84920d56e7396c260b7e32c885656220f59c8b73550
   patches:
     - python.patch
 
