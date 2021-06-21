@@ -6,13 +6,13 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/eisenforschung/DAMASK/archive/v{{ version }}-alpha2.tar.gz
+  url: https://github.com/eisenforschung/DAMASK/archive/v{{ version }}-alpha3.tar.gz
   sha256: 32fb82482e60d1b5e207218b3b6427865f515b61e13759d056d737a9a8ed5ee0
   patches:
     - python.patch
 
 build:
-  number: 9
+  number: 10
   skip: true  # [not linux]
 
 requirements:
