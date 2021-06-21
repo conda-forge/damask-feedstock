@@ -27,11 +27,11 @@ mpich:
 mumps_mpi:
 - '5.2'
 numpy:
-- '1.16'
+- '1.17'
 perl:
 - 5.26.2
 petsc:
-- '3.14'
+- '3.15'
 pin_run_as_build:
   fftw:
     max_pin: x
@@ -43,7 +43,7 @@ pin_run_as_build:
   vtk:
     max_pin: x.x.x
 python:
-- 3.6.* *_cpython
+- 3.7.* *_cpython
 target_platform:
 - linux-64
 vtk:
