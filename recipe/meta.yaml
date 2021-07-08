@@ -31,7 +31,7 @@ requirements:
     - perl
   host:
     - python
-    - numpy =1.16.6
+    - numpy
     - pip
     - xorg-libxfixes  # [linux]
     - petsc
@@ -44,10 +44,10 @@ requirements:
     - hdf5 =*=mpi_mpich_*
     - fftw =*=mpi_mpich_*
     - scipy
-    - mpich
+    - mpich =3.4.1
   run:
     - python
-    - numpy =1.16.6
+    - numpy
     - vtk
     - pandas
     - matplotlib-base
@@ -66,7 +66,7 @@ requirements:
     - scalapack
     - suitesparse
     - parmetis
-    - mpich
+    - mpich =3.4.1
     - libopenblas
     - hypre
     - ptscotch
