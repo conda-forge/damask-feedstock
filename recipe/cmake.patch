@@ -1,25 +1,21 @@
-From 5fd5d13c4b6c21710b8c86e8407761a2b306edef Mon Sep 17 00:00:00 2001
+From b33a3dfcec90728ea24b3df9abdc55abbec20037 Mon Sep 17 00:00:00 2001
 From: Jan Janssen <jan-janssen@users.noreply.github.com>
-Date: Fri, 9 Jul 2021 11:22:13 +0200
+Date: Fri, 9 Jul 2021 11:45:07 +0200
 Subject: [PATCH] Update CMakeLists.txt
 
 ---
- CMakeLists.txt | 5 +++++
- 1 file changed, 5 insertions(+)
+ CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index a6a133fe4..ad830d48f 100644
+index a6a133fe4..34b80350a 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -1,6 +1,11 @@
- cmake_minimum_required (VERSION 3.10.0)
- include (FindPkgConfig REQUIRED)
+@@ -83,6 +83,7 @@ file (STRINGS "$ENV{PETSC_DIR}/$ENV{PETSC_ARCH}/lib/petsc/conf/petscvariables" P
+ string (REGEX MATCHALL "-[lLW]([^\" ]+)" PETSC_EXTERNAL_LIB "${PETSC_EXTERNAL_LIB}")
+ list (REMOVE_DUPLICATES PETSC_EXTERNAL_LIB)
+ string (REPLACE ";" " " PETSC_EXTERNAL_LIB "${PETSC_EXTERNAL_LIB}")
++set (PETSC_EXTERNAL_LIB "${PETSC_EXTERNAL_LIB} -lfftw3")
+ message ("PETSC_EXTERNAL_LIB:\n${PETSC_EXTERNAL_LIB}\n")
  
-+find_package(PkgConfig REQUIRED)
-+pkg_search_module(FFTW REQUIRED fftw3 IMPORTED_TARGET)
-+include_directories(PkgConfig::FFTW)
-+link_libraries     (PkgConfig::FFTW)
-+
- if (DEFINED ENV{PETSC_DIR})
-     message ("PETSC_DIR:\n$ENV{PETSC_DIR}\n")
- else ()
+ file (STRINGS "$ENV{PETSC_DIR}/$ENV{PETSC_ARCH}/lib/petsc/conf/petscvariables" PETSC_INCLUDES REGEX "PETSC_FC_INCLUDES = .*$?")
