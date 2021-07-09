@@ -22,8 +22,6 @@ fortran_compiler_version:
 - '9'
 hdf5:
 - 1.10.6
-mpich:
-- '3'
 mumps_mpi:
 - '5.2'
 numpy:
