@@ -1,0 +1,25 @@
+From 5fd5d13c4b6c21710b8c86e8407761a2b306edef Mon Sep 17 00:00:00 2001
+From: Jan Janssen <jan-janssen@users.noreply.github.com>
+Date: Fri, 9 Jul 2021 11:22:13 +0200
+Subject: [PATCH] Update CMakeLists.txt
+
+---
+ CMakeLists.txt | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a6a133fe4..ad830d48f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,11 @@
+ cmake_minimum_required (VERSION 3.10.0)
+ include (FindPkgConfig REQUIRED)
+ 
++find_package(PkgConfig REQUIRED)
++pkg_search_module(FFTW REQUIRED fftw3 IMPORTED_TARGET)
++include_directories(PkgConfig::FFTW)
++link_libraries     (PkgConfig::FFTW)
++
+ if (DEFINED ENV{PETSC_DIR})
+     message ("PETSC_DIR:\n$ENV{PETSC_DIR}\n")
+ else ()
