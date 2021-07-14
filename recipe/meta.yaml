@@ -12,7 +12,7 @@ source:
     - python.patch
 
 build:
-  number: 9
+  number: 10
   skip: true  # [not linux]
 
 requirements:
@@ -26,6 +26,7 @@ requirements:
     - {{ cdt('libxdamage') }}  # [linux]
     - {{ cdt('libxxf86vm') }}  # [linux]
     - {{ cdt('libxext') }}     # [linux]
+    - libgomp  # [linux]
     - make
     - cmake
     - perl
@@ -41,10 +42,10 @@ requirements:
     # and build pinning from mpi_mpich
     - hdf5
     - fftw
-    - hdf5 =*=mpi_mpich_*
-    - fftw =*=mpi_mpich_*
+    - hdf5 * mpi_{{ mpi }}_*
+    - fftw * mpi_{{ mpi }}_*
     - scipy
-    - mpich
+    - {{ mpi }}
   run:
     - python
     - numpy
@@ -57,8 +58,8 @@ requirements:
     # and build pinning from mpi_mpich
     - hdf5
     - fftw
-    - hdf5 =*=mpi_mpich_*
-    - fftw =*=mpi_mpich_*
+    - hdf5 * mpi_{{ mpi }}_*
+    - fftw * mpi_{{ mpi }}_*
     - mumps-mpi
     - scotch
     - petsc
@@ -66,11 +67,10 @@ requirements:
     - scalapack
     - suitesparse
     - parmetis
-    - mpich
+    - {{ mpi }}
     - libopenblas
     - hypre
     - ptscotch
-    - _openmp_mutex
     - pyaml
 
 test:
