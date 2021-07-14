@@ -42,10 +42,10 @@ requirements:
     # and build pinning from mpi_openmpi
     - hdf5
     - fftw
-    - hdf5 =*=mpi_openmpi_*
-    - fftw =*=mpi_openmpi_*
+    - hdf5 * mpi_{{ mpi }}_*
+    - fftw * mpi_{{ mpi }}_*
     - scipy
-    - openmpi
+    - {{ mpi }}
   run:
     - python
     - numpy
@@ -58,8 +58,8 @@ requirements:
     # and build pinning from mpi_openmpi
     - hdf5
     - fftw
-    - hdf5 =*=mpi_openmpi_*
-    - fftw =*=mpi_openmpi_*
+    - hdf5 * mpi_{{ mpi }}_*
+    - fftw * mpi_{{ mpi }}_*
     - mumps-mpi
     - scotch
     - petsc
@@ -67,7 +67,7 @@ requirements:
     - scalapack
     - suitesparse
     - parmetis
-    - openmpi
+    - {{ mpi }}
     - libopenblas
     - hypre
     - ptscotch
