@@ -5,21 +5,17 @@ export FFLAGS="${FFLAGS} -lhdf5_fortran -lhdf5 -lfftw3_mpi -lfftw3"
 bash DAMASK_prerequisites.sh
 cat system_report.txt
 
-# Overwrite Linker
-export LD="mpif90"
-export LDFLAGS="${LDFLAGS} -fopenmp"
-
 # Build grid solver
 mkdir build_grid
 cd build_grid 
-cmake -DDAMASK_SOLVER="grid" -DCMAKE_INSTALL_PREFIX="${PREFIX}" ..
+cmake -DDAMASK_SOLVER="grid" -DCMAKE_INSTALL_PREFIX="${PREFIX}" -DCMAKE_LINKER="${PREFIX}/bin/mpif90" -DCMAKE_CXX_LINK_EXECUTABLE="<CMAKE_LINKER> <FLAGS> <CMAKE_CXX_LINK_FLAGS> <LINK_FLAGS> <OBJECTS> -o <TARGET> <LINK_LIBRARIES>" ..
 make -j$CPU_COUNT install
 cd ..
 
 # Build mesh solver
 mkdir build_mesh
 cd build_mesh
-cmake -DDAMASK_SOLVER="mesh" -DCMAKE_INSTALL_PREFIX="${PREFIX}" ..
+cmake -DDAMASK_SOLVER="mesh" -DCMAKE_INSTALL_PREFIX="${PREFIX}" -DCMAKE_LINKER="${PREFIX}/bin/mpif90" -DCMAKE_CXX_LINK_EXECUTABLE="<CMAKE_LINKER> <FLAGS> <CMAKE_CXX_LINK_FLAGS> <LINK_FLAGS> <OBJECTS> -o <TARGET> <LINK_LIBRARIES>" ..
 make -j$CPU_COUNT install
 cd ..
 
