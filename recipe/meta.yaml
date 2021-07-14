@@ -12,7 +12,7 @@ source:
     - python.patch
 
 build:
-  number: 9
+  number: 10
   skip: true  # [not linux]
 
 requirements:
@@ -26,6 +26,7 @@ requirements:
     - {{ cdt('libxdamage') }}  # [linux]
     - {{ cdt('libxxf86vm') }}  # [linux]
     - {{ cdt('libxext') }}     # [linux]
+    - libgomp  # [linux]
     - make
     - cmake
     - perl
@@ -38,13 +39,13 @@ requirements:
     - vtk
     - pillow
     # need to list hdf5 and fftw twice to get version pinning from conda_build_config
-    # and build pinning from mpi_mpich
+    # and build pinning from mpi_openmpi
     - hdf5
     - fftw
-    - hdf5 =*=mpi_mpich_*
-    - fftw =*=mpi_mpich_*
+    - hdf5 =*=mpi_openmpi_*
+    - fftw =*=mpi_openmpi_*
     - scipy
-    - mpich
+    - openmpi
   run:
     - python
     - numpy
@@ -54,11 +55,11 @@ requirements:
     - scipy
     - h5py
     # need to list hdf5 and fftw twice to get version pinning from conda_build_config
-    # and build pinning from mpi_mpich
+    # and build pinning from mpi_openmpi
     - hdf5
     - fftw
-    - hdf5 =*=mpi_mpich_*
-    - fftw =*=mpi_mpich_*
+    - hdf5 =*=mpi_openmpi_*
+    - fftw =*=mpi_openmpi_*
     - mumps-mpi
     - scotch
     - petsc
@@ -66,11 +67,10 @@ requirements:
     - scalapack
     - suitesparse
     - parmetis
-    - mpich
+    - openmpi
     - libopenblas
     - hypre
     - ptscotch
-    - _openmp_mutex
     - pyaml
 
 test:
