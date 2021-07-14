@@ -28,8 +28,6 @@ mumps_mpi:
 - '5.2'
 numpy:
 - '1.19'
-openmpi:
-- '4'
 perl:
 - 5.26.2
 petsc:
