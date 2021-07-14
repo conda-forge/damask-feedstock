@@ -22,12 +22,12 @@ fortran_compiler_version:
 - '9'
 hdf5:
 - 1.10.6
-mpich:
-- '3'
+mpi:
+- openmpi
 mumps_mpi:
 - '5.2'
 numpy:
-- '1.16'
+- '1.17'
 perl:
 - 5.26.2
 petsc:
@@ -43,7 +43,7 @@ pin_run_as_build:
   vtk:
     max_pin: x.x.x
 python:
-- 3.6.* *_cpython
+- 3.7.* *_cpython
 target_platform:
 - linux-64
 vtk:
