@@ -1,5 +1,5 @@
 export PETSC_DIR=${PREFIX}
-export FFLAGS="${FFLAGS} -lhdf5_fortran -lhdf5 -lfftw3_mpi -lfftw3"
+export FFLAGS="${FFLAGS} -lhdf5_fortran -lhdf5 -lfftw3_mpi -lfftw3 -lfftw3f -lfftw3f_mpi"
 
 # System report 
 bash DAMASK_prerequisites.sh
