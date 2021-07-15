@@ -6,13 +6,14 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/eisenforschung/DAMASK/archive/v{{ version }}-alpha2.tar.gz
-  sha256: 32fb82482e60d1b5e207218b3b6427865f515b61e13759d056d737a9a8ed5ee0
+  url: https://github.com/eisenforschung/DAMASK/archive/v{{ version }}-alpha4.tar.gz
+  sha256: 92b923b0296aad1f0903b5cd74fb8c3cdbc45725e7400220b10c8065632c85c5
   patches:
     - python.patch
+    - cmake.patch
 
 build:
-  number: 10
+  number: 11
   skip: true  # [not linux]
 
 requirements:
@@ -34,12 +35,15 @@ requirements:
     - python
     - numpy
     - pip
+    - pandas
+    - matplotlib-base
+    - h5py
     - xorg-libxfixes  # [linux]
     - petsc
     - vtk
     - pillow
     # need to list hdf5 and fftw twice to get version pinning from conda_build_config
-    # and build pinning from mpi_mpich
+    # and build pinning from mpi_openmpi
     - hdf5
     - fftw
     - hdf5 * mpi_{{ mpi }}_*
@@ -55,7 +59,7 @@ requirements:
     - scipy
     - h5py
     # need to list hdf5 and fftw twice to get version pinning from conda_build_config
-    # and build pinning from mpi_mpich
+    # and build pinning from mpi_openmpi
     - hdf5
     - fftw
     - hdf5 * mpi_{{ mpi }}_*
