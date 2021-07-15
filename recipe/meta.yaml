@@ -33,7 +33,9 @@ requirements:
   host:
     - python
     - numpy
-    - pip
+    - pandas
+    - matplotlib-base
+    - h5py
     - xorg-libxfixes  # [linux]
     - petsc
     - vtk
