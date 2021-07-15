@@ -33,7 +33,6 @@ requirements:
   host:
     - python
     - numpy
-    - vtk
     - pandas
     - matplotlib-base
     - h5py
