@@ -13,7 +13,7 @@ source:
     - cmake.patch
 
 build:
-  number: 11
+  number: 12
   skip: true  # [not linux]
 
 requirements:
@@ -109,3 +109,4 @@ extra:
   recipe-maintainers:
     - jan-janssen
     - navyRUB
+    - MarDiehl
