@@ -23,7 +23,7 @@ fortran_compiler_version:
 hdf5:
 - 1.10.6
 mpi:
-- mpich <=3.4.1
+- mpich
 mumps_mpi:
 - '5.2'
 numpy:
