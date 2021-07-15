@@ -10,6 +10,7 @@ source:
   sha256: 92b923b0296aad1f0903b5cd74fb8c3cdbc45725e7400220b10c8065632c85c5
   patches:
     - python.patch
+    - cmake.patch
 
 build:
   number: 11
