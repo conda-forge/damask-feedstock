@@ -33,7 +33,10 @@ requirements:
   host:
     - python
     - numpy
-    - pip
+    - vtk
+    - pandas
+    - matplotlib-base
+    - h5py
     - xorg-libxfixes  # [linux]
     - petsc
     - vtk
