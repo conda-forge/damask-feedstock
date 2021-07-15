@@ -16,7 +16,7 @@ index a6a133fe4..284ab2d5d 100644
  
  set (CMAKE_Fortran_FLAGS_${CMAKE_BUILD_TYPE}   "${CMAKE_Fortran_FLAGS_${CMAKE_BUILD_TYPE}} ${PETSC_INCLUDES} ${BUILDCMD_POST}")
 -set (CMAKE_Fortran_LINK_EXECUTABLE             "${CMAKE_Fortran_LINK_EXECUTABLE} <OBJECTS> -o <TARGET> <LINK_LIBRARIES> ${PETSC_EXTERNAL_LIB} -lz ${BUILDCMD_POST}")
-+set (CMAKE_Fortran_LINK_EXECUTABLE             "${CMAKE_Fortran_LINK_EXECUTABLE} <OBJECTS> -o <TARGET> <LINK_LIBRARIES> ${PETSC_EXTERNAL_LIB} -lhdf5_fortran -lhdf5 -lfftw3_mpi -lfftw3 -lz ${BUILDCMD_POST}")
++set (CMAKE_Fortran_LINK_EXECUTABLE             "${CMAKE_Fortran_LINK_EXECUTABLE} <OBJECTS> -o <TARGET> <LINK_LIBRARIES> ${PETSC_EXTERNAL_LIB} -lfftw3_mpi -lfftw3 -lz ${BUILDCMD_POST}")
  
  message ("Fortran Compiler Flags:\n${CMAKE_Fortran_FLAGS_${CMAKE_BUILD_TYPE}}\n")
  message ("C Compiler Flags:\n${CMAKE_C_FLAGS_${CMAKE_BUILD_TYPE}}\n")
