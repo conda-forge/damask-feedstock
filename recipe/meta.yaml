@@ -46,8 +46,8 @@ requirements:
     # and build pinning from mpi_openmpi
     - hdf5
     - fftw
-    - hdf5 * mpi_{{ mpi }}_*
-    - fftw * mpi_{{ mpi }}_*
+    - hdf5 * mpi_*
+    - fftw * mpi_*
     - scipy
     - {{ mpi }}
   run:
@@ -62,8 +62,8 @@ requirements:
     # and build pinning from mpi_openmpi
     - hdf5
     - fftw
-    - hdf5 * mpi_{{ mpi }}_*
-    - fftw * mpi_{{ mpi }}_*
+    - hdf5 * mpi_*
+    - fftw * mpi_*
     - mumps-mpi
     - scotch
     - petsc
