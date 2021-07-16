@@ -40,9 +40,6 @@ requirements:
     - h5py
     - xorg-libxfixes  # [linux]
     - libblas
-    - libcblas
-    - liblapack
-    - liblapacke
     - petsc
     - vtk
     - pillow
