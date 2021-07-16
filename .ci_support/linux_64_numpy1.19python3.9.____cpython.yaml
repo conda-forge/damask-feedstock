@@ -24,12 +24,6 @@ hdf5:
 - 1.10.6
 libblas:
 - 3.8 *netlib
-libcblas:
-- 3.8 *netlib
-liblapack:
-- 3.8 *netlib
-liblapacke:
-- 3.8 *netlib
 mpi:
 - openmpi
 mumps_mpi:
