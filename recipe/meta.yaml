@@ -13,7 +13,7 @@ source:
     - cmake.patch
 
 build:
-  number: 12
+  number: 13
   skip: true  # [not linux]
 
 requirements:
@@ -39,6 +39,7 @@ requirements:
     - matplotlib-base
     - h5py
     - xorg-libxfixes  # [linux]
+    - libblas
     - petsc
     - vtk
     - pillow
@@ -72,7 +73,6 @@ requirements:
     - suitesparse
     - parmetis
     - {{ mpi }}
-    - libopenblas
     - hypre
     - ptscotch
     - pyaml
