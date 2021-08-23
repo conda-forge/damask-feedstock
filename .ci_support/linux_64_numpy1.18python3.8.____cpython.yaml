@@ -29,7 +29,7 @@ mpi:
 mumps_mpi:
 - '5.2'
 numpy:
-- '1.17'
+- '1.18'
 perl:
 - 5.26.2
 petsc:
