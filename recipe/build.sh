@@ -20,6 +20,5 @@ cd ..
 
 # Python Installation 
 cd python
-cp ../VERSION .
-python -m pip install . --no-deps -vv
+pip install . -vv
 cd ..
