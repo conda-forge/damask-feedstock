@@ -1,19 +1,19 @@
 {% set name = "damask" %}
-{% set version = "3.0.0" %}
+{% set version = "3.0.0a4" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/eisenforschung/DAMASK/archive/v{{ version }}-alpha4.tar.gz
+  url: https://github.com/eisenforschung/DAMASK/archive/v3.0.0-alpha4.tar.gz
   sha256: 92b923b0296aad1f0903b5cd74fb8c3cdbc45725e7400220b10c8065632c85c5
   patches:
     - python.patch
     - cmake.patch
 
 build:
-  number: 14
+  number: 0
   skip: true  # [not linux]
 
 requirements:
