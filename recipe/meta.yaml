@@ -30,6 +30,7 @@ requirements:
     - libgomp  # [linux]
     - make
     - cmake
+    - pkgconfig
     - perl
   host:
     - python
