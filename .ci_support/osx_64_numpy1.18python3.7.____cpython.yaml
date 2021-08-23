@@ -1,19 +1,17 @@
+MACOSX_DEPLOYMENT_TARGET:
+- '10.9'
 c_compiler:
-- gcc
+- clang
 c_compiler_version:
-- '9'
-cdt_name:
-- cos6
+- '11'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- gxx
+- clangxx
 cxx_compiler_version:
-- '9'
-docker_image:
-- quay.io/condaforge/linux-anvil-comp7
+- '11'
 fftw:
 - '3'
 fortran_compiler:
@@ -24,12 +22,14 @@ hdf5:
 - 1.10.6
 libblas:
 - 3.8 *netlib
+macos_machine:
+- x86_64-apple-darwin13.4.0
 mpi:
 - openmpi
 mumps_mpi:
 - '5.2'
 numpy:
-- '1.17'
+- '1.18'
 perl:
 - 5.26.2
 petsc:
@@ -45,16 +45,14 @@ pin_run_as_build:
   vtk:
     max_pin: x.x.x
 python:
-- 3.8.* *_cpython
+- 3.7.* *_cpython
 target_platform:
-- linux-64
+- osx-64
 vtk:
 - 9.0.1
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
   - fortran_compiler_version
-- - cdt_name
-  - docker_image
 - - python
   - numpy
