@@ -14,5 +14,5 @@ cmake --build build-mesh --target install
 
 # Python Installation 
 cd python
-python -m pip install . --no-deps -vv
+$PYTHON setup.py install
 cd ..
