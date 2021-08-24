@@ -73,7 +73,7 @@ requirements:
     - suitesparse
     - parmetis
     - {{ mpi }}
-    - hypre
+    - hypre <2.22.0
     - ptscotch
     - pyaml
 
