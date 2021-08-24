@@ -14,5 +14,5 @@ cmake --build build-mesh --target install
 
 # Python Installation 
 cd python
-pip install . -vv --use-feature=in-tree-build
+python -m pip install . --no-deps -vv
 cd ..
