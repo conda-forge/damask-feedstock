@@ -24,13 +24,3 @@ cp ../VERSION .
 python -m pip install . --no-deps -vv
 cp VERSION ${STDLIB_DIR}/site-packages/damask/VERSION
 cd ..
-
-# Pre-processing tools 
-for f in $(ls processing/pre/*); do
-     n=$(basename $f)
-     cp -r $f ${PREFIX}/bin/${n%.*};
- done
- for f in $(ls processing/post/*); do
-     n=$(basename $f)
-     cp -r $f ${PREFIX}/bin/${n%.*};
- done
