@@ -5,18 +5,12 @@ bash DAMASK_prerequisites.sh
 cat system_report.txt
 
 # Build grid solver
-mkdir build_grid
-cd build_grid 
-cmake -DDAMASK_SOLVER="grid" -DCMAKE_INSTALL_PREFIX="${PREFIX}" ..
-make -j$CPU_COUNT install
-cd ..
+cmake -B build-grid -DDAMASK_SOLVER=grid -DCMAKE_INSTALL_PREFIX=${PREFIX}
+cmake --build build-grid --target install
 
 # Build mesh solver
-mkdir build_mesh
-cd build_mesh
-cmake -DDAMASK_SOLVER="mesh" -DCMAKE_INSTALL_PREFIX="${PREFIX}" ..
-make -j$CPU_COUNT install
-cd ..
+cmake -B build-mesh -DDAMASK_SOLVER=mesh -DCMAKE_INSTALL_PREFIX=${PREFIX}
+cmake --build build-mesh --target install
 
 # Python Installation 
 cd python
