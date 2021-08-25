@@ -22,18 +22,15 @@ requirements:
     - libgomp  # [linux]
     - make
     - cmake
-    - perl
   host:
     # --------------------------------------------------------------------------------------------
     # python
     - python
-    - scipy
-    - numpy
     - pandas
-    - matplotlib-base
+    - scipy
     - h5py
     - vtk
-    - pillow
+    - matplotlib-base
     - pyyaml
     # --------------------------------------------------------------------------------------------
     # Fortran
@@ -50,13 +47,11 @@ requirements:
     # --------------------------------------------------------------------------------------------
     # python
     - python
-    - scipy
-    - numpy
     - pandas
-    - matplotlib-base
+    - scipy
     - h5py
     - vtk
-    - pillow
+    - matplotlib-base
     - pyyaml
     # --------------------------------------------------------------------------------------------
     # Fortran

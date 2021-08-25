@@ -13,4 +13,3 @@ cmake --build build-mesh --target install
 # Pre- and post-processing tools
 cd python
 $PYTHON setup.py install
-cd ..
