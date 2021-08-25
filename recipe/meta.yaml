@@ -25,6 +25,8 @@ outputs:
         - petsc
         - hdf5
         - fftw
+        - {{ pin_compatible('petsc', max_pin='x.x') }}
+        - {{ pin_compatible('hdf5', max_pin='x.x') }}
     requirements:
       build:
         - {{ compiler('c') }}
@@ -36,10 +38,8 @@ outputs:
       host:
         - {{ mpi }}
         - petsc * real_*
-        - {{ pin_compatible('petsc', max_pin='x.x') }}
         - hdf5
         - hdf5 * mpi_{{ mpi }}_*
-        - {{ pin_compatible('hdf5', max_pin='x.x') }}
         - fftw
         - fftw * mpi_{{ mpi }}_*
         - libblas
@@ -69,6 +69,8 @@ outputs:
         - {{ mpi }}
         - petsc
         - hdf5
+        - {{ pin_compatible('petsc', max_pin='x.x') }}
+        - {{ pin_compatible('hdf5', max_pin='x.x') }}
     requirements:
       build:
         - {{ compiler('c') }}
@@ -80,10 +82,8 @@ outputs:
       host:
         - {{ mpi }}
         - petsc * real_*
-        - {{ pin_compatible('petsc', max_pin='x.x') }}
         - hdf5
         - hdf5 * mpi_{{ mpi }}_*
-        - {{ pin_compatible('hdf5', max_pin='x.x') }}
         - libblas
       run:
         - libblas
@@ -110,6 +110,7 @@ outputs:
       run_exports:
         - {{ mpi }}
         - hdf5
+        - {{ pin_compatible('hdf5', max_pin='x.x') }}
     requirements:
       build:
         - {{ cdt('mesa-libgl-devel') }}  # [linux]
@@ -122,7 +123,6 @@ outputs:
         - {{ mpi }}
         - hdf5
         - hdf5 * mpi_{{ mpi }}_*
-        - {{ pin_compatible('hdf5', max_pin='x.x') }}
         - xorg-libxfixes  # [linux]
         - python
         - pandas
