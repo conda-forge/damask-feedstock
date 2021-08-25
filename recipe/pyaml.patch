@@ -1,0 +1,12 @@
+diff -Naur damask-3.0.0-alpha3-orig/python/setup.py damask-3.0.0-alpha3/python/setup.py
+--- damask-3.0.0-alpha3-orig/python/setup.py	2021-04-21 20:36:23.924322616 +0200
++++ damask-3.0.0-alpha3/python/setup.py	2021-04-21 20:36:50.231172646 +0200
+@@ -37,7 +37,7 @@
+         'h5py>=2.9',                                                                                # requires numpy
+         'vtk>=8.1',
+         'matplotlib>=3.0',                                                                          # requires numpy, pillow
+-        'pyaml>=3.12'
++        'pyyaml>=3.12'
+     ],
+     classifiers = [
+         'Intended Audience :: Science/Research',

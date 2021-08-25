@@ -11,4 +11,6 @@ PETSC_DIR=${PREFIX} cmake -B build-mesh -DDAMASK_SOLVER=mesh -DCMAKE_INSTALL_PRE
 cmake --build build-mesh --target install
 
 # Pre- and post-processing tools
-$PYTHON python/setup.py install
+cd python
+$PYTHON setup.py install
+cd ..

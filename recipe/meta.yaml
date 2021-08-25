@@ -8,7 +8,7 @@ source:
   url: https://damask3.mpie.de/download/damask-3.0.0-alpha4.tar.xz
   sha256: 0bb8bde43b27d852b1fb6e359a7157354544557ad83d87987b03f5d629ce5493
   patches:
-    - python.patch
+    - pyaml.patch
 
 build:
   number: 1
@@ -41,7 +41,7 @@ requirements:
     - h5py
     - vtk
     - pillow
-    - pyaml
+    - pyyaml
     # --------------------------------------------------------------------------------------------
     # Fortran
     - {{ mpi }}
@@ -64,7 +64,7 @@ requirements:
     - h5py
     - vtk
     - pillow
-    - pyaml
+    - pyyaml
     # --------------------------------------------------------------------------------------------
     # Fortran
     - {{ mpi }}
