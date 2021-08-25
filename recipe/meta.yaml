@@ -35,7 +35,7 @@ outputs:
         - cmake
       host:
         - {{ mpi }}
-        - petsc
+        - petsc * real_*
         - {{ pin_compatible('petsc', max_pin='x.x') }}
         - hdf5
         - hdf5 * mpi_{{ mpi }}_*
@@ -65,6 +65,10 @@ outputs:
       script:
         - PETSC_DIR=${PREFIX} cmake -B build-mesh -DDAMASK_SOLVER=mesh -DCMAKE_INSTALL_PREFIX=${PREFIX}
         - cmake --build build-mesh --target install
+      run_exports:
+        - {{ mpi }}
+        - petsc
+        - hdf5
     requirements:
       build:
         - {{ compiler('c') }}
@@ -75,17 +79,13 @@ outputs:
         - cmake
       host:
         - {{ mpi }}
-        - petsc
-        - hdf5
-        - hdf5 * mpi_{{ mpi }}_*
-        - libblas
-      run:
-        - {{ mpi }}
-        - petsc
+        - petsc * real_*
         - {{ pin_compatible('petsc', max_pin='x.x') }}
         - hdf5
         - hdf5 * mpi_{{ mpi }}_*
         - {{ pin_compatible('hdf5', max_pin='x.x') }}
+        - libblas
+      run:
         - libblas
         - mumps-mpi
         - scotch
@@ -107,6 +107,9 @@ outputs:
       script:
         - cd python
         - ${PYTHON} setup.py install
+      run_exports:
+        - {{ mpi }}
+        - hdf5
     requirements:
       build:
         - {{ cdt('mesa-libgl-devel') }}  # [linux]
@@ -119,6 +122,7 @@ outputs:
         - {{ mpi }}
         - hdf5
         - hdf5 * mpi_{{ mpi }}_*
+        - {{ pin_compatible('hdf5', max_pin='x.x') }}
         - xorg-libxfixes  # [linux]
         - python
         - pandas
@@ -128,10 +132,6 @@ outputs:
         - matplotlib-base
         - pyyaml
       run:
-        - {{ mpi }}
-        - hdf5
-        - hdf5 * mpi_{{ mpi }}_*
-        - {{ pin_compatible('hdf5', max_pin='x.x') }}
         - python
         - pandas
         - scipy
