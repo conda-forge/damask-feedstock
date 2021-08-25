@@ -11,7 +11,7 @@ source:
     - pyaml.patch
 
 build:
-  number: 4
+  number: 5
   skip: true  # [not linux]
 
 outputs:
@@ -20,6 +20,11 @@ outputs:
       script:
         - PETSC_DIR=${PREFIX} cmake -B build-grid -DDAMASK_SOLVER=grid -DCMAKE_INSTALL_PREFIX=${PREFIX}
         - cmake --build build-grid --target install
+      run_exports:
+        - {{ mpi }}
+        - petsc
+        - hdf5
+        - fftw
     requirements:
       build:
         - {{ compiler('c') }}
@@ -30,21 +35,15 @@ outputs:
         - cmake
       host:
         - {{ mpi }}
-        - petsc * real_*
-        - hdf5
-        - hdf5 * mpi_{{ mpi }}_*
-        - fftw
-        - fftw * mpi_{{ mpi }}_*
-        - libblas
-      run:
-        - {{ mpi }}
-        - petsc * real_*
+        - petsc
         - {{ pin_compatible('petsc', max_pin='x.x') }}
         - hdf5
         - hdf5 * mpi_{{ mpi }}_*
         - {{ pin_compatible('hdf5', max_pin='x.x') }}
         - fftw
         - fftw * mpi_{{ mpi }}_*
+        - libblas
+      run:
         - libblas
         - mumps-mpi
         - scotch
@@ -76,13 +75,13 @@ outputs:
         - cmake
       host:
         - {{ mpi }}
-        - petsc * real_*
+        - petsc
         - hdf5
         - hdf5 * mpi_{{ mpi }}_*
         - libblas
       run:
         - {{ mpi }}
-        - petsc * real_*
+        - petsc
         - {{ pin_compatible('petsc', max_pin='x.x') }}
         - hdf5
         - hdf5 * mpi_{{ mpi }}_*
