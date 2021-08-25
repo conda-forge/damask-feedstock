@@ -11,7 +11,7 @@ source:
     - pyaml.patch
 
 build:
-  number: 1
+  number: 2
   skip: true  # [not linux]
   run_exports:
     - {{ mpi }}
@@ -20,6 +20,16 @@ build:
     - hdf5 * mpi_{{ mpi }}_*
     - fftw
     - fftw * mpi_{{ mpi }}_*
+  script:
+    # Grid solver
+    - PETSC_DIR=${PREFIX} cmake -B build-grid -DDAMASK_SOLVER=grid -DCMAKE_INSTALL_PREFIX=${PREFIX}
+    - cmake --build build-grid --target install
+    # Mesh solver
+    - PETSC_DIR=${PREFIX} cmake -B build-mesh -DDAMASK_SOLVER=mesh -DCMAKE_INSTALL_PREFIX=${PREFIX}
+    - cmake --build build-mesh --target install
+    # Pre- and post-processing tools
+    - cd python
+    - ${PYTHON} setup.py install
 
 requirements:
   build:
