@@ -1,5 +1,5 @@
-About damask
-============
+About damask-pkgs
+=================
 
 Home: https://damask3.mpie.de/
 
@@ -38,31 +38,10 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>linux_64_python3.6.____cpython</td>
+              <td>linux_64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8984&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/damask-feedstock?branchName=master&jobName=linux&configuration=linux_64_python3.6.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_python3.7.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8984&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/damask-feedstock?branchName=master&jobName=linux&configuration=linux_64_python3.7.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_python3.8.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8984&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/damask-feedstock?branchName=master&jobName=linux&configuration=linux_64_python3.8.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_python3.9.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8984&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/damask-feedstock?branchName=master&jobName=linux&configuration=linux_64_python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/damask-feedstock?branchName=master&jobName=linux&configuration=linux_64_" alt="variant">
                 </a>
               </td>
             </tr>
@@ -79,21 +58,24 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-damask-green.svg)](https://anaconda.org/conda-forge/damask) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/damask.svg)](https://anaconda.org/conda-forge/damask) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/damask.svg)](https://anaconda.org/conda-forge/damask) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/damask.svg)](https://anaconda.org/conda-forge/damask) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-damask--grid-green.svg)](https://anaconda.org/conda-forge/damask-grid) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/damask-grid.svg)](https://anaconda.org/conda-forge/damask-grid) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/damask-grid.svg)](https://anaconda.org/conda-forge/damask-grid) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/damask-grid.svg)](https://anaconda.org/conda-forge/damask-grid) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-damask--mesh-green.svg)](https://anaconda.org/conda-forge/damask-mesh) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/damask-mesh.svg)](https://anaconda.org/conda-forge/damask-mesh) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/damask-mesh.svg)](https://anaconda.org/conda-forge/damask-mesh) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/damask-mesh.svg)](https://anaconda.org/conda-forge/damask-mesh) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-python--damask-green.svg)](https://anaconda.org/conda-forge/python-damask) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/python-damask.svg)](https://anaconda.org/conda-forge/python-damask) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/python-damask.svg)](https://anaconda.org/conda-forge/python-damask) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/python-damask.svg)](https://anaconda.org/conda-forge/python-damask) |
 
-Installing damask
-=================
+Installing damask-pkgs
+======================
 
-Installing `damask` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `damask-pkgs` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
 
 ```
 conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `damask` can be installed with:
+Once the `conda-forge` channel has been enabled, `damask, damask-grid, damask-mesh, python-damask` can be installed with:
 
 ```
-conda install damask
+conda install damask damask-grid damask-mesh python-damask
 ```
 
 It is possible to list all of the versions of `damask` available on your platform with:
@@ -141,17 +123,17 @@ Terminology
                   produce the finished article (built conda distributions)
 
 
-Updating damask-feedstock
-=========================
+Updating damask-pkgs-feedstock
+==============================
 
-If you would like to improve the damask recipe or build a new
+If you would like to improve the damask-pkgs recipe or build a new
 package version, please fork this repository and submit a PR. Upon submission,
 your changes will be run on the appropriate platforms to give the reviewer an
 opportunity to confirm that the changes result in a successful build. Once
 merged, the recipe will be re-built and uploaded automatically to the
 `conda-forge` channel, whereupon the built conda packages will be available for
 everybody to install and use from the `conda-forge` channel.
-Note that all branches in the conda-forge/damask-feedstock are
+Note that all branches in the conda-forge/damask-pkgs-feedstock are
 immediately built and any created packages are uploaded, so PRs should be based
 on branches in forks and branches in the main repository should only be used to
 build distinct package versions.
