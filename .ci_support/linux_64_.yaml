@@ -28,8 +28,6 @@ mpi:
 - openmpi
 mumps_mpi:
 - '5.2'
-petsc:
-- '3.15'
 pin_run_as_build:
   fftw:
     max_pin: x
@@ -39,7 +37,10 @@ pin_run_as_build:
   vtk:
     max_pin: x.x.x
 python:
+- 3.6.* *_cpython
 - 3.7.* *_cpython
+- 3.8.* *_cpython
+- 3.9.* *_cpython
 target_platform:
 - linux-64
 vtk:
