@@ -8,12 +8,18 @@ source:
   url: https://damask3.mpie.de/download/damask-3.0.0-alpha4.tar.xz
   sha256: 0bb8bde43b27d852b1fb6e359a7157354544557ad83d87987b03f5d629ce5493
   patches:
-    - python.patch
-    - cmake.patch
+    - pyaml.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [not linux]
+  run_exports:
+    - {{ mpi }}
+    - {{ pin_compatible('petsc', max_pin='x.x') }}
+    - hdf5
+    - hdf5 * mpi_{{ mpi }}_*
+    - fftw
+    - fftw * mpi_{{ mpi }}_*
 
 requirements:
   build:
@@ -29,59 +35,50 @@ requirements:
     - libgomp  # [linux]
     - make
     - cmake
-    - perl
   host:
-    - python
-    - numpy
-    - pip
-    - pandas
-    - matplotlib-base
-    - h5py
     - xorg-libxfixes  # [linux]
-    - libblas
-    - petsc
-    - vtk
-    - pillow
-    # need to list hdf5 and fftw twice to get version pinning from conda_build_config
-    # and build pinning from mpi_openmpi
-    - hdf5
-    - fftw
-    - hdf5 * mpi_{{ mpi }}_*
-    - fftw * mpi_{{ mpi }}_*
-    - scipy
-    - {{ mpi }}
-  run:
+    # --------------------------------------------------------------------------------------------
+    # python
     - python
-    - numpy
-    - vtk
     - pandas
-    - matplotlib-base
     - scipy
     - h5py
-    # need to list hdf5 and fftw twice to get version pinning from conda_build_config
-    # and build pinning from mpi_openmpi
-    - hdf5
-    - fftw
-    - hdf5 * mpi_{{ mpi }}_*
-    - fftw * mpi_{{ mpi }}_*
+    - vtk
+    - matplotlib-base
+    - pyyaml
+    # --------------------------------------------------------------------------------------------
+    # Fortran
+    - {{ mpi }}
+    - petsc
+    - libblas
+  run:
+    # --------------------------------------------------------------------------------------------
+    # python
+    - python
+    - pandas
+    - scipy
+    - h5py
+    - vtk
+    - matplotlib-base
+    - pyyaml
+    # --------------------------------------------------------------------------------------------
+    # Fortran
+    - libblas
     - mumps-mpi
     - scotch
-    - petsc
     - metis
     - scalapack
     - suitesparse
     - parmetis
-    - {{ mpi }}
     - hypre
     - ptscotch
-    - pyaml
-
 test:
   commands:
     - export OMPI_MCA_plm=isolated
     - export OMPI_MCA_btl_vader_single_copy_mechanism=none
     - export OMPI_MCA_rmaps_base_oversubscribe=yes
     - DAMASK_grid --help
+    - DAMASK_mesh --help
     - pip check
   imports:
     - damask
@@ -89,7 +86,7 @@ test:
     - pip
 
 about:
-  home: https://damask.mpie.de/
+  home: https://damask3.mpie.de/
   license: GPL-3.0-or-later
   license_family: GPL
   license_file: LICENSE
@@ -101,8 +98,8 @@ about:
     boundary value problems along with damage and thermal physics. Its 
     main purpose is the simulation of crystal plasticity within a 
     finite-strain continuum mechanical framework.
-  doc_url: https://damask.mpie.de/Documentation/WebHome
-  dev_url: https://damask.mpie.de/Development/WebHome
+  doc_url: https://damask3.mpie.de/documentation
+  dev_url: https://damask3.mpie.de/development
 
 extra:
   recipe-maintainers:
