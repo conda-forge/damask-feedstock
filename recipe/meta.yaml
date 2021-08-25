@@ -17,13 +17,6 @@ build:
 outputs:
   - name: damask-grid
     build:
-      run_exports:
-        - {{ mpi }}
-        - {{ pin_compatible('petsc', max_pin='x.x') }}
-        - hdf5
-        - hdf5 * mpi_{{ mpi }}_*
-        - fftw
-        - fftw * mpi_{{ mpi }}_*
       script:
         - PETSC_DIR=${PREFIX} cmake -B build-grid -DDAMASK_SOLVER=grid -DCMAKE_INSTALL_PREFIX=${PREFIX}
         - cmake --build build-grid --target install
@@ -38,10 +31,20 @@ outputs:
       host:
         - {{ mpi }}
         - petsc
-        - libblas
+        - hdf5
         - hdf5 * mpi_{{ mpi }}_*
+        - fftw
         - fftw * mpi_{{ mpi }}_*
+        - libblas
       run:
+        - {{ mpi }}
+        - petsc
+        - {{ pin_compatible('petsc', max_pin='x.x') }}
+        - hdf5
+        - hdf5 * mpi_{{ mpi }}_*
+        - {{ pin_compatible('hdf5', max_pin='x.x') }}
+        - fftw
+        - fftw * mpi_{{ mpi }}_*
         - libblas
         - mumps-mpi
         - scotch
@@ -60,11 +63,6 @@ outputs:
 
   - name: damask-mesh
     build:
-      run_exports:
-        - {{ mpi }}
-        - {{ pin_compatible('petsc', max_pin='x.x') }}
-        - hdf5
-        - hdf5 * mpi_{{ mpi }}_*
       script:
         - PETSC_DIR=${PREFIX} cmake -B build-mesh -DDAMASK_SOLVER=mesh -DCMAKE_INSTALL_PREFIX=${PREFIX}
         - cmake --build build-mesh --target install
@@ -79,9 +77,16 @@ outputs:
       host:
         - {{ mpi }}
         - petsc
-        - libblas
+        - hdf5
         - hdf5 * mpi_{{ mpi }}_*
+        - libblas
       run:
+        - {{ mpi }}
+        - petsc
+        - {{ pin_compatible('petsc', max_pin='x.x') }}
+        - hdf5
+        - hdf5 * mpi_{{ mpi }}_*
+        - {{ pin_compatible('hdf5', max_pin='x.x') }}
         - libblas
         - mumps-mpi
         - scotch
@@ -112,6 +117,9 @@ outputs:
         - {{ cdt('libxxf86vm') }}  # [linux]
         - {{ cdt('libxext') }}     # [linux]
       host:
+        - {{ mpi }}
+        - hdf5
+        - hdf5 * mpi_{{ mpi }}_*
         - xorg-libxfixes  # [linux]
         - python
         - pandas
@@ -121,6 +129,10 @@ outputs:
         - matplotlib-base
         - pyyaml
       run:
+        - {{ mpi }}
+        - hdf5
+        - hdf5 * mpi_{{ mpi }}_*
+        - {{ pin_compatible('hdf5', max_pin='x.x') }}
         - python
         - pandas
         - scipy
