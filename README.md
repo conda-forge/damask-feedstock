@@ -92,6 +92,7 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-damask-green.svg)](https://anaconda.org/conda-forge/damask) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/damask.svg)](https://anaconda.org/conda-forge/damask) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/damask.svg)](https://anaconda.org/conda-forge/damask) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/damask.svg)](https://anaconda.org/conda-forge/damask) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-damask--grid-green.svg)](https://anaconda.org/conda-forge/damask-grid) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/damask-grid.svg)](https://anaconda.org/conda-forge/damask-grid) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/damask-grid.svg)](https://anaconda.org/conda-forge/damask-grid) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/damask-grid.svg)](https://anaconda.org/conda-forge/damask-grid) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-damask--mesh-green.svg)](https://anaconda.org/conda-forge/damask-mesh) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/damask-mesh.svg)](https://anaconda.org/conda-forge/damask-mesh) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/damask-mesh.svg)](https://anaconda.org/conda-forge/damask-mesh) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/damask-mesh.svg)](https://anaconda.org/conda-forge/damask-mesh) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-python--damask-green.svg)](https://anaconda.org/conda-forge/python-damask) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/python-damask.svg)](https://anaconda.org/conda-forge/python-damask) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/python-damask.svg)](https://anaconda.org/conda-forge/python-damask) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/python-damask.svg)](https://anaconda.org/conda-forge/python-damask) |
@@ -106,16 +107,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `damask-grid, damask-mesh, python-damask` can be installed with:
+Once the `conda-forge` channel has been enabled, `damask, damask-grid, damask-mesh, python-damask` can be installed with:
 
 ```
-conda install damask-grid damask-mesh python-damask
+conda install damask damask-grid damask-mesh python-damask
 ```
 
-It is possible to list all of the versions of `damask-grid` available on your platform with:
+It is possible to list all of the versions of `damask` available on your platform with:
 
 ```
-conda search damask-grid --channel conda-forge
+conda search damask --channel conda-forge
 ```
 
 
