@@ -113,7 +113,7 @@ outputs:
         - python
         - pandas
         - scipy
-        - h5py
+        - h5py >=3.3.0
         - vtk
         - matplotlib-base
         - pyyaml
