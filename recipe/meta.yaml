@@ -12,6 +12,7 @@ source:
 
 build:
   number: 7
+  skip: true  # [not linux]
 
 outputs:
   - name: damask-grid
@@ -26,7 +27,6 @@ outputs:
         - fftw
         - {{ pin_compatible('petsc', max_pin='x.x') }}
         - {{ pin_compatible('hdf5', max_pin='x.x') }}
-      skip: true  # [win]
     requirements:
       build:
         - {{ compiler('c') }}
@@ -66,7 +66,6 @@ outputs:
         - hdf5 >=1.12
         - {{ pin_compatible('petsc', max_pin='x.x') }}
         - {{ pin_compatible('hdf5', max_pin='x.x') }}
-      skip: true  # [win]
     requirements:
       build:
         - {{ compiler('c') }}
@@ -125,7 +124,6 @@ outputs:
 
   - name: damask
     build:
-      skip: true  # [win or osx or py==36]
       script: "echo DAMASK"
     requirements:
       host:
