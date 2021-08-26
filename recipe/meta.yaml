@@ -11,7 +11,7 @@ source:
     - pyaml.patch
 
 build:
-  number: 5
+  number: 6
   skip: true  # [not linux]
 
 outputs:
@@ -53,6 +53,8 @@ outputs:
         - parmetis
         - hypre
         - ptscotch
+      run_constrained:
+        - damask =={{ version }}
     test:
       commands:
         - export OMPI_MCA_plm=isolated
@@ -95,6 +97,8 @@ outputs:
         - parmetis
         - hypre
         - ptscotch
+      run_constrained:
+        - damask =={{ version }}
     test:
       commands:
         - export OMPI_MCA_plm=isolated
@@ -132,6 +136,8 @@ outputs:
         - vtk
         - matplotlib-base
         - pyyaml
+      run_constrained:
+        - damask =={{ version }}
     test:
       imports:
         - damask
@@ -140,9 +146,10 @@ outputs:
     build:
       script: "echo DAMASK"
     requirements:
-      - {{ pin_subpackage("damask-grid", exact=True) }}
-      - {{ pin_subpackage("damask-mesh", exact=True) }}
-      - {{ pin_subpackage("python-damask", exact=True) }}
+      run:
+        - {{ pin_subpackage("damask-grid", exact=True) }}
+        - {{ pin_subpackage("damask-mesh", exact=True) }}
+        - {{ pin_subpackage("python-damask", exact=True) }}
     test:
       commands:
         - "echo DAMASK"
