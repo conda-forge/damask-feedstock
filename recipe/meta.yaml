@@ -15,17 +15,17 @@ build:
 outputs:
   - name: damask-grid
     build:
-      skip: true  # [win]
       script:
         - PETSC_DIR=${PREFIX} cmake -B build-grid -DDAMASK_SOLVER=grid -DCMAKE_INSTALL_PREFIX=${PREFIX}
         - cmake --build build-grid --target install
       run_exports:
         - {{ mpi }}
         - petsc * real_*
-        - hdf5 >=1.12
+        - hdf5
         - fftw
         - {{ pin_compatible('petsc', max_pin='x.x') }}
         - {{ pin_compatible('hdf5', max_pin='x.x') }}
+      skip: true  # [win]
     requirements:
       build:
         - {{ compiler('c') }}
@@ -38,7 +38,7 @@ outputs:
       host:
         - {{ mpi }}
         - petsc * real_*
-        - hdf5 >=1.12
+        - hdf5
         - hdf5 * mpi_{{ mpi }}_*
         - fftw
         - fftw * mpi_{{ mpi }}_*
@@ -56,7 +56,6 @@ outputs:
 
   - name: damask-mesh
     build:
-      skip: true  # [win]
       script:
         - PETSC_DIR=${PREFIX} cmake -B build-mesh -DDAMASK_SOLVER=mesh -DCMAKE_INSTALL_PREFIX=${PREFIX}
         - cmake --build build-mesh --target install
@@ -66,6 +65,7 @@ outputs:
         - hdf5 >=1.12
         - {{ pin_compatible('petsc', max_pin='x.x') }}
         - {{ pin_compatible('hdf5', max_pin='x.x') }}
+      skip: true  # [win]
     requirements:
       build:
         - {{ compiler('c') }}
@@ -124,7 +124,6 @@ outputs:
 
   - name: damask
     build:
-      # only old versions of h5py support python 3.6
       skip: true  # [win]
       script: "echo DAMASK"
     requirements:
