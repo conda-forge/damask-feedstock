@@ -110,7 +110,7 @@ outputs:
 
   - name: python-damask
     build:
-      script: {{ PYTHON }} -m pip install ./python --no-deps -vv --use-feature=in-tree-build
+      script: python -m pip install ./python --no-deps -vv --use-feature=in-tree-build
       noarch: python
     requirements:
       build:
