@@ -45,14 +45,6 @@ outputs:
         - libblas
       run:
         - libblas
-        - mumps-mpi
-        - scotch
-        - metis
-        - scalapack
-        - suitesparse
-        - parmetis
-        - hypre
-        - ptscotch
       run_constrained:
         - damask =={{ version }}
     test:
@@ -91,14 +83,6 @@ outputs:
         - libblas
       run:
         - libblas
-        - mumps-mpi
-        - scotch
-        - metis
-        - scalapack
-        - suitesparse
-        - parmetis
-        - hypre
-        - ptscotch
       run_constrained:
         - damask =={{ version }}
     test:
@@ -124,12 +108,6 @@ outputs:
         - xorg-libxfixes  # [linux]
         - python
         - pip
-        - pandas
-        - scipy
-        - h5py
-        - vtk
-        - matplotlib-base
-        - pyyaml
       run:
         - python
         - pandas
