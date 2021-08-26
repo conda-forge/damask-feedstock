@@ -11,12 +11,11 @@ source:
     - pyaml.patch
 
 build:
-  number: 6
-  skip: true  # [not linux]
-
+  number: 7
 outputs:
   - name: damask-grid
     build:
+      skip: true  # [win]
       script:
         - PETSC_DIR=${PREFIX} cmake -B build-grid -DDAMASK_SOLVER=grid -DCMAKE_INSTALL_PREFIX=${PREFIX}
         - cmake --build build-grid --target install
@@ -33,12 +32,13 @@ outputs:
         - {{ compiler('cxx') }}
         - {{ compiler('fortran') }}
         - libgomp  # [linux]
+        - pkg-config  # [osx]
         - make
         - cmake
       host:
         - {{ mpi }}
         - petsc * real_*
-        - hdf5
+        - hdf5 >=1.12
         - hdf5 * mpi_{{ mpi }}_*
         - fftw
         - fftw * mpi_{{ mpi }}_*
@@ -64,6 +64,7 @@ outputs:
 
   - name: damask-mesh
     build:
+      skip: true  # [win]
       script:
         - PETSC_DIR=${PREFIX} cmake -B build-mesh -DDAMASK_SOLVER=mesh -DCMAKE_INSTALL_PREFIX=${PREFIX}
         - cmake --build build-mesh --target install
@@ -79,12 +80,13 @@ outputs:
         - {{ compiler('cxx') }}
         - {{ compiler('fortran') }}
         - libgomp  # [linux]
+        - pkg-config  # [osx]
         - make
         - cmake
       host:
         - {{ mpi }}
         - petsc * real_*
-        - hdf5
+        - hdf5 >=1.12
         - hdf5 * mpi_{{ mpi }}_*
         - libblas
       run:
@@ -108,9 +110,8 @@ outputs:
 
   - name: python-damask
     build:
-      script:
-        - cd python
-        - ${PYTHON} setup.py install
+      script: {{ PYTHON }} -m pip install ./python --no-deps -vv --use-feature=in-tree-build
+      noarch: python
     requirements:
       build:
         - {{ cdt('mesa-libgl-devel') }}  # [linux]
@@ -122,6 +123,7 @@ outputs:
       host:
         - xorg-libxfixes  # [linux]
         - python
+        - pip
         - pandas
         - scipy
         - h5py
@@ -144,6 +146,8 @@ outputs:
 
   - name: damask
     build:
+      # only old versions of h5py support python 3.6
+      skip: true  # [py<=36 or win]
       script: "echo DAMASK"
     requirements:
       run:
