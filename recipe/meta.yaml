@@ -110,7 +110,7 @@ outputs:
         - python
         - pip
       run:
-        - python
+        - python >=3.6
         - pandas
         - scipy
         - h5py >=3.3.0
