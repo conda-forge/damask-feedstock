@@ -21,8 +21,8 @@ outputs:
         - cmake --build build-grid --target install
       run_exports:
         - {{ mpi }}
-        - petsc
-        - hdf5
+        - petsc * real_*
+        - hdf5 >=1.12
         - fftw
         - {{ pin_compatible('petsc', max_pin='x.x') }}
         - {{ pin_compatible('hdf5', max_pin='x.x') }}
@@ -62,8 +62,8 @@ outputs:
         - cmake --build build-mesh --target install
       run_exports:
         - {{ mpi }}
-        - petsc
-        - hdf5
+        - petsc * real_*
+        - hdf5 >=1.12
         - {{ pin_compatible('petsc', max_pin='x.x') }}
         - {{ pin_compatible('hdf5', max_pin='x.x') }}
     requirements:
