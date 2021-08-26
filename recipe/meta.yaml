@@ -125,7 +125,7 @@ outputs:
   - name: damask
     build:
       # only old versions of h5py support python 3.6
-      skip: true  # [py<=36 or win]
+      skip: true  # [win]
       script: "echo DAMASK"
     requirements:
       run:
