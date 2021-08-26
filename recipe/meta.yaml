@@ -12,7 +12,6 @@ source:
 
 build:
   number: 7
-  skip: true  # [not linux]
 
 outputs:
   - name: damask-grid
@@ -27,6 +26,7 @@ outputs:
         - fftw
         - {{ pin_compatible('petsc', max_pin='x.x') }}
         - {{ pin_compatible('hdf5', max_pin='x.x') }}
+      skip: true  # [win]
     requirements:
       build:
         - {{ compiler('c') }}
@@ -66,6 +66,7 @@ outputs:
         - hdf5
         - {{ pin_compatible('petsc', max_pin='x.x') }}
         - {{ pin_compatible('hdf5', max_pin='x.x') }}
+      skip: true  # [win]
     requirements:
       build:
         - {{ compiler('c') }}
@@ -121,19 +122,19 @@ outputs:
       imports:
         - damask
 
-  - name: damask
-    build:
-      script: "echo DAMASK"
-    requirements:
-      host:
-        - python >3.6
-      run:
-        - {{ pin_subpackage("damask-grid", exact=True) }}
-        - {{ pin_subpackage("damask-mesh", exact=True) }}
-        - {{ pin_subpackage("python-damask", exact=True) }}
-    test:
-      commands:
-        - "echo DAMASK"
+#  - name: damask
+#    build:
+#      script: "echo DAMASK"
+#    requirements:
+#      host:
+#        - python >3.6
+#      run:
+#        - {{ pin_subpackage("damask-grid", exact=True) }}
+#        - {{ pin_subpackage("damask-mesh", exact=True) }}
+#        - {{ pin_subpackage("python-damask", exact=True) }}
+#    test:
+#      commands:
+#        - "echo DAMASK"
 
 about:
   home: https://damask3.mpie.de/
