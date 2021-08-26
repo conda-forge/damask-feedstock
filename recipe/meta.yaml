@@ -96,6 +96,7 @@ outputs:
   - name: python-damask
     build:
       script: python -m pip install ./python --no-deps -vv --use-feature=in-tree-build
+      skip: true  # [py<37]
     requirements:
       build:
         - {{ cdt('mesa-libgl-devel') }}  # [linux]
