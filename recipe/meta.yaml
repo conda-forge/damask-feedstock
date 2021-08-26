@@ -11,8 +11,7 @@ source:
     - pyaml.patch
 
 build:
-  number: 6
-  skip: true  # [not linux]
+  number: 7
 
 outputs:
   - name: damask-grid
@@ -27,32 +26,26 @@ outputs:
         - fftw
         - {{ pin_compatible('petsc', max_pin='x.x') }}
         - {{ pin_compatible('hdf5', max_pin='x.x') }}
+      skip: true  # [win]
     requirements:
       build:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
         - {{ compiler('fortran') }}
         - libgomp  # [linux]
+        - pkg-config  # [osx]
         - make
         - cmake
       host:
         - {{ mpi }}
         - petsc * real_*
-        - hdf5
+        - hdf5 >=1.12
         - hdf5 * mpi_{{ mpi }}_*
         - fftw
         - fftw * mpi_{{ mpi }}_*
         - libblas
       run:
         - libblas
-        - mumps-mpi
-        - scotch
-        - metis
-        - scalapack
-        - suitesparse
-        - parmetis
-        - hypre
-        - ptscotch
       run_constrained:
         - damask =={{ version }}
     test:
@@ -73,30 +66,24 @@ outputs:
         - hdf5
         - {{ pin_compatible('petsc', max_pin='x.x') }}
         - {{ pin_compatible('hdf5', max_pin='x.x') }}
+      skip: true  # [win]
     requirements:
       build:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
         - {{ compiler('fortran') }}
         - libgomp  # [linux]
+        - pkg-config  # [osx]
         - make
         - cmake
       host:
         - {{ mpi }}
         - petsc * real_*
-        - hdf5
+        - hdf5 >=1.12
         - hdf5 * mpi_{{ mpi }}_*
         - libblas
       run:
         - libblas
-        - mumps-mpi
-        - scotch
-        - metis
-        - scalapack
-        - suitesparse
-        - parmetis
-        - hypre
-        - ptscotch
       run_constrained:
         - damask =={{ version }}
     test:
@@ -108,9 +95,8 @@ outputs:
 
   - name: python-damask
     build:
-      script:
-        - cd python
-        - ${PYTHON} setup.py install
+      script: python -m pip install ./python --no-deps -vv --use-feature=in-tree-build
+      skip: true  # [py<37]
     requirements:
       build:
         - {{ cdt('mesa-libgl-devel') }}  # [linux]
@@ -122,17 +108,12 @@ outputs:
       host:
         - xorg-libxfixes  # [linux]
         - python
-        - pandas
-        - scipy
-        - h5py
-        - vtk
-        - matplotlib-base
-        - pyyaml
+        - pip
       run:
         - python
         - pandas
         - scipy
-        - h5py
+        - h5py >=3.3.0
         - vtk
         - matplotlib-base
         - pyyaml
@@ -142,17 +123,19 @@ outputs:
       imports:
         - damask
 
-  - name: damask
-    build:
-      script: "echo DAMASK"
-    requirements:
-      run:
-        - {{ pin_subpackage("damask-grid", exact=True) }}
-        - {{ pin_subpackage("damask-mesh", exact=True) }}
-        - {{ pin_subpackage("python-damask", exact=True) }}
-    test:
-      commands:
-        - "echo DAMASK"
+#  - name: damask
+#    build:
+#      script: "echo DAMASK"
+#    requirements:
+#      host:
+#        - python >3.6
+#      run:
+#        - {{ pin_subpackage("damask-grid", exact=True) }}
+#        - {{ pin_subpackage("damask-mesh", exact=True) }}
+#        - {{ pin_subpackage("python-damask", exact=True) }}
+#    test:
+#      commands:
+#        - "echo DAMASK"
 
 about:
   home: https://damask3.mpie.de/
