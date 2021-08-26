@@ -126,8 +126,11 @@ outputs:
   - name: damask
     build:
       script: "echo DAMASK"
-      skip: true  # [py<37 or win]
+      skip: true  # [win]
+      noarch: python
     requirements:
+      host:
+        python >3.6
       run:
         - {{ pin_subpackage("damask-grid", max_pin='x.x.x') }}
         - {{ pin_subpackage("damask-mesh", max_pin='x.x.x') }}
