@@ -125,7 +125,7 @@ outputs:
 
   - name: damask
     build:
-      skip: true  # [win or osx]
+      skip: true  # [win]
       script: "echo DAMASK"
     requirements:
       run:
