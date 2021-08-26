@@ -26,8 +26,6 @@ libblas:
 - 3.8 *netlib
 mpi:
 - openmpi
-mumps_mpi:
-- '5.2'
 petsc:
 - '3.15'
 pin_run_as_build:
@@ -36,8 +34,6 @@ pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
-  vtk:
-    max_pin: x.x.x
 python:
 - 3.6.* *_cpython
 - 3.7.* *_cpython
@@ -45,8 +41,6 @@ python:
 - 3.9.* *_cpython
 target_platform:
 - linux-64
-vtk:
-- 9.0.1
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
