@@ -187,6 +187,3 @@ Feedstock Maintainers
 * [@jan-janssen](https://github.com/jan-janssen/)
 * [@navyRUB](https://github.com/navyRUB/)
 
-
-<!-- dummy commit to enable rerendering -->
-
