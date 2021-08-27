@@ -97,6 +97,7 @@ outputs:
     build:
       script: python -m pip install ./python --no-deps -vv --use-feature=in-tree-build
       skip: true  # [py<37]
+      noarch: python
     requirements:
       build:
         - {{ cdt('mesa-libgl-devel') }}  # [linux]
@@ -127,12 +128,21 @@ outputs:
     build:
       script: "echo DAMASK"
       skip: true  # [win or py<37]
-      noarch: python
     requirements:
+      build:
+        - {{ cdt('mesa-libgl-devel') }}  # [linux]
+        - {{ cdt('mesa-dri-drivers') }}  # [linux]
+        - {{ cdt('libselinux') }}  # [linux]
+        - {{ cdt('libxdamage') }}  # [linux]
+        - {{ cdt('libxxf86vm') }}  # [linux]
+        - {{ cdt('libxext') }}     # [linux]
       host:
+        - xorg-libxfixes  # [linux]
         - python
+        - petsc
       run:
         - python
+        - petsc
         - {{ pin_subpackage('python-damask', exact=True) }}
     test:
       imports:
