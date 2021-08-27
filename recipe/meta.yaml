@@ -172,6 +172,7 @@ outputs:
         - pyyaml
         - petsc
         - {{ pin_subpackage('damask-grid', exact=True) }}
+        - {{ pin_subpackage('python-damask', exact=True) }}
 
 about:
   home: https://damask3.mpie.de/
