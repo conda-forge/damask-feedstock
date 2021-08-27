@@ -143,6 +143,7 @@ outputs:
       run:
         - python
         - petsc
+        - {{ pin_subpackage('damask-mesh', exact=True) }}
         - {{ pin_subpackage('python-damask', exact=True) }}
     test:
       imports:
