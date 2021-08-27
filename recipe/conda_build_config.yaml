@@ -1,2 +1,4 @@
 mpi:
   - openmpi
+build_with_mambabuild:
+  True
