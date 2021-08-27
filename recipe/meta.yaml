@@ -129,10 +129,12 @@ outputs:
       skip: true  # [win or py<37]
     requirements:
       build:
+        - petsc
         - damask-grid
         - damask-mesh
         - python-damask
       run:
+        - petsc
         - damask-grid
         - damask-mesh
         - python-damask
