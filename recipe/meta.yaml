@@ -171,10 +171,7 @@ outputs:
         - matplotlib-base
         - pyyaml
         - petsc
-        - {{ pin_subpackage('python-damask', exact=True) }}
-    test:
-      imports:
-        - damask
+        - {{ pin_subpackage('damask-grid', exact=True) }}
 
 about:
   home: https://damask3.mpie.de/
