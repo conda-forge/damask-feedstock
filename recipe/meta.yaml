@@ -11,7 +11,7 @@ source:
     - pyaml.patch
 
 build:
-  number: 7
+  number: 8
 
 outputs:
   - name: damask-grid
@@ -123,19 +123,21 @@ outputs:
       imports:
         - damask
 
-#  - name: damask
-#    build:
-#      script: "echo DAMASK"
-#    requirements:
-#      host:
-#        - python >3.6
-#      run:
-#        - {{ pin_subpackage("damask-grid", exact=True) }}
-#        - {{ pin_subpackage("damask-mesh", exact=True) }}
-#        - {{ pin_subpackage("python-damask", exact=True) }}
-#    test:
-#      commands:
-#        - "echo DAMASK"
+  - name: damask
+    build:
+      script: "echo DAMASK"
+      skip: true  # [win]
+    requirements:
+      build:
+        python >3.6
+      run:
+        python >3.6
+        - {{ pin_subpackage("damask-grid", max_pin='x.x.x') }}
+        - {{ pin_subpackage("damask-mesh", max_pin='x.x.x') }}
+        - {{ pin_subpackage("python-damask", max_pin='x.x.x') }}
+    test:
+      commands:
+        - "echo DAMASK"
 
 about:
   home: https://damask3.mpie.de/
