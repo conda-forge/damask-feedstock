@@ -129,9 +129,9 @@ outputs:
       skip: true  # [win]
     requirements:
       build:
-        python >3.6
+        - python >3.6
       run:
-        python >3.6
+        - python >3.6
         - {{ pin_subpackage("damask-grid", max_pin='x.x.x') }}
         - {{ pin_subpackage("damask-mesh", max_pin='x.x.x') }}
         - {{ pin_subpackage("python-damask", max_pin='x.x.x') }}
