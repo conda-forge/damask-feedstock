@@ -127,6 +127,7 @@ outputs:
     build:
       script: "echo DAMASK"
       skip: true  # [win or py<37]
+      noarch: python
     requirements:
       host:
         - python
