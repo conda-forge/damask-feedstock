@@ -126,12 +126,13 @@ outputs:
   - name: damask
     build:
       script: "echo DAMASK"
-      skip: true  # [win]
+      skip: true  # [win or py<37]
     requirements:
       build:
-        - python >3.6
+        - damask-grid
+        - damask-mesh
+        - python-damask
       run:
-        - python >3.6
         - damask-grid
         - damask-mesh
         - python-damask
