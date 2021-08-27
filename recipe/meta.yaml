@@ -45,6 +45,7 @@ outputs:
         - fftw * mpi_{{ mpi }}_*
         - libblas
       run:
+        - h5py
         - libblas
       run_constrained:
         - damask =={{ version }}
