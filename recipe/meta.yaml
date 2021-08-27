@@ -132,9 +132,9 @@ outputs:
         - python >3.6
       run:
         - python >3.6
-        - {{ pin_subpackage("damask-grid", max_pin='x.x.x') }}
-        - {{ pin_subpackage("damask-mesh", max_pin='x.x.x') }}
-        - {{ pin_subpackage("python-damask", max_pin='x.x.x') }}
+        - {{ pin_subpackage("damask-grid", min_pin='x.x.x', max_pin='x.x.x') }}
+        - {{ pin_subpackage("damask-mesh", min_pin='x.x.x', max_pin='x.x.x') }}
+        - {{ pin_subpackage("python-damask", min_pin='x.x.x', max_pin='x.x.x') }}
     test:
       commands:
         - "echo DAMASK"
