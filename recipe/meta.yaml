@@ -43,8 +43,10 @@ outputs:
         - hdf5 * mpi_{{ mpi }}_*
         - fftw
         - fftw * mpi_{{ mpi }}_*
+        - python
         - libblas
       run:
+        - python
         - libblas
       run_constrained:
         - damask =={{ version }}
@@ -82,7 +84,9 @@ outputs:
         - hdf5 >=1.12
         - hdf5 * mpi_{{ mpi }}_*
         - libblas
+        - python
       run:
+        - python
         - libblas
       run_constrained:
         - damask =={{ version }}
@@ -143,6 +147,7 @@ outputs:
       run:
         - python
         - petsc
+        - {{ pin_subpackage('damask-grid', exact=True) }}
         - {{ pin_subpackage('python-damask', exact=True) }}
     test:
       imports:
