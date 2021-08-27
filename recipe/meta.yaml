@@ -128,19 +128,14 @@ outputs:
       script: "echo DAMASK"
       skip: true  # [win or py<37]
     requirements:
-      build:
-        - petsc
-        - damask-grid
-        - damask-mesh
-        - python-damask
+      host:
+        - python
       run:
-        - petsc
-        - damask-grid
-        - damask-mesh
-        - python-damask
+        - python
+        - {{ pin_subpackage('python-damask', exact=True) }}
     test:
-      commands:
-        - "echo DAMASK"
+      imports:
+        - damask
 
 about:
   home: https://damask3.mpie.de/
