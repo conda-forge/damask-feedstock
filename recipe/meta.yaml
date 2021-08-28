@@ -154,6 +154,9 @@ outputs:
         - {{ pin_subpackage('damask-mesh', exact=True) }}
         - {{ pin_subpackage('damask-grid', exact=True) }}
         - {{ pin_subpackage('python-damask', exact=True) }}
+    test:
+      commands:
+        - "echo DAMASK"
 
 about:
   home: https://damask3.mpie.de/
