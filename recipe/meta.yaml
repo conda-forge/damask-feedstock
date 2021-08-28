@@ -11,7 +11,7 @@ source:
     - pyaml.patch
 
 build:
-  number: 13
+  number: 14
 
 outputs:
   - name: damask-grid
@@ -29,6 +29,12 @@ outputs:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
         - {{ compiler('fortran') }}
+        - {{ cdt('mesa-libgl-devel') }}  # [linux]
+        - {{ cdt('mesa-dri-drivers') }}  # [linux]
+        - {{ cdt('libselinux') }}  # [linux]
+        - {{ cdt('libxdamage') }}  # [linux]
+        - {{ cdt('libxxf86vm') }}  # [linux]
+        - {{ cdt('libxext') }}     # [linux]
         - libgomp  # [linux]
         - pkg-config  # [osx]
         - cmake
@@ -37,6 +43,7 @@ outputs:
         - petsc * real_*
         - hdf5 >=1.12
         - hdf5 * mpi_{{ mpi }}_*
+        - xorg-libxfixes  # [linux]
       run:
         - {{ pin_compatible('petsc', max_pin='x.x') }}
         - {{ pin_compatible('hdf5', max_pin='x.x') }}
@@ -63,6 +70,12 @@ outputs:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
         - {{ compiler('fortran') }}
+        - {{ cdt('mesa-libgl-devel') }}  # [linux]
+        - {{ cdt('mesa-dri-drivers') }}  # [linux]
+        - {{ cdt('libselinux') }}  # [linux]
+        - {{ cdt('libxdamage') }}  # [linux]
+        - {{ cdt('libxxf86vm') }}  # [linux]
+        - {{ cdt('libxext') }}     # [linux]
         - libgomp  # [linux]
         - pkg-config  # [osx]
         - cmake
@@ -71,6 +84,7 @@ outputs:
         - petsc * real_*
         - hdf5 >=1.12
         - hdf5 * mpi_{{ mpi }}_*
+        - xorg-libxfixes  # [linux]
       run:
         - {{ pin_compatible('petsc', max_pin='x.x') }}
         - {{ pin_compatible('hdf5', max_pin='x.x') }}
@@ -118,6 +132,20 @@ outputs:
       script: "echo DAMASK"
       skip: true  # [win or py<37]
     requirements:
+      build:
+        - {{ compiler('c') }}
+        - {{ compiler('cxx') }}
+        - {{ compiler('fortran') }}
+        - {{ cdt('mesa-libgl-devel') }}  # [linux]
+        - {{ cdt('mesa-dri-drivers') }}  # [linux]
+        - {{ cdt('libselinux') }}  # [linux]
+        - {{ cdt('libxdamage') }}  # [linux]
+        - {{ cdt('libxxf86vm') }}  # [linux]
+        - {{ cdt('libxext') }}     # [linux]
+        - libgomp  # [linux]
+      host:
+        - xorg-libxfixes  # [linux]
+        - python
       run:
         - {{ mpi }}
         - petsc * real_*
@@ -137,6 +165,15 @@ outputs:
         - {{ pin_subpackage('damask-mesh', exact=True) }}
         - {{ pin_subpackage('damask-grid', exact=True) }}
         - {{ pin_subpackage('python-damask', exact=True) }}
+    test:
+      commands:
+        - export OMPI_MCA_plm=isolated
+        - export OMPI_MCA_btl_vader_single_copy_mechanism=none
+        - export OMPI_MCA_rmaps_base_oversubscribe=yes
+        - mpiexec -np 2 DAMASK_grid --help
+        - mpiexec -np 2 DAMASK_mesh --help
+      imports:
+        - damask
 
 about:
   home: https://damask3.mpie.de/
