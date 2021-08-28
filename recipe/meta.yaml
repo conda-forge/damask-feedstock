@@ -154,6 +154,12 @@ outputs:
         - {{ pin_subpackage('damask-mesh', exact=True) }}
         - {{ pin_subpackage('damask-grid', exact=True) }}
         - {{ pin_subpackage('python-damask', exact=True) }}
+    test:
+      commands:
+        - export OMPI_MCA_plm=isolated
+        - export OMPI_MCA_btl_vader_single_copy_mechanism=none
+        - DAMASK_grid --help
+        - DAMASK_mesh --help
 
 about:
   home: https://damask3.mpie.de/
