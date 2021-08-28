@@ -138,8 +138,6 @@ outputs:
         - {{ cdt('libxext') }}     # [linux]
         - libgomp  # [linux]
         - pkg-config  # [osx]
-        - make
-        - cmake
       host:
         - {{ mpi }}
         - petsc * real_*
