@@ -11,7 +11,7 @@ source:
     - pyaml.patch
 
 build:
-  number: 12
+  number: 13
 
 outputs:
   - name: damask-grid
@@ -117,10 +117,6 @@ outputs:
     build:
       script: "echo DAMASK"
       skip: true  # [win or py<37]
-      run_exports:
-        - {{ mpi }}
-        - petsc
-        - hdf5
     requirements:
       run:
         - {{ mpi }}
