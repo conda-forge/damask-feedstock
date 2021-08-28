@@ -11,7 +11,7 @@ source:
     - pyaml.patch
 
 build:
-  number: 10
+  number: 11
 
 outputs:
   - name: damask-grid
@@ -47,7 +47,6 @@ outputs:
       commands:
         - export OMPI_MCA_plm=isolated
         - export OMPI_MCA_btl_vader_single_copy_mechanism=none
-        - export OMPI_MCA_rmaps_base_oversubscribe=yes
         - DAMASK_grid --help
 
   - name: damask-mesh
@@ -83,7 +82,6 @@ outputs:
       commands:
         - export OMPI_MCA_plm=isolated
         - export OMPI_MCA_btl_vader_single_copy_mechanism=none
-        - export OMPI_MCA_rmaps_base_oversubscribe=yes
         - DAMASK_mesh --help
 
   - name: python-damask
@@ -161,6 +159,13 @@ outputs:
         - {{ pin_subpackage('damask-mesh', exact=True) }}
         - {{ pin_subpackage('damask-grid', exact=True) }}
         - {{ pin_subpackage('python-damask', exact=True) }}
+    test:
+      commands:
+        - export OMPI_MCA_plm=isolated
+        - export OMPI_MCA_btl_vader_single_copy_mechanism=none
+        - export OMPI_MCA_rmaps_base_oversubscribe=yes
+        - mpiexec -np 2 DAMASK_grid --help
+        - mpiexec -np 2 DAMASK_mesh --help
 
 about:
   home: https://damask3.mpie.de/
