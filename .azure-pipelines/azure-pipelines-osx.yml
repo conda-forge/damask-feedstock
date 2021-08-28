@@ -8,8 +8,11 @@ jobs:
     vmImage: macOS-10.15
   strategy:
     matrix:
-      osx_64_:
-        CONFIG: osx_64_
+      osx_64_mpimpich:
+        CONFIG: osx_64_mpimpich
+        UPLOAD_PACKAGES: 'True'
+      osx_64_mpiopenmpi:
+        CONFIG: osx_64_mpiopenmpi
         UPLOAD_PACKAGES: 'True'
   timeoutInMinutes: 360
 
