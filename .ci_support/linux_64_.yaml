@@ -14,23 +14,17 @@ cxx_compiler_version:
 - '9'
 docker_image:
 - quay.io/condaforge/linux-anvil-comp7
-fftw:
-- '3'
 fortran_compiler:
 - gfortran
 fortran_compiler_version:
 - '9'
 hdf5:
 - 1.10.6
-libblas:
-- 3.8 *netlib
 mpi:
 - openmpi
 petsc:
 - '3.15'
 pin_run_as_build:
-  fftw:
-    max_pin: x
   python:
     min_pin: x.x
     max_pin: x.x

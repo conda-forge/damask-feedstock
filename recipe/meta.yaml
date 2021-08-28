@@ -11,7 +11,7 @@ source:
     - pyaml.patch
 
 build:
-  number: 9
+  number: 10
 
 outputs:
   - name: damask-grid
@@ -23,9 +23,6 @@ outputs:
         - {{ mpi }}
         - petsc
         - hdf5
-        - fftw
-        - {{ pin_compatible('petsc', max_pin='x.x') }}
-        - {{ pin_compatible('hdf5', max_pin='x.x') }}
       skip: true  # [win]
     requirements:
       build:
@@ -41,11 +38,9 @@ outputs:
         - petsc * real_*
         - hdf5 >=1.12
         - hdf5 * mpi_{{ mpi }}_*
-        - fftw
-        - fftw * mpi_{{ mpi }}_*
-        - libblas
       run:
-        - libblas
+        - {{ pin_compatible('petsc', max_pin='x.x') }}
+        - {{ pin_compatible('hdf5', max_pin='x.x') }}
       run_constrained:
         - damask =={{ version }}
     test:
@@ -64,8 +59,6 @@ outputs:
         - {{ mpi }}
         - petsc
         - hdf5
-        - {{ pin_compatible('petsc', max_pin='x.x') }}
-        - {{ pin_compatible('hdf5', max_pin='x.x') }}
       skip: true  # [win]
     requirements:
       build:
@@ -81,9 +74,9 @@ outputs:
         - petsc * real_*
         - hdf5 >=1.12
         - hdf5 * mpi_{{ mpi }}_*
-        - libblas
       run:
-        - libblas
+        - {{ pin_compatible('petsc', max_pin='x.x') }}
+        - {{ pin_compatible('hdf5', max_pin='x.x') }}
       run_constrained:
         - damask =={{ version }}
     test:
@@ -132,9 +125,6 @@ outputs:
         - {{ mpi }}
         - petsc
         - hdf5
-        - fftw
-        - {{ pin_compatible('petsc', max_pin='x.x') }}
-        - {{ pin_compatible('hdf5', max_pin='x.x') }}
     requirements:
       build:
         - {{ compiler('c') }}
@@ -155,14 +145,9 @@ outputs:
         - petsc * real_*
         - hdf5 >=1.12
         - hdf5 * mpi_{{ mpi }}_*
-        - fftw
-        - fftw * mpi_{{ mpi }}_*
-        - libblas
         - xorg-libxfixes  # [linux]
         - python
-        - pip
       run:
-        - libblas
         - python
         - pandas
         - scipy
@@ -171,6 +156,8 @@ outputs:
         - matplotlib-base
         - pyyaml
         - petsc
+        - {{ pin_compatible('petsc', max_pin='x.x') }}
+        - {{ pin_compatible('hdf5', max_pin='x.x') }}
         - {{ pin_subpackage('damask-mesh', exact=True) }}
         - {{ pin_subpackage('damask-grid', exact=True) }}
         - {{ pin_subpackage('python-damask', exact=True) }}
