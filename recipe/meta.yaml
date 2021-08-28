@@ -11,7 +11,7 @@ source:
     - pyaml.patch
 
 build:
-  number: 8
+  number: 9
 
 outputs:
   - name: damask-grid
@@ -97,6 +97,7 @@ outputs:
     build:
       script: python -m pip install ./python --no-deps -vv --use-feature=in-tree-build
       skip: true  # [py<37]
+      noarch: python
     requirements:
       build:
         - {{ cdt('mesa-libgl-devel') }}  # [linux]
@@ -126,18 +127,53 @@ outputs:
   - name: damask
     build:
       script: "echo DAMASK"
-      skip: true  # [win]
+      skip: true  # [win or py<37]
+      run_exports:
+        - {{ mpi }}
+        - petsc
+        - hdf5
+        - fftw
+        - {{ pin_compatible('petsc', max_pin='x.x') }}
+        - {{ pin_compatible('hdf5', max_pin='x.x') }}
     requirements:
       build:
-        python >3.6
+        - {{ compiler('c') }}
+        - {{ compiler('cxx') }}
+        - {{ compiler('fortran') }}
+        - {{ cdt('mesa-libgl-devel') }}  # [linux]
+        - {{ cdt('mesa-dri-drivers') }}  # [linux]
+        - {{ cdt('libselinux') }}  # [linux]
+        - {{ cdt('libxdamage') }}  # [linux]
+        - {{ cdt('libxxf86vm') }}  # [linux]
+        - {{ cdt('libxext') }}     # [linux]
+        - libgomp  # [linux]
+        - pkg-config  # [osx]
+        - make
+        - cmake
+      host:
+        - {{ mpi }}
+        - petsc * real_*
+        - hdf5 >=1.12
+        - hdf5 * mpi_{{ mpi }}_*
+        - fftw
+        - fftw * mpi_{{ mpi }}_*
+        - libblas
+        - xorg-libxfixes  # [linux]
+        - python
+        - pip
       run:
-        python >3.6
-        - {{ pin_subpackage("damask-grid", max_pin='x.x.x') }}
-        - {{ pin_subpackage("damask-mesh", max_pin='x.x.x') }}
-        - {{ pin_subpackage("python-damask", max_pin='x.x.x') }}
-    test:
-      commands:
-        - "echo DAMASK"
+        - libblas
+        - python
+        - pandas
+        - scipy
+        - h5py >=3.3.0
+        - vtk
+        - matplotlib-base
+        - pyyaml
+        - petsc
+        - {{ pin_subpackage('damask-mesh', exact=True) }}
+        - {{ pin_subpackage('damask-grid', exact=True) }}
+        - {{ pin_subpackage('python-damask', exact=True) }}
 
 about:
   home: https://damask3.mpie.de/
