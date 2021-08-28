@@ -129,6 +129,10 @@ outputs:
 
   - name: damask
     build:
+      run_exports:
+        - {{ mpi }}
+        - petsc
+        - hdf5
       script: "echo DAMASK"
       skip: true  # [win or py<37]
     requirements:
@@ -146,13 +150,12 @@ outputs:
       host:
         - xorg-libxfixes  # [linux]
         - python
-      run:
         - {{ mpi }}
         - petsc * real_*
         - hdf5 >=1.12
         - hdf5 * mpi_{{ mpi }}_*
         - xorg-libxfixes  # [linux]
-        - python
+      run:
         - pandas
         - scipy
         - h5py >=3.3.0
