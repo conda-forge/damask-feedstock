@@ -11,7 +11,7 @@ source:
     - pyaml.patch
 
 build:
-  number: 13
+  number: 14
 
 outputs:
   - name: damask-grid
@@ -115,7 +115,7 @@ outputs:
 
   - name: damask
     build:
-      script: "echo DAMASK"
+      script: "echo DAMASK 3"
       skip: true  # [win or py<37]
     requirements:
       run:
