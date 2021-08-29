@@ -100,7 +100,6 @@ outputs:
     build:
       script: python -m pip install ./python --no-deps -vv --use-feature=in-tree-build
       skip: true  # [py<37]
-      noarch: python
     requirements:
       build:
         - {{ cdt('mesa-libgl-devel') }}  # [linux]
@@ -118,6 +117,10 @@ outputs:
         - pandas
         - scipy
         - h5py >=3.3.0
+        - h5py * mpi_{{ mpi }}_*  # [not win]
+        - hdf5 >=1.12  # [not win] 
+        - hdf5 * mpi_{{ mpi }}_*  # [not win]
+        - xorg-libxfixes  # [linux]
         - vtk
         - matplotlib-base
         - pyyaml
