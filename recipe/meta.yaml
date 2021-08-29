@@ -1,5 +1,9 @@
 {% set version = "3.0.0a4" %}
 
+# win: no PETSc, only python
+# linux: HDF5 1.10 to be compatible with vtk
+# osx: HDF5 1.12 because 1.10 has no Fortran lib => metapackage not possible
+
 package:
   name: damask-pkgs
   version: {{ version }}
@@ -11,7 +15,7 @@ source:
     - pyaml.patch
 
 build:
-  number: 15
+  number: 16
 
 outputs:
   - name: damask-grid
@@ -23,7 +27,6 @@ outputs:
         - {{ mpi }}
         - petsc
         - hdf5
-      string: mpi_{{ mpi }}_h{{ PKG_HASH }}_{{ build }}
       skip: true  # [win]
     requirements:
       build:
@@ -60,7 +63,6 @@ outputs:
         - {{ mpi }}
         - petsc
         - hdf5
-      string: mpi_{{ mpi }}_h{{ PKG_HASH }}_{{ build }}
       skip: true  # [win]
     requirements:
       build:
@@ -123,7 +125,6 @@ outputs:
       script: 
         - "echo DAMASK metapackage"
       skip: true  # [py<37 or win or osx]
-      string: mpi_{{ mpi }}_h{{ PKG_HASH }}_{{ build }}
     requirements:
       host:
         - python
