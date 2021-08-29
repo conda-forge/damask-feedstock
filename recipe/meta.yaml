@@ -11,7 +11,7 @@ source:
     - pyaml.patch
 
 build:
-  number: 14
+  number: 15
 
 outputs:
   - name: damask-grid
@@ -29,22 +29,17 @@ outputs:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
         - {{ compiler('fortran') }}
-        - {{ cdt('mesa-libgl-devel') }}  # [linux]
-        - {{ cdt('mesa-dri-drivers') }}  # [linux]
-        - {{ cdt('libselinux') }}  # [linux]
-        - {{ cdt('libxdamage') }}  # [linux]
-        - {{ cdt('libxxf86vm') }}  # [linux]
-        - {{ cdt('libxext') }}     # [linux]
         - libgomp  # [linux]
         - pkg-config  # [osx]
         - cmake
       host:
         - {{ mpi }}
         - petsc * real_*
-        - hdf5 >=1.12
+        - hdf5 >=1.12  # [osx]
+        - hdf5 <1.12  # [linux]
         - hdf5 * mpi_{{ mpi }}_*
-        - xorg-libxfixes  # [linux]
       run:
+        - hypre <2.22.1
         - {{ pin_compatible('petsc', max_pin='x.x') }}
         - {{ pin_compatible('hdf5', max_pin='x.x') }}
       run_constrained:
@@ -70,22 +65,17 @@ outputs:
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
         - {{ compiler('fortran') }}
-        - {{ cdt('mesa-libgl-devel') }}  # [linux]
-        - {{ cdt('mesa-dri-drivers') }}  # [linux]
-        - {{ cdt('libselinux') }}  # [linux]
-        - {{ cdt('libxdamage') }}  # [linux]
-        - {{ cdt('libxxf86vm') }}  # [linux]
-        - {{ cdt('libxext') }}     # [linux]
         - libgomp  # [linux]
         - pkg-config  # [osx]
         - cmake
       host:
         - {{ mpi }}
         - petsc * real_*
-        - hdf5 >=1.12
+        - hdf5 >=1.12  # [osx]
+        - hdf5 <1.12  # [linux]
         - hdf5 * mpi_{{ mpi }}_*
-        - xorg-libxfixes  # [linux]
       run:
+        - hypre <2.22.1
         - {{ pin_compatible('petsc', max_pin='x.x') }}
         - {{ pin_compatible('hdf5', max_pin='x.x') }}
       run_constrained:
@@ -100,7 +90,6 @@ outputs:
     build:
       script: python -m pip install ./python --no-deps -vv --use-feature=in-tree-build
       skip: true  # [py<37]
-      noarch: python
     requirements:
       build:
         - {{ cdt('mesa-libgl-devel') }}  # [linux]
@@ -127,55 +116,30 @@ outputs:
       imports:
         - damask
 
-#  - name: damask
-#    build:
-#      run_exports:
-#        - {{ mpi }}
-#        - petsc
-#        - hdf5
-#      script: "echo DAMASK"
-#      skip: true  # [win or py<37]
-#    requirements:
-#      build:
-#        - {{ compiler('c') }}
-#        - {{ compiler('cxx') }}
-#        - {{ compiler('fortran') }}
-#        - {{ cdt('mesa-libgl-devel') }}  # [linux]
-#        - {{ cdt('mesa-dri-drivers') }}  # [linux]
-#        - {{ cdt('libselinux') }}  # [linux]
-#        - {{ cdt('libxdamage') }}  # [linux]
-#        - {{ cdt('libxxf86vm') }}  # [linux]
-#        - {{ cdt('libxext') }}     # [linux]
-#        - libgomp  # [linux]
-#      host:
-#        - xorg-libxfixes  # [linux]
-#        - python
-#        - {{ mpi }}
-#        - petsc * real_*
-#        - hdf5 >=1.12
-#        - hdf5 * mpi_{{ mpi }}_*
-#      run:
-#        - pandas
-#        - scipy
-#        - h5py >=3.3.0
-#        - vtk
-#        - matplotlib-base
-#        - pyyaml
-#        - petsc
-#        - {{ pin_compatible('petsc', max_pin='x.x') }}
-#        - {{ pin_compatible('hdf5', max_pin='x.x') }}
-#        - {{ pin_subpackage('damask-mesh', exact=True) }}
-#        - {{ pin_subpackage('damask-grid', exact=True) }}
-#        - {{ pin_subpackage('python-damask', exact=True) }}
-#    test:
-#      commands:
-#        - export OMPI_MCA_plm=isolated
-#        - export OMPI_MCA_btl_vader_single_copy_mechanism=none
-#        - export OMPI_MCA_rmaps_base_oversubscribe=yes
-#        - mpiexec -np 2 DAMASK_grid --help
-#        - mpiexec -np 2 DAMASK_mesh --help
-#      imports:
-#        - damask
+  - name: damask
+    build:
+      script: 
+        - "echo DAMASK metapackage"
+      skip: true  # [py<37 or win or osx]
+    requirements:
+      host:
+        - python
+      run:
+        - python
+        - hypre <2.22.1
+        - {{ mpi }}
+        - {{ pin_subpackage('damask-mesh', exact=True) }}
+        - {{ pin_subpackage('damask-grid', exact=True) }}
+        - {{ pin_subpackage('python-damask', exact=True) }}
+    test:
+      commands:
+        - export OMPI_MCA_plm=isolated
+        - export OMPI_MCA_btl_vader_single_copy_mechanism=none
+        - export OMPI_MCA_rmaps_base_oversubscribe=yes
+        - mpiexec -np 2 DAMASK_grid -h
+        - mpiexec -np 2 DAMASK_mesh -h
+      imports:
+        - damask
 
 about:
   home: https://damask3.mpie.de/
