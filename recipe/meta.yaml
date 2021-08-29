@@ -23,6 +23,7 @@ outputs:
         - {{ mpi }}
         - petsc
         - hdf5
+      string: mpi_{{ mpi }}_h{{ PKG_HASH }}_{{ build }}
       skip: true  # [win]
     requirements:
       build:
@@ -59,6 +60,7 @@ outputs:
         - {{ mpi }}
         - petsc
         - hdf5
+      string: mpi_{{ mpi }}_h{{ PKG_HASH }}_{{ build }}
       skip: true  # [win]
     requirements:
       build:
@@ -121,6 +123,7 @@ outputs:
       script: 
         - "echo DAMASK metapackage"
       skip: true  # [py<37 or win or osx]
+      string: mpi_{{ mpi }}_h{{ PKG_HASH }}_{{ build }}
     requirements:
       host:
         - python
