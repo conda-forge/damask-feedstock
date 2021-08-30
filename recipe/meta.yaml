@@ -15,7 +15,7 @@ source:
     - pyaml.patch
 
 build:
-  number: 16
+  number: 17
 
 outputs:
   - name: damask-grid
@@ -94,6 +94,7 @@ outputs:
     build:
       script: python -m pip install ./python --no-deps -vv --use-feature=in-tree-build
       skip: true  # [py<37]
+      noarch: python
     requirements:
       build:
         - {{ cdt('mesa-libgl-devel') }}  # [linux]
