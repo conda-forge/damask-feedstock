@@ -128,11 +128,8 @@ outputs:
       skip: true  # [py<37 or win or osx]
     requirements:
       host:
-        - python
-      run:
-        - python
-        - hypre <2.22.1
         - {{ mpi }}
+      run:
         - {{ pin_subpackage('damask-mesh', exact=True) }}
         - {{ pin_subpackage('damask-grid', exact=True) }}
         - {{ pin_subpackage('python-damask', exact=True) }}
