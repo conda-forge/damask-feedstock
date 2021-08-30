@@ -18,6 +18,7 @@ build:
   number: 17
 
 outputs:
+  # DAMASK with grid solver (Fortran/PETSc)
   - name: damask-grid
     build:
       script:
@@ -54,6 +55,7 @@ outputs:
         - export OMPI_MCA_btl_vader_single_copy_mechanism=none
         - DAMASK_grid --help
 
+  # DAMASK with mesh solver (Fortran/PETSc)
   - name: damask-mesh
     build:
       script:
@@ -90,6 +92,7 @@ outputs:
         - export OMPI_MCA_btl_vader_single_copy_mechanism=none
         - DAMASK_mesh --help
 
+  # Pre- and post-processing tools (Python)
   - name: python-damask
     build:
       script: python -m pip install ./python --no-deps -vv --use-feature=in-tree-build
@@ -121,6 +124,7 @@ outputs:
       imports:
         - damask
 
+  # Pre- and post-processing tools (Python)
   - name: damask
     build:
       script: 
@@ -130,9 +134,6 @@ outputs:
       host:
         - python
       run:
-        - python
-        - hypre <2.22.1
-        - {{ mpi }}
         - {{ pin_subpackage('damask-mesh', exact=True) }}
         - {{ pin_subpackage('damask-grid', exact=True) }}
         - {{ pin_subpackage('python-damask', exact=True) }}
