@@ -4,8 +4,6 @@
 {% set sha256 = "2d2b10901959c26a5bb5c52327cdafc7943bc1b36b77b515b0371221703249ae" %}
 
 # win: no PETSc, only python
-# linux: HDF5 1.10 to be compatible with vtk
-# osx: HDF5 1.12 because 1.10 has no Fortran lib => metapackage not possible
 
 package:
   name: damask-pkgs
@@ -44,11 +42,9 @@ outputs:
       host:
         - {{ mpi }}
         - petsc * real_*
-        - hdf5 >=1.12  # [osx]
-        - hdf5 <1.12  # [linux]
         - hdf5 * mpi_{{ mpi }}_*
       run:
-        - hypre <2.22.1
+        - hypre
         - {{ pin_compatible('petsc', max_pin='x.x') }}
         - {{ pin_compatible('hdf5', max_pin='x.x') }}
       run_constrained:
@@ -83,11 +79,9 @@ outputs:
       host:
         - {{ mpi }}
         - petsc * real_*
-        - hdf5 >=1.12  # [osx]
-        - hdf5 <1.12  # [linux]
         - hdf5 * mpi_{{ mpi }}_*
       run:
-        - hypre <2.22.1
+        - hypre
         - {{ pin_compatible('petsc', max_pin='x.x') }}
         - {{ pin_compatible('hdf5', max_pin='x.x') }}
       run_constrained:
@@ -139,7 +133,6 @@ outputs:
         - python
       run:
         - python
-        - hypre <2.22.1
         - {{ mpi }}
         - {{ pin_subpackage('damask-mesh', exact=True) }}
         - {{ pin_subpackage('damask-grid', exact=True) }}
