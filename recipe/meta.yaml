@@ -1,4 +1,4 @@
-{% set build_number = 2 %}
+{% set build_number = 3 %}
 {% set version = "3.0.0-alpha5" %}
 {% set version_python = "3.0.0a5" %}
 {% set sha256 = "2d2b10901959c26a5bb5c52327cdafc7943bc1b36b77b515b0371221703249ae" %}
