@@ -1,7 +1,7 @@
 About damask-pkgs
 =================
 
-Home: https://damask3.mpie.de/
+Home: https://damask.mpie.de/
 
 Package license: GPL-3.0-or-later
 
@@ -9,9 +9,9 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/damask-feedstoc
 
 Summary: Duesseldorf Advanced Material Simulation Kit
 
-Development: https://damask3.mpie.de/development
+Development: https://damask.mpie.de/development
 
-Documentation: https://damask3.mpie.de/documentation
+Documentation: https://damask.mpie.de/documentation
 
 At the core of DAMASK is a flexible and hierarchically structured
 model of material point behavior for the solution of elastoplastic
@@ -63,6 +63,13 @@ Current build status
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8984&branchName=master">
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/damask-feedstock?branchName=master&jobName=osx&configuration=osx_64_mpiopenmpi" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_64_python3.10.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8984&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/damask-feedstock?branchName=master&jobName=win&configuration=win_64_python3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
@@ -130,7 +137,8 @@ conda search damask --channel conda-forge
 About conda-forge
 =================
 
-[![Powered by NumFOCUS](https://img.shields.io/badge/powered%20by-NumFOCUS-orange.svg?style=flat&colorA=E1523D&colorB=007D8A)](http://numfocus.org)
+[![Powered by
+NumFOCUS](https://img.shields.io/badge/powered%20by-NumFOCUS-orange.svg?style=flat&colorA=E1523D&colorB=007D8A)](https://numfocus.org)
 
 conda-forge is a community-led conda channel of installable packages.
 In order to provide high-quality builds, the process has been automated into the
@@ -192,5 +200,4 @@ Feedstock Maintainers
 
 * [@MarDiehl](https://github.com/MarDiehl/)
 * [@jan-janssen](https://github.com/jan-janssen/)
-* [@navyRUB](https://github.com/navyRUB/)
 
