@@ -200,4 +200,5 @@ Feedstock Maintainers
 
 * [@MarDiehl](https://github.com/MarDiehl/)
 * [@jan-janssen](https://github.com/jan-janssen/)
+* [@yangbai90](https://github.com/yangbai90/)
 
