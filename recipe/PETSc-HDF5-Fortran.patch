@@ -1,5 +1,6 @@
 --- damask-3.0.0-alpha5-orig/CMakeLists.txt	2021-10-07 11:15:35.325869586 +0200
-+++ damask-3.0.0-alpha5/CMakeLists.txt	2021-10-07 11:19:19.081592374 +0200
+--- damask-3.0.0-alpha5/CMakeLists.txt	2021-10-07 11:19:19.081592374 +0200
++++ damask-3.0.0-alpha6/CMakeLists.txt	2022-02-18 12:11:34.081592374 +0200
 @@ -90,6 +90,7 @@
  string (REGEX MATCHALL "-[lLW]([^\" ]+)" PETSC_EXTERNAL_LIB "${PETSC_EXTERNAL_LIB}")
  list (REMOVE_DUPLICATES PETSC_EXTERNAL_LIB)
