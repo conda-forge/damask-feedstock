@@ -3,7 +3,7 @@ About damask-pkgs
 
 Home: https://damask.mpie.de/
 
-Package license: GPL-3.0-or-later
+Package license: AGPL-3.0-or-later
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/damask-feedstock/blob/master/LICENSE.txt)
 
@@ -200,4 +200,5 @@ Feedstock Maintainers
 
 * [@MarDiehl](https://github.com/MarDiehl/)
 * [@jan-janssen](https://github.com/jan-janssen/)
+* [@yangbai90](https://github.com/yangbai90/)
 

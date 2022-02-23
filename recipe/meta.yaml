@@ -1,7 +1,7 @@
-{% set build_number = 4 %}
-{% set version = "3.0.0-alpha5" %}
-{% set version_python = "3.0.0a5" %}
-{% set sha256 = "2d2b10901959c26a5bb5c52327cdafc7943bc1b36b77b515b0371221703249ae" %}
+{% set build_number = 0 %}
+{% set version = "3.0.0-alpha6" %}
+{% set version_python = "3.0.0a6" %}
+{% set sha256 = "de6748c285558dec8f730c4301bfa56b4078c130ff80e3095faf76202f8d2109" %}
 
 # win: no PETSc, only python
 
@@ -14,6 +14,7 @@ source:
   sha256: {{ sha256 }}
   patches:
     - PETSc-HDF5-Fortran.patch
+    - MPICH.patch  # [linux] # needed for gcc >= 10 and MPI, does not work for gcc < 10
 
 build:
   number: {{ build_number }}
@@ -96,7 +97,7 @@ outputs:
   - name: python-damask
     build:
       script: python -m pip install ./python --no-deps -vv --use-feature=in-tree-build
-      skip: true  # [py<37]
+      skip: true  # [py<38]
     requirements:
       build:
         - {{ cdt('mesa-libgl-devel') }}  # [linux]
@@ -125,9 +126,9 @@ outputs:
 
   - name: damask
     build:
-      script: 
+      script:
         - "echo DAMASK metapackage"
-      skip: true  # [py<37 or win]
+      skip: true  # [py<38 or win]
     requirements:
       host:
         - python
@@ -149,9 +150,10 @@ outputs:
 
 about:
   home: https://damask.mpie.de/
-  license: GPL-3.0-or-later
-  license_family: GPL
-  license_file: LICENSE
+  license: AGPL-3.0-or-later
+  license_file:
+    - LICENSE
+    - COPYING
   summary: 'Duesseldorf Advanced Material Simulation Kit'
 
   description: |
@@ -167,3 +169,4 @@ extra:
   recipe-maintainers:
     - jan-janssen
     - MarDiehl
+    - yangbai90
