@@ -1,7 +1,7 @@
 {% set build_number = 0 %}
-{% set version = "3.0.0-alpha6" %}
-{% set version_python = "3.0.0a6" %}
-{% set sha256 = "de6748c285558dec8f730c4301bfa56b4078c130ff80e3095faf76202f8d2109" %}
+{% set version = "3.0.0-alpha7" %}
+{% set version_python = "3.0.0a7" %}
+{% set sha256 = "442b06b824441293e72ff91b211a555c5d497aedf62be1c4332c426558b848a4" %}
 
 # win: no PETSc, only python
 
@@ -13,8 +13,8 @@ source:
   url: https://damask.mpie.de/download/damask-{{ version }}.tar.xz
   sha256: {{ sha256 }}
   patches:
-    - PETSc-HDF5-Fortran.patch
-    - MPICH.patch  # [linux] # needed for gcc >= 10 and MPI, does not work for gcc < 10
+    - CMakeLists.patch
+    - setup.patch
 
 build:
   number: {{ build_number }}
