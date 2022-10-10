@@ -1,7 +1,7 @@
 {% set build_number = 0 %}
-{% set version = "3.0.0-alpha6" %}
-{% set version_python = "3.0.0a6" %}
-{% set sha256 = "de6748c285558dec8f730c4301bfa56b4078c130ff80e3095faf76202f8d2109" %}
+{% set version = "3.0.0-alpha7" %}
+{% set version_python = "3.0.0a7" %}
+{% set sha256 = "442b06b824441293e72ff91b211a555c5d497aedf62be1c4332c426558b848a4" %}
 
 # win: no PETSc, only python
 
@@ -13,7 +13,9 @@ source:
   url: https://damask.mpie.de/download/damask-{{ version }}.tar.xz
   sha256: {{ sha256 }}
   patches:
-    - PETSc-HDF5-Fortran.patch
+    - CMakeLists.patch
+    - CMakeLists2.patch
+    - setup.patch
     - MPICH.patch  # [linux] # needed for gcc >= 10 and MPI, does not work for gcc < 10
 
 build:
@@ -23,9 +25,12 @@ outputs:
   - name: damask-grid
     build:
       script:
+        - echo 'pkg config'
+        - ls $PKG_CONFIG_PATH
         - PETSC_DIR=${PREFIX} cmake -B build-grid -DDAMASK_SOLVER=grid -DCMAKE_INSTALL_PREFIX=${PREFIX}
         - cmake --build build-grid --target install
       run_exports:
+        - libfyaml
         - {{ mpi }}
         - petsc
         - hdf5
@@ -37,14 +42,17 @@ outputs:
         - {{ compiler('fortran') }}
         - libgomp  # [linux]
         - llvm-openmp  # [osx]
+        - libfyaml
         - pkg-config  # [osx]
         - cmake
         - make
       host:
+        - libfyaml
         - {{ mpi }}
         - petsc * real_*
         - hdf5 * mpi_{{ mpi }}_*
       run:
+        - libfyaml
         - hypre
         - {{ pin_compatible('petsc', max_pin='x.x') }}
         - {{ pin_compatible('hdf5', max_pin='x.x') }}
@@ -63,25 +71,30 @@ outputs:
         - PETSC_DIR=${PREFIX} cmake -B build-mesh -DDAMASK_SOLVER=mesh -DCMAKE_INSTALL_PREFIX=${PREFIX}
         - cmake --build build-mesh --target install
       run_exports:
+        - libfyaml
         - {{ mpi }}
         - petsc
         - hdf5
       skip: true  # [win]
     requirements:
       build:
+        - libfyaml
         - {{ compiler('c') }}
         - {{ compiler('cxx') }}
         - {{ compiler('fortran') }}
         - libgomp  # [linux]
         - llvm-openmp  # [osx]
+        - libfyaml
         - pkg-config  # [osx]
         - cmake
         - make
       host:
+        - libfyaml
         - {{ mpi }}
         - petsc * real_*
         - hdf5 * mpi_{{ mpi }}_*
       run:
+        - libfyaml
         - hypre
         - {{ pin_compatible('petsc', max_pin='x.x') }}
         - {{ pin_compatible('hdf5', max_pin='x.x') }}
@@ -96,7 +109,7 @@ outputs:
 
   - name: python-damask
     build:
-      script: python -m pip install ./python --no-deps -vv --use-feature=in-tree-build
+      script: python -m pip install ./python --no-deps -vv
       skip: true  # [py<38]
     requirements:
       build:
