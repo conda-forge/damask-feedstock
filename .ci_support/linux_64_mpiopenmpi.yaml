@@ -22,6 +22,10 @@ hdf5:
 - 1.12.1
 mpi:
 - openmpi
+mpich:
+- '4'
+openmpi:
+- '4'
 petsc:
 - '3.16'
 pin_run_as_build:
