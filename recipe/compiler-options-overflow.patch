@@ -1,0 +1,11 @@
+--- damask-3.0.0-alpha7-orig/src/CLI.f90	2022-10-11 07:13:05.876156603 +0200
++++ damask-3.0.0-alpha7/src/CLI.f90	2022-10-11 07:16:06.196062382 +0200
+@@ -91,7 +91,7 @@
+ 
+   print'(/,a)', ' Compiled with: '//compiler_version()
+   print'(a)',   ' Compiled on: '//CMAKE_SYSTEM
+-  print'(a)',   ' Compiler options: '//compiler_options()
++  !print'(a)',   ' Compiler options: '//compiler_options()
+ 
+   ! https://github.com/jeffhammond/HPCInfo/blob/master/docs/Preprocessor-Macros.md
+   print'(/,a)', ' Compiled on: '//__DATE__//' at '//__TIME__

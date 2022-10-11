@@ -1,6 +1,5 @@
-diff --color --unified --recursive --text damask-3.0.0-alpha6-orig/cmake/Compiler-GNU.cmake damask-3.0.0-alpha6/cmake/Compiler-GNU.cmake
---- damask-3.0.0-alpha6-orig/cmake/Compiler-GNU.cmake	2022-02-19 08:33:24.893673992 +0100
-+++ damask-3.0.0-alpha6/cmake/Compiler-GNU.cmake	2022-02-19 08:36:52.980247691 +0100
+--- damask-3.0.0-alpha7-orig/cmake/Compiler-GNU.cmake	2022-10-10 13:58:08.004855203 +0200
++++ damask-3.0.0-alpha7/cmake/Compiler-GNU.cmake	2022-10-10 13:59:02.331470037 +0200
 @@ -19,7 +19,7 @@
    set (OPTIMIZATION_FLAGS "-O3 -march=native -funroll-loops -ftree-vectorize -flto")
  endif ()
@@ -10,18 +9,12 @@ diff --color --unified --recursive --text damask-3.0.0-alpha6-orig/cmake/Compile
  
  #------------------------------------------------------------------------------------------------
  # Fine tuning compilation options
-@@ -101,11 +101,13 @@
+@@ -101,7 +101,7 @@
  set (COMPILE_FLAGS "${COMPILE_FLAGS} -Wsuggest-attribute=pure")
  set (COMPILE_FLAGS "${COMPILE_FLAGS} -Wsuggest-attribute=noreturn")
  set (COMPILE_FLAGS "${COMPILE_FLAGS} -Wconversion-extra")
 -set (COMPILE_FLAGS "${COMPILE_FLAGS} -Wimplicit-procedure")
- set (COMPILE_FLAGS "${COMPILE_FLAGS} -Wno-unused-parameter")
++set (COMPILE_FLAGS "${COMPILE_FLAGS} -fallow-argument-mismatch")
+ set (COMPILE_FLAGS "${COMPILE_FLAGS} -Wunused-parameter")
  set (COMPILE_FLAGS "${COMPILE_FLAGS} -ffpe-summary=all")
  # print summary of floating point exeptions (invalid,zero,overflow,underflow,inexact,denormal)
- 
-+set (COMPILE_FLAGS "${COMPILE_FLAGS} -fallow-argument-mismatch")
-+# needed for MPICH/gfortran 10 (MPI_Bcast)
-+
- # Additional options
- # -Warray-temporarieswarnings:   because we have many temporary arrays (performance issue?)
- # -Wimplicit-interface:          no interfaces for lapack/MPI routines
