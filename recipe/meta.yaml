@@ -16,7 +16,6 @@ source:
     - long-lines.patch
     - setup-cfg.patch
     - HDF5-Fortran.patch
-    - compiler-options-overflow.patch
     - MPICH.patch
 
 build:
@@ -28,10 +27,6 @@ outputs:
       script:
         - PETSC_DIR=${PREFIX} cmake -B build-grid -DDAMASK_SOLVER=grid -DCMAKE_INSTALL_PREFIX=${PREFIX}
         - cmake --build build-grid --target install
-      run_exports:
-        - {{ mpi }}
-        - petsc
-        - hdf5
       skip: true  # [win]
     requirements:
       build:
@@ -44,10 +39,11 @@ outputs:
         - cmake
         - make
       host:
-        - libfyaml
         - {{ mpi }}
         - petsc * real_*
         - hdf5 * mpi_{{ mpi }}_*
+        - libfyaml
+        - fftw * mpi_{{ mpi }}_*
       run:
         - hypre
         - {{ pin_compatible('petsc', max_pin='x.x') }}
@@ -66,10 +62,6 @@ outputs:
       script:
         - PETSC_DIR=${PREFIX} cmake -B build-mesh -DDAMASK_SOLVER=mesh -DCMAKE_INSTALL_PREFIX=${PREFIX}
         - cmake --build build-mesh --target install
-      run_exports:
-        - {{ mpi }}
-        - petsc
-        - hdf5
       skip: true  # [win]
     requirements:
       build:
@@ -82,10 +74,10 @@ outputs:
         - cmake
         - make
       host:
-        - libfyaml
         - {{ mpi }}
         - petsc * real_*
         - hdf5 * mpi_{{ mpi }}_*
+        - libfyaml
       run:
         - hypre
         - {{ pin_compatible('petsc', max_pin='x.x') }}
