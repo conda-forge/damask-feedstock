@@ -1,0 +1,10 @@
+--- damask-3.0.0-alpha7-orig/CMakeLists.txt	2022-10-11 07:20:40.805918949 +0200
++++ damask-3.0.0-alpha7/CMakeLists.txt	2022-10-11 07:19:04.779302447 +0200
+@@ -103,6 +103,7 @@
+ 
+ file(STRINGS "$ENV{PETSC_DIR}/$ENV{PETSC_ARCH}/lib/petsc/conf/petscvariables" PETSC_EXTERNAL_LIB REGEX "PETSC_EXTERNAL_LIB_BASIC = .*$?")
+ string(REPLACE "PETSC_EXTERNAL_LIB_BASIC = " "" PETSC_EXTERNAL_LIB "${PETSC_EXTERNAL_LIB}")
++string(REPLACE "-lhdf5_hl -lhdf5" "-lhdf5hl_fortran -lhdf5_fortran -lhdf5_hl -lhdf5" PETSC_EXTERNAL_LIB "${PETSC_EXTERNAL_LIB}")
+ message("PETSC_EXTERNAL_LIB:\n${PETSC_EXTERNAL_LIB}\n")
+ 
+ file(STRINGS "$ENV{PETSC_DIR}/$ENV{PETSC_ARCH}/lib/petsc/conf/petscvariables" PETSC_INCLUDES REGEX "PETSC_FC_INCLUDES = .*$?")
