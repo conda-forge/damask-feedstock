@@ -49,6 +49,7 @@ outputs:
         - hypre
         - {{ pin_compatible('petsc', max_pin='x.x') }}
         - {{ pin_compatible('hdf5', max_pin='x.x') }}
+        - {{ pin_compatible('petsc4py', max_pin='x.x.x') }}
       run_constrained:
         - damask =={{ version_python }}
     test:
@@ -83,6 +84,7 @@ outputs:
         - hypre
         - {{ pin_compatible('petsc', max_pin='x.x') }}
         - {{ pin_compatible('hdf5', max_pin='x.x') }}
+        - {{ pin_compatible('petsc4py', max_pin='x.x.x') }}
       run_constrained:
         - damask =={{ version_python }}
     test:
@@ -116,6 +118,7 @@ outputs:
         - vtk
         - matplotlib-base
         - pyyaml
+        - {{ pin_compatible('petsc4py', max_pin='x.x.x') }}
       run_constrained:
         - damask =={{ version_python }}
     test:
