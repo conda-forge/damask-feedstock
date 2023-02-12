@@ -131,11 +131,7 @@ outputs:
         - "echo DAMASK metapackage"
       skip: true  # [py<38 or win]
     requirements:
-      host:
-        - python
       run:
-        - python
-        - {{ mpi }}
         - {{ pin_subpackage('damask-mesh', exact=True) }}
         - {{ pin_subpackage('damask-grid', exact=True) }}
         - {{ pin_subpackage('python-damask', exact=True) }}
