@@ -9,3 +9,23 @@
  classifiers =
      Intended Audience :: Science/Research
      Topic :: Scientific/Engineering
+@@ -19,12 +19,10 @@
+ include_package_data = true
+ python_requires = >= 3.8
+ install_requires =
+-    importlib-metadata; python_version<"3.8"
+-    pandas; python_version<="0.24"                                                                  # requires numpy
+-    numpy; python_version<="1.17"                                                                   # needed for default_rng
+-    scipy; python_version<="1.2"
+-    h5py; python_version<="2.9"                                                                     # requires numpy
+-    vtk; python_version<="8.1"
+-    matplotlib; python_version<="3.0"                                                               # requires numpy, pillow
+-    pyyaml; python_version<="3.12"
+-setup_requires = setuptools
++    pandas
++    numpy
++    scipy
++    h5py
++    vtk
++    matplotlib
++    pyyaml
