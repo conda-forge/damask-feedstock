@@ -17,6 +17,7 @@ source:
     - setup-cfg.patch
     - HDF5-Fortran.patch
     - MPICH.patch
+    - DMView.patch
 
 build:
   number: {{ build_number }}
