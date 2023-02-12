@@ -97,7 +97,7 @@ outputs:
   - name: python-damask
     build:
       script: python -m pip install ./python --no-deps -vv
-      skip: true  # [py<38]
+      skip: true  # [py<39]
     requirements:
       build:
         - {{ cdt('mesa-libgl-devel') }}  # [linux]
@@ -129,7 +129,7 @@ outputs:
     build:
       script:
         - "echo DAMASK metapackage"
-      skip: true  # [py<38 or win]
+      skip: true  # [py<39 or win]
     requirements:
       run:
         - {{ pin_subpackage('damask-mesh', exact=True) }}
