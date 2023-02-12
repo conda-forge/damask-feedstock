@@ -1,4 +1,4 @@
-{% set build_number = 1 %}
+{% set build_number = 2 %}
 {% set version = "3.0.0-alpha7" %}
 {% set version_python = "3.0.0a7" %}
 {% set sha256 = "442b06b824441293e72ff91b211a555c5d497aedf62be1c4332c426558b848a4" %}
@@ -17,6 +17,7 @@ source:
     - setup-cfg.patch
     - HDF5-Fortran.patch
     - MPICH.patch
+    - DMView.patch
 
 build:
   number: {{ build_number }}
@@ -48,6 +49,7 @@ outputs:
         - hypre
         - {{ pin_compatible('petsc', max_pin='x.x') }}
         - {{ pin_compatible('hdf5', max_pin='x.x') }}
+        - {{ pin_compatible('petsc4py', max_pin='x.x.x') }}
       run_constrained:
         - damask =={{ version_python }}
     test:
@@ -82,6 +84,7 @@ outputs:
         - hypre
         - {{ pin_compatible('petsc', max_pin='x.x') }}
         - {{ pin_compatible('hdf5', max_pin='x.x') }}
+        - {{ pin_compatible('petsc4py', max_pin='x.x.x') }}
       run_constrained:
         - damask =={{ version_python }}
     test:
@@ -94,7 +97,7 @@ outputs:
   - name: python-damask
     build:
       script: python -m pip install ./python --no-deps -vv
-      skip: true  # [py<38]
+      skip: true  # [py<39]
     requirements:
       build:
         - {{ cdt('mesa-libgl-devel') }}  # [linux]
@@ -115,6 +118,7 @@ outputs:
         - vtk
         - matplotlib-base
         - pyyaml
+        - {{ pin_compatible('petsc4py', max_pin='x.x.x') }}
       run_constrained:
         - damask =={{ version_python }}
     test:
@@ -125,13 +129,9 @@ outputs:
     build:
       script:
         - "echo DAMASK metapackage"
-      skip: true  # [py<38 or win]
+      skip: true  # [py<39 or win]
     requirements:
-      host:
-        - python
       run:
-        - python
-        - {{ mpi }}
         - {{ pin_subpackage('damask-mesh', exact=True) }}
         - {{ pin_subpackage('damask-grid', exact=True) }}
         - {{ pin_subpackage('python-damask', exact=True) }}
