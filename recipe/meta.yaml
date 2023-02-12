@@ -49,8 +49,6 @@ outputs:
         - hypre
         - {{ pin_compatible('petsc', max_pin='x.x') }}
         - {{ pin_compatible('hdf5', max_pin='x.x') }}
-      run_constrained:
-        - damask =={{ version_python }}
     test:
       commands:
         - export OMPI_MCA_plm=isolated
@@ -83,8 +81,6 @@ outputs:
         - hypre
         - {{ pin_compatible('petsc', max_pin='x.x') }}
         - {{ pin_compatible('hdf5', max_pin='x.x') }}
-      run_constrained:
-        - damask =={{ version_python }}
     test:
       commands:
         - export OMPI_MCA_plm=isolated
@@ -116,8 +112,6 @@ outputs:
         - vtk
         - matplotlib-base
         - pyyaml
-      run_constrained:
-        - damask =={{ version_python }}
     test:
       imports:
         - damask
