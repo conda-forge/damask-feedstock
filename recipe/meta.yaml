@@ -115,6 +115,7 @@ outputs:
       skip: true  # [py<38 or win]
     requirements:
       run:
+        - {{ mpi }}
         - hdf5 * mpi_{{ mpi }}_*
         - {{ pin_subpackage('damask-mesh', exact=True) }}
         - {{ pin_subpackage('damask-grid', exact=True) }}
