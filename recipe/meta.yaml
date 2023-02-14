@@ -115,11 +115,8 @@ outputs:
       skip: true  # [py<38 or win]
     requirements:
       run:
-        - {{ mpi }}
-        - hdf5 * mpi_{{ mpi }}_*
         - {{ pin_subpackage('damask-mesh', exact=True) }}
         - {{ pin_subpackage('damask-grid', exact=True) }}
-        - {{ pin_subpackage('python-damask', exact=True) }}
     test:
       commands:
         - export OMPI_MCA_plm=isolated
@@ -127,8 +124,6 @@ outputs:
         - export OMPI_MCA_rmaps_base_oversubscribe=yes
         - mpiexec -np 2 DAMASK_grid -h
         - mpiexec -np 2 DAMASK_mesh -h
-      imports:
-        - damask
 
 about:
   home: https://damask.mpie.de/
