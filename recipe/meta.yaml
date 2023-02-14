@@ -40,15 +40,15 @@ outputs:
         - cmake
         - make
       host:
-        - {{ mpi }}
-        - petsc * real_*
-        - hdf5 * mpi_{{ mpi }}_*
-        - libfyaml
-        - fftw * mpi_{{ mpi }}_*
-      run:
-        - hypre
-        - {{ pin_compatible('petsc', max_pin='x.x') }}
-        - {{ pin_compatible('hdf5', max_pin='x.x') }}
+        run_exports:
+          - {{ mpi }}
+          - petsc * real_*
+          - hdf5 * mpi_{{ mpi }}_*
+          - libfyaml
+          - fftw * mpi_{{ mpi }}_*
+          - hypre
+          - {{ pin_compatible('petsc', max_pin='x.x') }}
+          - {{ pin_compatible('hdf5', max_pin='x.x') }}
     test:
       commands:
         - export OMPI_MCA_plm=isolated
@@ -73,14 +73,14 @@ outputs:
         - cmake
         - make
       host:
-        - {{ mpi }}
-        - petsc * real_*
-        - hdf5 * mpi_{{ mpi }}_*
-        - libfyaml
-      run:
-        - hypre
-        - {{ pin_compatible('petsc', max_pin='x.x') }}
-        - {{ pin_compatible('hdf5', max_pin='x.x') }}
+        run_exports:
+          - {{ mpi }}
+          - petsc * real_*
+          - hdf5 * mpi_{{ mpi }}_*
+          - libfyaml
+          - hypre
+          - {{ pin_compatible('petsc', max_pin='x.x') }}
+          - {{ pin_compatible('hdf5', max_pin='x.x') }}
     test:
       commands:
         - export OMPI_MCA_plm=isolated
