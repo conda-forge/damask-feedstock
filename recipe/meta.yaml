@@ -93,15 +93,7 @@ outputs:
       script: python -m pip install ./python --no-deps -vv
       skip: true  # [py<38]
     requirements:
-      build:
-        - {{ cdt('mesa-libgl-devel') }}  # [linux]
-        - {{ cdt('mesa-dri-drivers') }}  # [linux]
-        - {{ cdt('libselinux') }}  # [linux]
-        - {{ cdt('libxdamage') }}  # [linux]
-        - {{ cdt('libxxf86vm') }}  # [linux]
-        - {{ cdt('libxext') }}     # [linux]
       host:
-        - xorg-libxfixes  # [linux]
         - python
         - pip
       run:
@@ -123,6 +115,7 @@ outputs:
       skip: true  # [py<38 or win]
     requirements:
       run:
+        - hdf5 * mpi_{{ mpi }}_*
         - {{ pin_subpackage('damask-mesh', exact=True) }}
         - {{ pin_subpackage('damask-grid', exact=True) }}
         - {{ pin_subpackage('python-damask', exact=True) }}
