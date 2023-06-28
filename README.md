@@ -1,11 +1,11 @@
-About damask-pkgs
-=================
+About damask-pkgs-feedstock
+===========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/damask-feedstock/blob/main/LICENSE.txt)
 
 Home: https://damask.mpie.de/
 
 Package license: AGPL-3.0-or-later
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/damask-feedstock/blob/main/LICENSE.txt)
 
 Summary: Duesseldorf Advanced Material Simulation Kit
 
