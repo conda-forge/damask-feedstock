@@ -20,6 +20,8 @@ source:
     - T-init.patch
     - PETSc19-1.patch
     - PETSc19-2.patch
+    - DMDA.patch
+    - DMView.patch
 
 build:
   number: {{ build_number }}
