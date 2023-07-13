@@ -18,6 +18,8 @@ source:
     - HDF5-Fortran.patch
     - MPICH.patch
     - T-init.patch
+    - PETSc19-1.patch
+    - PETSc19-2.patch
 
 build:
   number: {{ build_number }}
