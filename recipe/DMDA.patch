@@ -1,0 +1,10 @@
+--- damask-3.0.0-alpha7-orig/src/mesh/mesh_mech_FEM.f90	2023-07-13 02:31:37.127668854 +0200
++++ damask-3.0.0-alpha7/src/mesh/mesh_mech_FEM.f90	2023-07-13 02:31:42.604576108 +0200
+@@ -89,6 +89,7 @@
+ #ifdef PETSC_USE_64BIT_INDICES
+     ISDestroy, &
+ #endif
++DMAddField, &
+     PetscSectionGetNumFields, &
+     PetscFESetQuadrature, &
+     PetscFEGetDimension, &
