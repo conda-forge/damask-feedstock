@@ -1,4 +1,4 @@
-{% set build_number = 2 %}
+{% set build_number = 3 %}
 {% set version = "3.0.0-alpha7" %}
 {% set version_python = "3.0.0a7" %}
 {% set sha256 = "442b06b824441293e72ff91b211a555c5d497aedf62be1c4332c426558b848a4" %}
@@ -24,10 +24,8 @@ build:
 
 outputs:
   - name: damask-grid
+    script: build_grid.sh
     build:
-      script:
-        - PETSC_DIR=${PREFIX} cmake -B build-grid -DDAMASK_SOLVER=grid -DCMAKE_INSTALL_PREFIX=${PREFIX}
-        - cmake --build build-grid --target install
       skip: true  # [win]
     requirements:
       build:
@@ -56,13 +54,11 @@ outputs:
         - export OMPI_MCA_plm=isolated
         - export OMPI_MCA_btl_vader_single_copy_mechanism=none
         - export OMP_NUM_THREADS=2
-        - DAMASK_grid --help
+        - if [ $CONDA_BUILD_CROSS_COMPILATION != '1' ]; then mpirun -np 2 DAMASK_grid --help; fi
 
   - name: damask-mesh
+    script: build_mesh.sh
     build:
-      script:
-        - PETSC_DIR=${PREFIX} cmake -B build-mesh -DDAMASK_SOLVER=mesh -DCMAKE_INSTALL_PREFIX=${PREFIX}
-        - cmake --build build-mesh --target install
       skip: true  # [win]
     requirements:
       build:
@@ -90,7 +86,7 @@ outputs:
         - export OMPI_MCA_plm=isolated
         - export OMPI_MCA_btl_vader_single_copy_mechanism=none
         - export OMP_NUM_THREADS=2
-        - DAMASK_mesh --help
+        - if [ $CONDA_BUILD_CROSS_COMPILATION != '1' ]; then mpirun -np 2 DAMASK_mesh --help; fi
 
   - name: python-damask
     build:
@@ -141,8 +137,7 @@ outputs:
         - export OMPI_MCA_plm=isolated
         - export OMPI_MCA_btl_vader_single_copy_mechanism=none
         - export OMPI_MCA_rmaps_base_oversubscribe=yes
-        - mpiexec -np 2 DAMASK_grid -h
-        - mpiexec -np 2 DAMASK_mesh -h
+        - if [ $CONDA_BUILD_CROSS_COMPILATION != '1' ]; then DAMASK_grid -h; DAMASK_mesh -h; fi
       imports:
         - damask
 
