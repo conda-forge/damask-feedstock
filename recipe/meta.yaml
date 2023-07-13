@@ -1,4 +1,4 @@
-{% set build_number = 2 %}
+{% set build_number = 3 %}
 {% set version = "3.0.0-alpha7" %}
 {% set version_python = "3.0.0a7" %}
 {% set sha256 = "442b06b824441293e72ff91b211a555c5d497aedf62be1c4332c426558b848a4" %}
@@ -56,7 +56,7 @@ outputs:
         - export OMPI_MCA_plm=isolated
         - export OMPI_MCA_btl_vader_single_copy_mechanism=none
         - export OMP_NUM_THREADS=2
-        - DAMASK_grid --help
+        - "[[ $CONDA_BUILD_CROSS_COMPILATION != '1' ]] && DAMASK_grid --help"
 
   - name: damask-mesh
     build:
@@ -90,7 +90,7 @@ outputs:
         - export OMPI_MCA_plm=isolated
         - export OMPI_MCA_btl_vader_single_copy_mechanism=none
         - export OMP_NUM_THREADS=2
-        - DAMASK_mesh --help
+        - "[[ $CONDA_BUILD_CROSS_COMPILATION != '1' ]] && DAMASK_mesh --help"
 
   - name: python-damask
     build:
@@ -141,8 +141,8 @@ outputs:
         - export OMPI_MCA_plm=isolated
         - export OMPI_MCA_btl_vader_single_copy_mechanism=none
         - export OMPI_MCA_rmaps_base_oversubscribe=yes
-        - mpiexec -np 2 DAMASK_grid -h
-        - mpiexec -np 2 DAMASK_mesh -h
+        - "[[ $CONDA_BUILD_CROSS_COMPILATION != '1' ]] && mpiexec -np 2 DAMASK_grid -h"
+        - "[[ $CONDA_BUILD_CROSS_COMPILATION != '1' ]] && mpiexec -np 2 DAMASK_mesh -h"
       imports:
         - damask
 
