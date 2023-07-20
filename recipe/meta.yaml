@@ -41,6 +41,7 @@ outputs:
         - pkg-config  # [osx]
         - cmake
         - make
+        - openmpi  # [mpi == 'openmpi' and build_platform != target_platform]
       host:
         - {{ mpi }}
         - petsc * real_*
@@ -74,6 +75,7 @@ outputs:
         - pkg-config  # [osx]
         - cmake
         - make
+        - openmpi  # [mpi == 'openmpi' and build_platform != target_platform]
       host:
         - {{ mpi }}
         - petsc * real_*
