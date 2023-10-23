@@ -1,4 +1,4 @@
-{% set build_number = 4 %}
+{% set build_number = 5 %}
 {% set version = "3.0.0-alpha7" %}
 {% set version_python = "3.0.0a7" %}
 {% set sha256 = "442b06b824441293e72ff91b211a555c5d497aedf62be1c4332c426558b848a4" %}
@@ -18,8 +18,8 @@ source:
     - HDF5-Fortran.patch
     - MPICH.patch
     - T-init.patch
-    - PETSc19-1.patch
-    - PETSc19-2.patch
+    - PETSc20-1.patch
+    - PETSc20-2.patch
     - DMDA.patch
     - DMView.patch
 
