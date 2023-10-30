@@ -58,7 +58,7 @@ outputs:
     test:
       commands:
         - export OMPI_MCA_plm=isolated
-        - export OMPI_MCA_btl_vader_single_copy_mechanism=none
+        - export OMPI_MCA_btl=tcp,self
         - export OMP_NUM_THREADS=2
         - if [ $CONDA_BUILD_CROSS_COMPILATION != '1' ]; then mpirun -np 2 DAMASK_grid --help; fi
 
