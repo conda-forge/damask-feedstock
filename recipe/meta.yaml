@@ -45,9 +45,12 @@ outputs:
         - openmpi  # [mpi == 'openmpi' and build_platform != target_platform]
       host:
         - {{ mpi }}
+        - petsc
         - petsc * real_*
+        - hdf5
         - hdf5 * mpi_{{ mpi }}_*
         - libfyaml
+        - fftw
         - fftw * mpi_{{ mpi }}_*
       run:
         - hypre
@@ -79,7 +82,9 @@ outputs:
         - openmpi  # [mpi == 'openmpi' and build_platform != target_platform]
       host:
         - {{ mpi }}
+        - petsc
         - petsc * real_*
+        - hdf5
         - hdf5 * mpi_{{ mpi }}_*
         - libfyaml
       run:
