@@ -1,4 +1,4 @@
-{% set build_number = 0 %}
+{% set build_number = 1 %}
 {% set version = "3.0.0-beta" %}
 {% set version_python = "3.0.0b" %}
 {% set sha256 = "1e25e409ac559fc437d1887c6ca930677a732db89a3a32499d545dd75e93925c" %}
@@ -14,6 +14,7 @@ source:
   sha256: {{ sha256 }}
   patches:
     - HDF5-Fortran.patch
+    - PETSc-3.21.patch
 
 build:
   number: {{ build_number }}

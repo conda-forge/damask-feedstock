@@ -1,0 +1,30 @@
+--- damask-3.0.0-beta-orig/CMakeLists.txt	2024-04-28 08:00:44.580016448 +0200
++++ damask-3.0.0-beta/CMakeLists.txt	2024-04-28 08:17:21.757539487 +0200
+@@ -11,7 +11,7 @@
+ project(Prerequisites LANGUAGES)
+ set(ENV{PKG_CONFIG_PATH} "$ENV{PETSC_DIR}/$ENV{PETSC_ARCH}/lib/pkgconfig:$ENV{PKG_CONFIG_PATH}")
+ pkg_check_modules(PETSC_MIN REQUIRED PETSc>=3.12.0 QUIET) #CMake does not support version range
+-pkg_check_modules(PETSC REQUIRED PETSc<3.21.0)
++pkg_check_modules(PETSC REQUIRED PETSc<3.22.0)
+ 
+ pkg_get_variable(CMAKE_Fortran_COMPILER PETSc fcompiler)
+ pkg_get_variable(CMAKE_C_COMPILER PETSc ccompiler)
+--- damask-3.0.0-beta-orig/src/CLI.f90	2024-04-28 08:00:44.590016554 +0200
++++ damask-3.0.0-beta/src/CLI.f90	2024-04-28 08:17:09.337361704 +0200
+@@ -20,7 +20,7 @@
+ !> @brief Parse command line interface for PETSc-based solvers
+ !--------------------------------------------------------------------------------------------------
+ #define PETSC_MINOR_MIN 12
+-#define PETSC_MINOR_MAX 20
++#define PETSC_MINOR_MAX 21
+ 
+ module CLI
+   use, intrinsic :: ISO_fortran_env
+@@ -111,7 +111,6 @@
+   print'(1x,a)', 'https://doi.org/10.1016/j.commatsci.2018.04.030'//IO_EOL
+ #if PETSC_VERSION_MAJOR==3 && PETSC_VERSION_MINOR>=18
+   print'(1x,a,i0,a,i0)', 'S. Balay et al., PETSc/TAO User Manual Revision ',PETSC_VERSION_MAJOR,'.',PETSC_VERSION_MINOR
+-  print'(1x,a)', 'https://doi.org/'//PETSc_DOI
+ #endif
+   print'(/,1x,a)', 'Version: '//DAMASKVERSION
+ 
