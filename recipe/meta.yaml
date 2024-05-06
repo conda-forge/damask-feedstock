@@ -1,4 +1,4 @@
-{% set build_number = 1 %}
+{% set build_number = 2 %}
 {% set version = "3.0.0-beta" %}
 {% set version_python = "3.0.0b" %}
 {% set sha256 = "1e25e409ac559fc437d1887c6ca930677a732db89a3a32499d545dd75e93925c" %}
@@ -27,6 +27,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('c') }}
+        - {{ stdlib("c") }}
         - {{ compiler('cxx') }}
         - {{ compiler('fortran') }}
         - libgomp  # [linux]
@@ -69,6 +70,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('c') }}
+        - {{ stdlib("c") }}
         - {{ compiler('cxx') }}
         - {{ compiler('fortran') }}
         - libgomp  # [linux]
