@@ -1,5 +1,5 @@
 MACOSX_DEPLOYMENT_TARGET:
-- '10.9'
+- '10.13'
 c_compiler:
 - clang
 c_compiler_version:
@@ -7,7 +7,7 @@ c_compiler_version:
 c_stdlib:
 - macosx_deployment_target
 c_stdlib_version:
-- '10.9'
+- '10.13'
 channel_sources:
 - conda-forge
 channel_targets:
@@ -35,7 +35,7 @@ mpich:
 openmpi:
 - '4'
 petsc:
-- '3.20'
+- '3.21'
 pin_run_as_build:
   python:
     min_pin: x.x
