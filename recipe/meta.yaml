@@ -14,6 +14,7 @@ source:
   sha256: {{ sha256 }}
   patches:
     - HDF5-Fortran.patch
+    - compiler-options.patch
 
 build:
   number: {{ build_number }}
