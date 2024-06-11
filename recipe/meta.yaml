@@ -1,4 +1,4 @@
-{% set build_number = 0 %}
+{% set build_number = 1 %}
 {% set version = "3.0.0-beta2" %}
 {% set version_python = "3.0.0b2" %}
 {% set sha256 = "513567b4643f39e27ae32b9f75463fc6f388c1548d42f0393cc87ba02d075f6a" %}
@@ -15,6 +15,7 @@ source:
   patches:
     - HDF5-Fortran.patch
     - compiler-options.patch
+    - ldflags.patch
 
 build:
   number: {{ build_number }}
@@ -58,8 +59,6 @@ outputs:
         - examples/grid/20grains16x16x16.vti
         - examples/grid/material.yaml
       commands:
-        - export OMPI_MCA_plm=isolated
-        - export OMPI_MCA_btl=tcp,self
         - export OMP_NUM_THREADS=2
         - export EXAMPLE_DIR=$(pwd)/examples/grid
         - if [[ $CONDA_BUILD_CROSS_COMPILATION != '1' ]]; then mpirun -np 2 DAMASK_grid -w $(mktemp -d) -l ${EXAMPLE_DIR}/tensionX.yaml -g ${EXAMPLE_DIR}/20grains16x16x16.vti -m ${EXAMPLE_DIR}/material.yaml; fi
@@ -100,8 +99,6 @@ outputs:
         - examples/mesh/monocrystal.msh
         - examples/mesh/material.yaml
       commands:
-        - export OMPI_MCA_plm=isolated
-        - export OMPI_MCA_btl_vader_single_copy_mechanism=none
         - export OMP_NUM_THREADS=2
         - export EXAMPLE_DIR=$(pwd)/examples/mesh
         - if [[ $CONDA_BUILD_CROSS_COMPILATION != '1' ]]; then mpirun -np 2 DAMASK_mesh; fi
@@ -155,9 +152,6 @@ outputs:
         - {{ pin_subpackage('python-damask', exact=True) }}
     test:
       commands:
-        - export OMPI_MCA_plm=isolated
-        - export OMPI_MCA_btl_vader_single_copy_mechanism=none
-        - export OMPI_MCA_rmaps_base_oversubscribe=yes
         - if [[ $CONDA_BUILD_CROSS_COMPILATION != '1' ]]; then DAMASK_grid -h; DAMASK_mesh -h; fi
       imports:
         - damask
