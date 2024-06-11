@@ -15,6 +15,7 @@ source:
   patches:
     - HDF5-Fortran.patch
     - compiler-options.patch
+    - ldflags.patch
 
 build:
   number: {{ build_number }}
