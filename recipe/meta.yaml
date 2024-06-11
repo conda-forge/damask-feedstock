@@ -99,8 +99,6 @@ outputs:
         - examples/mesh/monocrystal.msh
         - examples/mesh/material.yaml
       commands:
-        - export OMPI_MCA_plm=isolated
-        - export OMPI_MCA_btl_vader_single_copy_mechanism=none
         - export OMP_NUM_THREADS=2
         - export EXAMPLE_DIR=$(pwd)/examples/mesh
         - if [[ $CONDA_BUILD_CROSS_COMPILATION != '1' ]]; then mpirun -np 2 DAMASK_mesh; fi
@@ -154,9 +152,6 @@ outputs:
         - {{ pin_subpackage('python-damask', exact=True) }}
     test:
       commands:
-        - export OMPI_MCA_plm=isolated
-        - export OMPI_MCA_btl_vader_single_copy_mechanism=none
-        - export OMPI_MCA_rmaps_base_oversubscribe=yes
         - if [[ $CONDA_BUILD_CROSS_COMPILATION != '1' ]]; then DAMASK_grid -h; DAMASK_mesh -h; fi
       imports:
         - damask
