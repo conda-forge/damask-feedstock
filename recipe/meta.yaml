@@ -58,8 +58,6 @@ outputs:
         - examples/grid/20grains16x16x16.vti
         - examples/grid/material.yaml
       commands:
-        - export OMPI_MCA_plm=isolated
-        - export OMPI_MCA_btl=tcp,self
         - export OMP_NUM_THREADS=2
         - export EXAMPLE_DIR=$(pwd)/examples/grid
         - if [[ $CONDA_BUILD_CROSS_COMPILATION != '1' ]]; then mpirun -np 2 DAMASK_grid -w $(mktemp -d) -l ${EXAMPLE_DIR}/tensionX.yaml -g ${EXAMPLE_DIR}/20grains16x16x16.vti -m ${EXAMPLE_DIR}/material.yaml; fi
