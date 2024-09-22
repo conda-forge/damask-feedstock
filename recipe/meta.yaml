@@ -1,4 +1,4 @@
-{% set build_number = 1 %}
+{% set build_number = 2 %}
 {% set version = "3.0.0" %}
 {% set sha256 = "aaebc65b3b10e6c313132ee97cfed427c115079b7e438cc0727c5207e159019f" %}
 
@@ -156,7 +156,7 @@ outputs:
         - damask
 
 about:
-  home: https://damask.mpie.de/
+  home: https://damask-multiphysics.org
   license: AGPL-3.0-or-later
   license_file:
     - LICENSE
@@ -169,8 +169,8 @@ about:
     boundary value problems along with damage and thermal physics. Its
     main purpose is the simulation of crystal plasticity within a
     finite-strain continuum mechanical framework.
-  doc_url: https://damask.mpie.de/documentation
-  dev_url: https://damask.mpie.de/development
+  doc_url: https://damask-multiphysics.org/documentation
+  dev_url: https://damask-multiphysics.org/development
 
 extra:
   recipe-maintainers:
