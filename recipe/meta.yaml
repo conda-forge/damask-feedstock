@@ -121,6 +121,7 @@ outputs:
         - xorg-libxfixes  # [linux]
         - python
         - pip
+        - setuptools
       run:
         - python
         - pandas
