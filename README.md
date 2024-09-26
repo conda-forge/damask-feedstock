@@ -3,15 +3,15 @@ About damask-pkgs-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/damask-feedstock/blob/main/LICENSE.txt)
 
-Home: https://damask.mpie.de/
+Home: https://damask-multiphysics.org
 
 Package license: AGPL-3.0-or-later
 
 Summary: Duesseldorf Advanced Material Simulation Kit
 
-Development: https://damask.mpie.de/development
+Development: https://damask-multiphysics.org/development
 
-Documentation: https://damask.mpie.de/documentation
+Documentation: https://damask-multiphysics.org/documentation
 
 At the core of DAMASK is a flexible and hierarchically structured
 model of material point behavior for the solution of elastoplastic
@@ -98,13 +98,6 @@ Current build status
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8984&branchName=main">
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/damask-feedstock?branchName=main&jobName=win&configuration=win%20win_64_python3.12.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_python3.8.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8984&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/damask-feedstock?branchName=main&jobName=win&configuration=win%20win_64_python3.8.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
