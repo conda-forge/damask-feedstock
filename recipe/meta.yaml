@@ -1,6 +1,6 @@
-{% set build_number = 2 %}
-{% set version = "3.0.0" %}
-{% set sha256 = "aaebc65b3b10e6c313132ee97cfed427c115079b7e438cc0727c5207e159019f" %}
+{% set build_number = 0 %}
+{% set version = "3.0.1" %}
+{% set sha256 = "3db1231f6763356e71b3bb91f66f1abb4fdae2721ce85754fc468446f3d74882" %}
 
 # win: no PETSc, only python
 
@@ -9,7 +9,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://damask.mpie.de/download/damask-{{ version }}.tar.xz
+  url: https://damask-multiphysics.org/download/damask-{{ version }}.tar.xz
   sha256: {{ sha256 }}
   patches:
     - HDF5-Fortran.patch
@@ -121,6 +121,7 @@ outputs:
         - xorg-libxfixes  # [linux]
         - python
         - pip
+        - setuptools
       run:
         - python
         - pandas
@@ -156,7 +157,7 @@ outputs:
         - damask
 
 about:
-  home: https://damask.mpie.de/
+  home: https://damask-multiphysics.org
   license: AGPL-3.0-or-later
   license_file:
     - LICENSE
@@ -169,8 +170,8 @@ about:
     boundary value problems along with damage and thermal physics. Its
     main purpose is the simulation of crystal plasticity within a
     finite-strain continuum mechanical framework.
-  doc_url: https://damask.mpie.de/documentation
-  dev_url: https://damask.mpie.de/development
+  doc_url: https://damask-multiphysics.org/documentation
+  dev_url: https://damask-multiphysics.org/development
 
 extra:
   recipe-maintainers:
