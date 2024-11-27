@@ -46,6 +46,7 @@ outputs:
         - libfyaml
         - fftw
         - fftw * mpi_{{ mpi }}_*
+        - zlib-ng
       run:
         - hypre
         - {{ pin_compatible('petsc', max_pin='x.x') }}
