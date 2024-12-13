@@ -38,6 +38,7 @@ outputs:
         - make
         - openmpi  # [mpi == 'openmpi' and build_platform != target_platform]
       host:
+        - libblas
         - liblapack
         - {{ mpi }}
         - petsc
