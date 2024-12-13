@@ -28,7 +28,6 @@ outputs:
       build:
         - {{ compiler('c') }}
         - {{ stdlib("c") }}
-        - {{ stdlib("c") }}
         - {{ compiler('cxx') }}
         - {{ compiler('fortran') }}
         - libgomp  # [linux]
@@ -75,7 +74,6 @@ outputs:
       build:
         - {{ compiler('c') }}
         - {{ stdlib("c") }}
-        - {{ stdlib("c") }}
         - {{ compiler('cxx') }}
         - {{ compiler('fortran') }}
         - libgomp  # [linux]
@@ -85,6 +83,8 @@ outputs:
         - make
         - openmpi  # [mpi == 'openmpi' and build_platform != target_platform]
       host:
+        - libblas
+        - liblapack
         - {{ mpi }}
         - petsc
         - petsc * real_*
