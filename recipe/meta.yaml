@@ -39,6 +39,8 @@ outputs:
         - openmpi  # [mpi == 'openmpi' and build_platform != target_platform]
       host:
         - {{ mpi }}
+        - liblapack
+        - libblas
         - petsc
         - petsc * real_*
         - hdf5
@@ -84,6 +86,8 @@ outputs:
         - openmpi  # [mpi == 'openmpi' and build_platform != target_platform]
       host:
         - {{ mpi }}
+        - liblapack
+        - libblas
         - petsc
         - petsc * real_*
         - hdf5
