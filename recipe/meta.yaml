@@ -1,4 +1,4 @@
-{% set build_number = 2 %}
+{% set build_number = 3 %}
 {% set version = "3.0.1" %}
 {% set sha256 = "3db1231f6763356e71b3bb91f66f1abb4fdae2721ce85754fc468446f3d74882" %}
 
@@ -27,15 +27,15 @@ outputs:
     requirements:
       build:
         - {{ compiler('c') }}
-        - {{ stdlib("c") }}
-        - {{ stdlib("c") }}
         - {{ compiler('cxx') }}
         - {{ compiler('fortran') }}
+        - {{ stdlib('c') }}
         - libgomp  # [linux]
         - llvm-openmp  # [osx]
         - pkg-config  # [osx]
         - cmake
         - make
+        - sed
         - openmpi  # [mpi == 'openmpi' and build_platform != target_platform]
       host:
         - {{ mpi }}
@@ -74,15 +74,15 @@ outputs:
     requirements:
       build:
         - {{ compiler('c') }}
-        - {{ stdlib("c") }}
-        - {{ stdlib("c") }}
         - {{ compiler('cxx') }}
         - {{ compiler('fortran') }}
+        - {{ stdlib('c') }}
         - libgomp  # [linux]
         - llvm-openmp  # [osx]
         - pkg-config  # [osx]
         - cmake
         - make
+        - sed
         - openmpi  # [mpi == 'openmpi' and build_platform != target_platform]
       host:
         - {{ mpi }}
@@ -113,7 +113,7 @@ outputs:
   - name: python-damask
     build:
       script: python -m pip install ./python --no-deps -vv
-      skip: true  # [py<38]
+      skip: true  # [ppc64le]
     requirements:
       build:
         - {{ cdt('mesa-libgl-devel') }}  # [linux]
@@ -148,7 +148,7 @@ outputs:
     build:
       script:
         - "echo DAMASK metapackage"
-      skip: true  # [py<38 or win]
+      skip: true  # [win or ppc64le]
     requirements:
       host:
         - python
