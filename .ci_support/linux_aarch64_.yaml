@@ -25,19 +25,20 @@ fortran_compiler:
 fortran_compiler_version:
 - '13'
 hdf5:
-- 1.14.4
+- 1.14.6
 libblas:
-- 3.9 *netlib
+- 3.9.* *netlib
 liblapack:
-- 3.9 *netlib
+- 3.9.* *netlib
 mpi:
 - mpich
+- openmpi
 mpich:
 - '4'
 openmpi:
 - '5'
 petsc:
-- '3.22'
+- '3.23'
 pin_run_as_build:
   python:
     min_pin: x.x
