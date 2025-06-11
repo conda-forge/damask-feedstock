@@ -1,6 +1,6 @@
---- damask-3.0.0-beta2-orig/src/CLI.f90	2024-06-01 22:57:34.241147368 +0200
-+++ damask-3.0.0-beta2/src/CLI.f90	2024-06-01 22:58:08.680274328 +0200
-@@ -123,7 +123,7 @@
+--- damask-3.0.2.orig/src/CLI.f90	2025-06-09 22:58:28.212333133 +0200
++++ damask-3.0.2/src/CLI.f90	2025-06-09 23:11:14.615495890 +0200
+@@ -126,7 +126,7 @@
  
    print'(/,1x,a)', 'Compiled with: '//compiler_version()
    print'(1x,a)',   'Compiled on: '//CMAKE_SYSTEM
