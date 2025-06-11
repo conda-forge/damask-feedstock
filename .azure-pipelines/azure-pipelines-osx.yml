@@ -8,17 +8,11 @@ jobs:
     vmImage: macOS-13
   strategy:
     matrix:
-      osx_64_mpimpich:
-        CONFIG: osx_64_mpimpich
+      osx_64_:
+        CONFIG: osx_64_
         UPLOAD_PACKAGES: 'True'
-      osx_64_mpiopenmpi:
-        CONFIG: osx_64_mpiopenmpi
-        UPLOAD_PACKAGES: 'True'
-      osx_arm64_mpimpich:
-        CONFIG: osx_arm64_mpimpich
-        UPLOAD_PACKAGES: 'True'
-      osx_arm64_mpiopenmpi:
-        CONFIG: osx_arm64_mpiopenmpi
+      osx_arm64_:
+        CONFIG: osx_arm64_
         UPLOAD_PACKAGES: 'True'
   timeoutInMinutes: 360
   variables: {}
