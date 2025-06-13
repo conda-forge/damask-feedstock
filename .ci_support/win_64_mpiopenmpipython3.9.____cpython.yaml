@@ -4,10 +4,6 @@ channel_targets:
 - conda-forge main
 mpi:
 - openmpi
-mpich:
-- '4'
-openmpi:
-- '5'
 pin_run_as_build:
   python:
     min_pin: x.x
