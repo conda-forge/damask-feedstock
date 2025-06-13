@@ -1,8 +1,8 @@
-{% set build_number = 0 %}
+{% set build_number = 1 %}
 {% set version = "3.0.2" %}
 {% set sha256 = "82f9b3aefde87193c12a7c908f42b711b278438f6cad650918989e37fb6dbde4" %}
 
-# win: no PETSc, only python
+# win: no PETSc => only python
 
 package:
   name: damask-pkgs
@@ -18,13 +18,14 @@ source:
 
 build:
   number: {{ build_number }}
+  force_use_keys:
+    - mpi
 
 outputs:
   - name: damask-grid
     script: build_grid.sh
     build:
       skip: true  # [win]
-      force_use_keys: [mpi]
     requirements:
       build:
         - {{ compiler('c') }}
@@ -72,7 +73,6 @@ outputs:
     script: build_mesh.sh
     build:
       skip: true  # [win]
-      force_use_keys: [mpi]
     requirements:
       build:
         - {{ compiler('c') }}
@@ -116,7 +116,6 @@ outputs:
     build:
       script: python -m pip install ./python --no-deps -vv
       skip: true  # [ppc64le]
-      force_use_keys: [mpi]
     requirements:
       build:
         - {{ cdt('mesa-libgl-devel') }}  # [linux]
@@ -152,7 +151,6 @@ outputs:
       script:
         - "echo DAMASK metapackage"
       skip: true  # [win or ppc64le]
-      force_use_keys: [mpi]
     requirements:
       host:
         - python
