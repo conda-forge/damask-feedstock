@@ -32,7 +32,6 @@ liblapack:
 - 3.9.* *netlib
 mpi:
 - mpich
-- openmpi
 mpich:
 - '4'
 openmpi:
