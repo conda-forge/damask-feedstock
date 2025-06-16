@@ -25,7 +25,7 @@ Current build status
 
 
 <table>
-    
+
   <tr>
     <td>Azure</td>
     <td>
@@ -310,4 +310,4 @@ Feedstock Maintainers
 =====================
 
 * [@MarDiehl](https://github.com/MarDiehl/)
-
+* [@dmentock](https://github.com/dmentock/)
