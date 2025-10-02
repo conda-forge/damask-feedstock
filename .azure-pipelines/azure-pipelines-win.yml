@@ -20,9 +20,6 @@ jobs:
       win_64_mpimpichpython3.13.____cp313:
         CONFIG: win_64_mpimpichpython3.13.____cp313
         UPLOAD_PACKAGES: 'True'
-      win_64_mpimpichpython3.9.____cpython:
-        CONFIG: win_64_mpimpichpython3.9.____cpython
-        UPLOAD_PACKAGES: 'True'
       win_64_mpiopenmpipython3.10.____cpython:
         CONFIG: win_64_mpiopenmpipython3.10.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -34,9 +31,6 @@ jobs:
         UPLOAD_PACKAGES: 'True'
       win_64_mpiopenmpipython3.13.____cp313:
         CONFIG: win_64_mpiopenmpipython3.13.____cp313
-        UPLOAD_PACKAGES: 'True'
-      win_64_mpiopenmpipython3.9.____cpython:
-        CONFIG: win_64_mpiopenmpipython3.9.____cpython
         UPLOAD_PACKAGES: 'True'
   timeoutInMinutes: 360
   variables:
