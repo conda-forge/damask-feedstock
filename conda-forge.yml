@@ -8,4 +8,6 @@ conda_forge_output_validation: true
 github:
   branch_name: main
   tooling_branch_name: main
+azure:
+  free_disk_space: true
 test: native_and_emulated
