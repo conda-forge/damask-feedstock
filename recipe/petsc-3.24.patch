@@ -1,0 +1,44 @@
+diff --color --unified --recursive --text damask-3.0.2.orig/CMakeLists.txt damask-3.0.2/CMakeLists.txt
+--- damask-3.0.2.orig/CMakeLists.txt	2025-10-19 08:11:23.448033719 +0200
++++ damask-3.0.2/CMakeLists.txt	2025-10-19 08:31:36.638455551 +0200
+@@ -11,7 +11,7 @@
+ project(Prerequisites LANGUAGES)
+ set(ENV{PKG_CONFIG_PATH} "$ENV{PETSC_DIR}/$ENV{PETSC_ARCH}/lib/pkgconfig:$ENV{PKG_CONFIG_PATH}")
+ pkg_check_modules(PETSC_MIN REQUIRED PETSc>=3.12.0 QUIET) #CMake does not support version range
+-pkg_check_modules(PETSC REQUIRED PETSc<3.24.0)
++pkg_check_modules(PETSC REQUIRED PETSc<3.25.0)
+ 
+ pkg_get_variable(CMAKE_Fortran_COMPILER PETSc fcompiler)
+ pkg_get_variable(CMAKE_C_COMPILER PETSc ccompiler)
+diff --color --unified --recursive --text damask-3.0.2.orig/src/CLI.f90 damask-3.0.2/src/CLI.f90
+--- damask-3.0.2.orig/src/CLI.f90	2025-10-19 08:11:23.449788887 +0200
++++ damask-3.0.2/src/CLI.f90	2025-10-19 08:31:44.886543006 +0200
+@@ -1,16 +1,16 @@
+ ! Copyright 2024-2025 Max-Planck-Institut für Nachhaltige Materialien GmbH
+ ! Copyright 2011-2024 Max-Planck-Institut für Eisenforschung GmbH
+-! 
++!
+ ! DAMASK is free software: you can redistribute it and/or modify
+ ! it under the terms of the GNU Affero General Public License as
+ ! published by the Free Software Foundation, either version 3 of the
+ ! License, or (at your option) any later version.
+-! 
++!
+ ! This program is distributed in the hope that it will be useful,
+ ! but WITHOUT ANY WARRANTY; without even the implied warranty of
+ ! MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ ! GNU Affero General Public License for more details.
+-! 
++!
+ ! You should have received a copy of the GNU Affero General Public License
+ ! along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ !--------------------------------------------------------------------------------------------------
+@@ -21,7 +21,7 @@
+ !> @brief Parse command line interface for PETSc-based solvers
+ !--------------------------------------------------------------------------------------------------
+ #define PETSC_MINOR_MIN 12
+-#define PETSC_MINOR_MAX 23
++#define PETSC_MINOR_MAX 24
+ 
+ module CLI
+   use, intrinsic :: ISO_fortran_env
