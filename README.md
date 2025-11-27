@@ -310,4 +310,5 @@ Feedstock Maintainers
 =====================
 
 * [@MarDiehl](https://github.com/MarDiehl/)
+* [@dmentock](https://github.com/dmentock/)
 
