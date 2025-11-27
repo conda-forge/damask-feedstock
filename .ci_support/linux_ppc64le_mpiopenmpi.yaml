@@ -35,7 +35,7 @@ mpich:
 openmpi:
 - '5'
 petsc:
-- '3.23'
+- '3.24'
 target_platform:
 - linux-ppc64le
 zip_keys:
