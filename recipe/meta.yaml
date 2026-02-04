@@ -1,4 +1,4 @@
-{% set build_number = 3 %}
+{% set build_number = 4 %}
 {% set version = "3.0.2" %}
 {% set sha256 = "82f9b3aefde87193c12a7c908f42b711b278438f6cad650918989e37fb6dbde4" %}
 
@@ -16,6 +16,7 @@ source:
     - HDF5-Fortran.patch
     - compiler-options.patch
     - ldflags.patch
+    - libfyaml.patch
 
 build:
   number: {{ build_number }}

@@ -1,0 +1,11 @@
+--- damask-3.0.2.orig/src/C_routines.c	2026-02-04 10:23:55.137773804 +0100
++++ damask-3.0.2/src/C_routines.c	2026-02-04 10:24:36.755640731 +0100
+@@ -102,7 +102,7 @@
+ #ifdef FYAML
+ void to_flow_c(char **flow, long* length_flow, const char *mixed){
+   struct fy_document *fyd = NULL;
+-  enum fy_emitter_cfg_flags emit_flags = FYECF_MODE_FLOW_ONELINE | FYECF_STRIP_LABELS | FYECF_STRIP_TAGS |FYECF_STRIP_DOC;
++  enum fy_emitter_cfg_flags emit_flags = FYECF_MODE_FLOW_ONELINE | FYECF_WIDTH_INF | FYECF_DOC_START_MARK_OFF | FYECF_STRIP_LABELS | FYECF_STRIP_TAGS |FYECF_STRIP_DOC;
+ 
+   fyd = fy_document_build_from_string(NULL, mixed, -1);
+   if (!fyd) {
