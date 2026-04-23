@@ -31,11 +31,11 @@ liblapack:
 mpi:
 - mpich
 mpich:
-- '4'
+- '5'
 openmpi:
 - '5'
 petsc:
-- '3.24'
+- '3.25'
 target_platform:
 - linux-ppc64le
 zip_keys:
