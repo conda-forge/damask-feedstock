@@ -28,6 +28,7 @@ outputs:
       name: damask-grid
     build:
       skip: win or ppc64le
+      script: build_grid.sh
     requirements:
       build:
         - ${{ compiler('c') }}
@@ -74,11 +75,11 @@ outputs:
           - export OMP_NUM_THREADS=2
           - export EXAMPLE_DIR=$(pwd)/examples/grid
           - "if [[ $CONDA_BUILD_CROSS_COMPILATION != '1' ]]; then mpirun -np 2 DAMASK_grid; fi"
-    script: build_grid.sh
   - package:
       name: damask-mesh
     build:
       skip: win or ppc64le
+      script: build_mesh.sh
     requirements:
       build:
         - ${{ compiler('c') }}
@@ -123,7 +124,6 @@ outputs:
           - export OMP_NUM_THREADS=2
           - export EXAMPLE_DIR=$(pwd)/examples/mesh
           - "if [[ $CONDA_BUILD_CROSS_COMPILATION != '1' ]]; then mpirun -np 2 DAMASK_mesh; fi"
-    script: build_mesh.sh
   - package:
       name: python-damask
     build:
