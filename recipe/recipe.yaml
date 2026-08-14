@@ -1,0 +1,203 @@
+# win: no PETSc => only python
+schema_version: 1
+
+context:
+  build_number: 1
+  version: 3.1.0
+  sha256: d1ba65a167aab221c13f003507aba17f663c53af94fc1cd4a47408008329def1
+
+recipe:
+  name: damask-pkgs
+  version: ${{ version }}
+
+source:
+  url: https://damask-multiphysics.org/download/damask-${{ version }}.tar.xz
+  sha256: ${{ sha256 }}
+  patches:
+    - HDF5-Fortran.patch
+    - compiler-options.patch
+
+build:
+  number: ${{ build_number }}
+  variant:
+    use_keys:
+      - mpi
+
+outputs:
+  - package:
+      name: damask-grid
+    build:
+      skip: win or ppc64le
+    requirements:
+      build:
+        - ${{ compiler('c') }}
+        - ${{ compiler('cxx') }}
+        - ${{ compiler('fortran') }}
+        - ${{ stdlib('c') }}
+        - if: linux
+          then: libgomp
+        - if: osx
+          then: llvm-openmp
+        - if: osx
+          then: pkg-config
+        - cmake
+        - make
+        - sed
+        - if: "mpi == 'openmpi' and build_platform != target_platform"
+          then: openmpi
+      host:
+        - ${{ mpi }}
+        - liblapack
+        - libblas
+        - petsc
+        - petsc * real_*
+        - hdf5
+        - hdf5 * mpi_${{ mpi }}_*
+        - if: not osx
+          then: libfyaml
+        - zlib
+        - fftw
+        - fftw * mpi_${{ mpi }}_*
+      run:
+        - hypre
+        - ${{ pin_compatible('petsc', upper_bound='x.x') }}
+        - ${{ pin_compatible('hdf5', upper_bound='x.x') }}
+      run_constraints:
+        - damask ==${{ version }}
+    tests:
+      - files:
+          source:
+            - examples/grid/tensionX.yaml
+            - examples/grid/20grains16x16x16.vti
+            - examples/grid/material.yaml
+        script:
+          - export OMP_NUM_THREADS=2
+          - export EXAMPLE_DIR=$(pwd)/examples/grid
+          - "if [[ $CONDA_BUILD_CROSS_COMPILATION != '1' ]]; then mpirun -np 2 DAMASK_grid; fi"
+    script: build_grid.sh
+  - package:
+      name: damask-mesh
+    build:
+      skip: win or ppc64le
+    requirements:
+      build:
+        - ${{ compiler('c') }}
+        - ${{ compiler('cxx') }}
+        - ${{ compiler('fortran') }}
+        - ${{ stdlib('c') }}
+        - if: linux
+          then: libgomp
+        - if: osx
+          then: llvm-openmp
+        - if: osx
+          then: pkg-config
+        - cmake
+        - make
+        - sed
+        - if: "mpi == 'openmpi' and build_platform != target_platform"
+          then: openmpi
+      host:
+        - ${{ mpi }}
+        - liblapack
+        - libblas
+        - petsc
+        - petsc * real_*
+        - hdf5
+        - hdf5 * mpi_${{ mpi }}_*
+        - if: not osx
+          then: libfyaml
+        - zlib
+      run:
+        - hypre
+        - ${{ pin_compatible('petsc', upper_bound='x.x') }}
+        - ${{ pin_compatible('hdf5', upper_bound='x.x') }}
+      run_constraints:
+        - damask ==${{ version }}
+    tests:
+      - files:
+          source:
+            - examples/mesh/tensionY_mono.yaml
+            - examples/mesh/monocrystal.msh
+            - examples/mesh/material.yaml
+        script:
+          - export OMP_NUM_THREADS=2
+          - export EXAMPLE_DIR=$(pwd)/examples/mesh
+          - "if [[ $CONDA_BUILD_CROSS_COMPILATION != '1' ]]; then mpirun -np 2 DAMASK_mesh; fi"
+    script: build_mesh.sh
+  - package:
+      name: python-damask
+    build:
+      skip: ppc64le
+      script: python -m pip install ./python --no-deps -vv
+    requirements:
+      build:
+        - if: build_platform != target_platform
+          then: python
+        - if: build_platform != target_platform
+          then: pip
+        - if: build_platform != target_platform
+          then: cross-python_${{ target_platform }}
+      host:
+        - if: linux
+          then: xorg-libxfixes
+        - python
+        - pip
+        - setuptools
+        - if: linux
+          then: libgl-devel
+      run:
+        - python
+        - pandas
+        - scipy
+        - h5py >=3.3.0
+        - vtk
+        - matplotlib-base
+        - pyyaml
+      run_constraints:
+        - damask ==${{ version }}
+    tests:
+      - python:
+          imports:
+            - damask
+  - package:
+      name: damask
+    build:
+      skip: win or ppc64le
+      script:
+        - echo DAMASK metapackage
+    requirements:
+      host:
+        - python
+      run:
+        - python
+        - ${{ mpi }}
+        - ${{ pin_subpackage('damask-mesh', exact=True) }}
+        - ${{ pin_subpackage('damask-grid', exact=True) }}
+        - ${{ pin_subpackage('python-damask', exact=True) }}
+    tests:
+      - python:
+          imports:
+            - damask
+      - script:
+          - "if [[ $CONDA_BUILD_CROSS_COMPILATION != '1' ]]; then DAMASK_grid -h; DAMASK_mesh -h; fi"
+
+about:
+  license: AGPL-3.0-or-later
+  license_file:
+    - LICENSE
+    - COPYING
+  summary: Duesseldorf Advanced Material Simulation Kit
+  description: |
+    At the core of DAMASK is a flexible and hierarchically structured
+    model of material point behavior for the solution of elastoplastic
+    boundary value problems along with damage and thermal physics. Its
+    main purpose is the simulation of crystal plasticity within a
+    finite-strain continuum mechanical framework.
+  homepage: https://damask-multiphysics.org
+  repository: https://damask-multiphysics.org/development
+  documentation: https://damask-multiphysics.org/documentation
+
+extra:
+  recipe-maintainers:
+    - dmentock
+    - MarDiehl
