@@ -128,7 +128,9 @@ outputs:
       name: python-damask
     build:
       skip: ppc64le
-      script: python -m pip install ./python --no-deps -vv
+      script:
+        - python -c "from pathlib import Path; p = Path('python/damask/VERSION'); p.exists() or p.write_bytes(Path('VERSION').read_bytes())"
+        - python -m pip install ./python --no-deps -vv
     requirements:
       build:
         - if: build_platform != target_platform
@@ -173,7 +175,7 @@ outputs:
         - ${{ mpi }}
         - ${{ pin_subpackage('damask-mesh', exact=True) }}
         - ${{ pin_subpackage('damask-grid', exact=True) }}
-        - ${{ pin_subpackage('python-damask', exact=True) }}
+        - python-damask ==${{ version }}
     tests:
       - python:
           imports:
