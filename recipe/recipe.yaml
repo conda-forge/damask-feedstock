@@ -129,7 +129,7 @@ outputs:
     build:
       skip: ppc64le
       script:
-        - python -c "from pathlib import Path; p = Path('python/damask/VERSION'); p.exists() or p.write_bytes(Path('VERSION').read_bytes())"
+        - python -c "from pathlib import Path; p = Path('python/damask/VERSION'); p.unlink(missing_ok=True); p.write_bytes(Path('VERSION').read_bytes())"
         - python -m pip install ./python --no-deps -vv
     requirements:
       build:
